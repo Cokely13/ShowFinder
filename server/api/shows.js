@@ -32,8 +32,8 @@ router.post('/', async (req, res, next) => {
 
 router.put('/:id', async (req, res, next) => {
   try {
-    const event = await Event.findByPk(req.params.id)
-    res.send(await event.update(req.body));
+    const show = await Show.findByPk(req.params.id)
+    res.send(await show.update(req.body));
   } catch (error) {
     next(error);
   }
@@ -41,9 +41,9 @@ router.put('/:id', async (req, res, next) => {
 
 router.delete('/:id', async (req, res, next) => {
   try {
-    const event = await Event.findByPk(req.params.id);
-    await event.destroy();
-    res.send(event);
+    const show = await Show.findByPk(req.params.id);
+    await show.destroy();
+    res.send(show);
   } catch (error) {
     next(error);
   }
