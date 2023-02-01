@@ -1,6 +1,6 @@
 'use strict'
 
-const {db, models: {User, Show, UserShow} } = require('../server/db')
+const {db, models: {User, Show, Rating} } = require('../server/db')
 
 /**
  * seed - this function clears the database, updates tables to
@@ -22,13 +22,13 @@ async function seed() {
     Show.create({ name: 'Breaking Bad', image: 'https://ntvb.tmsimg.com/assets/p8696131_b_h10_aa.jpg?w=1280&h=720' })
   ])
 
-  const userShows = await Promise.all([
-    UserShow.create({ rating: 10, userId: 1, showId: 1, status: "WATCHED"}),
-    UserShow.create({ rating: 5, userId: 2, showId: 1, status: "WATCHED"}),
-    UserShow.create({ rating: 8, userId: 1, showId: 2, status: "WATCHING"}),
-    UserShow.create({ rating: 7, userId: 2, showId: 2}),
-    UserShow.create({ rating: 2, userId: 1, showId: 3, status: "WATCHING"}),
-    // UserShow.create({ rating: 5, userId: 2, showId: 1}),
+  const Ratings = await Promise.all([
+    Rating.create({ rating: 10, userId: 1, showId: 1, status: "WATCHED"}),
+    Rating.create({ rating: 5, userId: 2, showId: 1, status: "WATCHED"}),
+    Rating.create({ rating: 8, userId: 1, showId: 2, status: "WATCHING"}),
+    Rating.create({ rating: 7, userId: 2, showId: 2}),
+    Rating.create({ rating: 2, userId: 1, showId: 3, status: "WATCHING"}),
+    // Rating.create({ rating: 5, userId: 2, showId: 1}),
   ])
 
   console.log(`seeded ${users.length} users`)

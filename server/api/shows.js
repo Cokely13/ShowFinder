@@ -1,11 +1,11 @@
 const router = require('express').Router()
 const { regex } = require('react-admin')
-const { models: { Show}} = require('../db')
+const { models: { Show, Rating}} = require('../db')
 
 
 router.get('/', async (req, res, next) => {
   try {
-    const shows = await Show.findAll()
+    const shows = await Show.findAll({include: Rating})
     res.json(shows)
   } catch (err) {
     next(err)
@@ -15,7 +15,7 @@ router.get('/', async (req, res, next) => {
 router.get('/:id', async (req, res, next) => {
   try {
     // const eventId = req.params.id
-    const show= await Show.findByPk(req.params.id);
+    const show= await Show.findByPk(req.params.id, {include: Rating});
     res.json(show);
   } catch (err) {
     next(err);
