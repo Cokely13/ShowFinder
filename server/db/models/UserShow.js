@@ -3,12 +3,12 @@ const db = require('../db')
 
 
 const UserShow = db.define('usershow', {
-    // id: {
-    //     type: Sequelize.INTEGER,
-    //     autoIncrement: true,
-    //     primaryKey: true,
-    //     unique: true,
-    // },
+    id: {
+        type: Sequelize.INTEGER,
+        autoIncrement: true,
+        primaryKey: true,
+        unique: true,
+    },
     rating: {
         type: Sequelize.FLOAT,
         // defaultValue: -1,

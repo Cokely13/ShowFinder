@@ -19,9 +19,9 @@ const Show = db.define('show', {
   //   allowNull: false,
   //   defaultValue: Sequelize.NOW
   // },
-  rating: {
-    type: Sequelize.FLOAT,
-  defaultValue: "5"
+  image: {
+    type: Sequelize.TEXT,
+    defaultValue: 'https://img.freepik.com/premium-vector/tv-show-neon-sign_191108-157.jpg?w=2000',
   },
     // : {
     //   type: Sequelize.ENUM("pending", "active", "disabled"),
