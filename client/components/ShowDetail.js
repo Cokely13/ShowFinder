@@ -27,7 +27,7 @@ export default function ShowDetail() {
     <div>
     <div>ShowDetail</div>
     <div>{show.name}</div>
-        <img src={show.image}/>
+        <img style={{width: "18rem"}}  src={show.image}/>
     {ratings? ratings.map((show) => {
       return(
         <div key={show.id}>

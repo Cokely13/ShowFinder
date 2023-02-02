@@ -34,7 +34,7 @@ function Shows() {
         <div key={show.id}>
         <div>{show.name}</div>
         <Link to={`/shows/${show.id}`}>
-        <img src={show.image}/>
+        <img style={{width: "18rem"}} src={show.image}/>
         </Link>
         <ShowStatus id={show.id} test= {myRatings.filter((rating) =>rating.showId == show.id)}/>
         <p></p>

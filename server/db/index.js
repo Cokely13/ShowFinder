@@ -15,6 +15,9 @@ User.belongsToMany(User, { as: 'friends', through: {model:Friend, foreignKey: "f
 Rating.belongsTo(Show)
 Show.hasMany(Rating)
 // User.hasMany(Rating)
+Rating.belongsTo(User)
+User.hasMany(Rating)
+
 
 User.belongsToMany(Show, {through: {model: Rating, foreignKey: "userId", otherKey: "showId", unique: false}})
 Show.belongsToMany(User, {through: {model: Rating, foreignKey: "showId", otherKey: "userId", unique: false}})

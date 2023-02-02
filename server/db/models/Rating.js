@@ -11,7 +11,7 @@ const Rating = db.define('rating', {
     },
     rating: {
         type: Sequelize.FLOAT,
-        // defaultValue: -1,
+        defaultValue: 5,
     },
     userId: {
         type: Sequelize.FLOAT,
@@ -20,6 +20,10 @@ const Rating = db.define('rating', {
     showId: {
         type: Sequelize.FLOAT,
         unique: false
+    },
+    showName: {
+        type: Sequelize.STRING,
+        allowNull: false
     },
     status: {
       type: Sequelize.DataTypes.ENUM("WATCHED", "WATCHING", "WATCHLIST", "NONE"),
