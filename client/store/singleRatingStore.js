@@ -34,10 +34,10 @@ export const updateSingleRating = (rating) => {
         await axios.put(`/api/ratings/${rating.id}`, rating);
         const { data: ratingData } = await axios.get(`/api/ratings/${rating.id}`);
         dispatch(_updateSingleRating(ratingData));
-        // history.push(`/ratings/${rating.id}`)
+        // history.push(`/myshows}`)
       }
      catch (error) {
-      console.log("RATING", rating)
+      console.log("ERROR RATING", error)
     }
   };
 };

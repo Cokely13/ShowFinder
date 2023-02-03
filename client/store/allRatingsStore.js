@@ -33,11 +33,11 @@ export const fetchRatings = () => {
   };
 };
 
-export const createRating = (show, history) => {
+export const createRating = (show) => {
   return async (dispatch) => {
     const { data: created } = await Axios.post("/api/ratings", show);
     dispatch(_createRating(created));
-    history.push("/ratings");
+    // history.push("/ratings");
   };
 };
 

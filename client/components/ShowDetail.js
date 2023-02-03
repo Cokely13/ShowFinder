@@ -36,6 +36,7 @@ export default function ShowDetail() {
         </div>
       )
     }): <div>No Ratings</div>}
+    {ratings ? <div>AverageRating ={(ratings.map(item => item.rating).reduce((prev, next) => prev + next))/(ratings.length)}</div>: <div>Nothing</div>}
     </div>
   )
 

@@ -5,6 +5,7 @@ import { useEffect } from 'react'
 import { fetchShows } from '../store/allShowsStore'
 import { fetchRatings } from '../store/allRatingsStore'
 import ShowStatus from './utilities/ShowStatus'
+import AverageRating from './utilities/AverageRating'
 
 function Shows() {
   const dispatch = useDispatch()
@@ -33,10 +34,12 @@ function Shows() {
       return(
         <div key={show.id}>
         <div>{show.name}</div>
+        <AverageRating idShow={show.id}/>
+        {ratings.length ? <div>totalScore ={(ratings.map(item => item.rating).reduce((prev, next) => prev + next))/(ratings.length)}</div>: <div>Nothing</div>}
         <Link to={`/shows/${show.id}`}>
         <img style={{width: "18rem"}} src={show.image}/>
         </Link>
-        <ShowStatus id={show.id} test= {myRatings.filter((rating) =>rating.showId == show.id)}/>
+        <ShowStatus show={show} id={id} allRatings={ratings}  test= {myRatings.filter((rating) =>rating.showId == show.id)}/>
         <p></p>
         </div>
       )
