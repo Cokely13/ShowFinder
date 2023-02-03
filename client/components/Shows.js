@@ -34,7 +34,7 @@ function Shows() {
       return(
         <div key={show.id}>
         <div>{show.name}</div>
-        <AverageRating idShow={show.id}/>
+        {/* <AverageRating idShow={show.id}/> */}
         {ratings.length ? <div>totalScore ={(ratings.map(item => item.rating).reduce((prev, next) => prev + next))/(ratings.length)}</div>: <div>Nothing</div>}
         <Link to={`/shows/${show.id}`}>
         <img style={{width: "18rem"}} src={show.image}/>

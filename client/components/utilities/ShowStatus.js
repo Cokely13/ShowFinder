@@ -10,7 +10,6 @@ import AverageRating from './AverageRating'
 
 export default function ShowStatus(props) {
   const dispatch = useDispatch()
-  console.log("AYAAAAA". props)
   useEffect(() => {
     dispatch(fetchShow(props.show.id))
   }, [dispatch])
@@ -52,7 +51,6 @@ export default function ShowStatus(props) {
   }
   return (
     <div>
-       {showInfo.ratings ? <div>THIS ONE ={(showInfo.ratings.map(item => item.rating).reduce((prev, next) => prev + next))/(showInfo.ratings.length)}</div>: <div>Nothing</div>}
 
       {thisRating ? <div>
     <div>My Rating: {thisRating.rating}</div>
