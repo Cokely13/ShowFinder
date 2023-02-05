@@ -9,11 +9,11 @@ const Friend = db.define('friend', {
     //     primaryKey: true,
     //     unique: true,
     // },
-    userId: {
+    friendId: {
         type: Sequelize.INTEGER,
         unique: false
     },
-    username: {
+    friendName: {
         type: Sequelize.STRING,
         allowNull: false,
         unique: true,

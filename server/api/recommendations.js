@@ -1,10 +1,10 @@
 const router = require('express').Router()
-const { models: { Show, Rating}} = require('../db')
+const { models: { Recommendation}} = require('../db')
 
 
 router.get('/', async (req, res, next) => {
   try {
-    const shows = await Show.findAll({include: Rating})
+    const shows = await Recommendation.findAll()
     res.json(shows)
   } catch (err) {
     next(err)
@@ -14,7 +14,7 @@ router.get('/', async (req, res, next) => {
 router.get('/:id', async (req, res, next) => {
   try {
     // const eventId = req.params.id
-    const show= await Show.findByPk(req.params.id, {include: Rating});
+    const show= await Recommendation.findByPk(req.params.id);
     res.json(show);
   } catch (err) {
     next(err);
@@ -23,7 +23,7 @@ router.get('/:id', async (req, res, next) => {
 
 router.post('/', async (req, res, next) => {
   try {
-    res.status(201).send(await Show.create(req.body));
+    res.status(201).send(await Recommendation.create(req.body));
   } catch (error) {
     next(error);
   }
@@ -31,8 +31,8 @@ router.post('/', async (req, res, next) => {
 
 router.put('/:id', async (req, res, next) => {
   try {
-    const show = await Show.findByPk(req.params.id)
-    res.send(await show.update(req.body));
+    const rating = await Recommendation.findByPk(req.params.id)
+    res.send(await rating.update(req.body));
   } catch (error) {
     next(error);
   }
@@ -40,18 +40,12 @@ router.put('/:id', async (req, res, next) => {
 
 router.delete('/:id', async (req, res, next) => {
   try {
-    const show = await Show.findByPk(req.params.id);
+    const show = await Rating.findByPk(req.params.id);
     await show.destroy();
     res.send(show);
   } catch (error) {
     next(error);
   }
 });
-
-
-
-
-
-
 
 module.exports = router

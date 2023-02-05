@@ -5,7 +5,9 @@ import { useEffect, useState } from 'react'
 import { fetchShows } from '../store/allShowsStore'
 import { fetchRatings } from '../store/allRatingsStore'
 import {fetchSingleUser} from '../store/singleUserStore'
+import {fetchUsers} from '../store/allUsersStore'
 import { updateSingleRating } from '../store/singleRatingStore'
+import { createRecommendation } from '../store/allRecommendationsStore'
 import WatchedShows from './utilities/WatchedShows'
 import Watching from './utilities/Watching'
 import Watchlist from './utilities/Watchlist'
@@ -16,10 +18,18 @@ export default function MyShow() {
   // const shows = useSelector((state) => state.allShows )
   const user = useSelector((state) => state.singleUser )
   const {id} = useSelector((state) => state.auth )
+  const users = useSelector((state) => state.allUsers)
   const [editShow, setEditShow] = useState();
   const [statusView, setStatusView] = useState();
+  const [reco, setReco] = useState();
+  const [newRec, setNewRec] = useState();
   useEffect(() => {
     dispatch(fetchShows())
+
+    // Safe to add dispatch to the dependencies array
+  }, [])
+  useEffect(() => {
+    dispatch(fetchUsers())
 
     // Safe to add dispatch to the dependencies array
   }, [])
@@ -58,16 +68,26 @@ export default function MyShow() {
   const handleChange = (event) => {
     event.preventDefault()
     setStatusView(event.target.value)
-    console.log("HEYAAA", statusView)
-    console.log("VALUE", event.target.value)
-    // getBackgroundColor(thing) {
-    //   if (thing === 'approved') {
-    //       return 'blue';
-    //   }
-    //   if (status === 'pending') {
-    //       return 'red';
-    //   }
-    //   return 'black';
+  }
+
+  const handleReco= (event, show) => {
+    event.preventDefault()
+    const recoFriend = users.filter((user)=>user.username == event.target.value)
+    const recommend = {
+      showId: show.showId,
+      showName: show.showName,
+      userId: id,
+      userName: user.username,
+      friendName: event.target.value,
+      friendId: recoFriend[0].id
+    }
+   setNewRec(recommend)
+  }
+
+  const submitReco=(event) =>{
+    event.preventDefault()
+    dispatch(createRecommendation(newRec))
+    setReco(0)
   }
 
 
@@ -94,6 +114,7 @@ export default function MyShow() {
         <Link to={`/shows/${show.showId}`}>{show.showName}</Link>
         <div>Rating={show.rating}</div>
         <button onClick={() => setEditShow(show.showId)}>Update Rating</button>
+        <button onClick={() => setReco(show.showId)}>Recommend Show</button>
         {editShow == show.showId ?
         <div>
         <label>Rating</label>
@@ -112,6 +133,16 @@ export default function MyShow() {
           </select>
           <button onClick={() => setEditShow(0)}>Submit</button>
           </div> : <div></div>}
+          {reco == show.showId ?
+        <div>
+        <label>Recommend</label>
+          <select  onChange={event => handleReco(event, show)}>
+          {/* <option  defaultValue={show.rating}>{show.rating}</option> */}
+          <option value="">Select Friend</option>
+              {users.map((event) => <option key={event.id} value={event.username}>{event.username}</option>)}
+          </select>
+          <button onClick={event => submitReco(event)}>Submit</button>
+          </div> : <div></div>}
         </div>)}): <div></div>}
         <hr></hr>
     </div>
@@ -125,6 +156,7 @@ export default function MyShow() {
         <div>Rating={show.rating}</div>
         <button onClick={() => setEditShow(show.showId)}>Update Rating</button>
         <button onClick={event => handleClick3(event, show)}>Add To Watched</button>
+        <button onClick={() => setReco(show.showId)}>Recommend Show</button>
         {editShow == show.showId ?
         <div>
         <label>Rating</label>
@@ -142,6 +174,16 @@ export default function MyShow() {
           <option value="10">10</option>
           </select>
           <button onClick={() => setEditShow(0)}>Submit</button>
+          </div> : <div></div>}
+          {reco == show.showId ?
+        <div>
+        <label>Recommend</label>
+          <select  onChange={event => handleReco(event, show)}>
+          {/* <option  defaultValue={show.rating}>{show.rating}</option> */}
+          <option value="">Select Friend</option>
+              {users.map((event) => <option key={event.id} value={event.username}>{event.username}</option>)}
+          </select>
+          <button onClick={event => submitReco(event)}>Submit</button>
           </div> : <div></div>}
         </div>)}): <div></div>}
         <hr></hr>
@@ -182,6 +224,7 @@ export default function MyShow() {
     <Link to={`/shows/${show.showId}`}>{show.showName}</Link>
     <div>Rating={show.rating}</div>
     <button onClick={() => setEditShow(show.showId)}>Update Rating</button>
+    <button onClick={() => setReco(show.showId)}>Recommend Show</button>
     {editShow == show.showId ?
     <div>
     <label>Rating</label>
@@ -200,6 +243,16 @@ export default function MyShow() {
       </select>
       <button onClick={() => setEditShow(0)}>Submit</button>
       </div> : <div></div>}
+      {reco == show.showId ?
+        <div>
+        <label>Recommend</label>
+          <select  onChange={event => handleReco(event, show)}>
+          {/* <option  defaultValue={show.rating}>{show.rating}</option> */}
+          <option value="">Select Friend</option>
+              {users.map((event) => <option key={event.id} value={event.username}>{event.username}</option>)}
+          </select>
+          <button onClick={event => submitReco(event)}>Submit</button>
+          </div> : <div></div>}
       </div>)}): <div></div>}
         <hr></hr>
         <hr></hr>
@@ -249,6 +302,7 @@ export default function MyShow() {
     <Link to={`/shows/${show.showId}`}>{show.showName}</Link>
     <div>Rating={show.rating}</div>
     <button onClick={() => setEditShow(show.showId)}>Update Rating</button>
+    <button onClick={() => setReco(show.showId)}>Recommend Show</button>
     {editShow == show.showId ?
     <div>
     <label>Rating</label>
@@ -267,6 +321,16 @@ export default function MyShow() {
       </select>
       <button onClick={() => setEditShow(0)}>Submit</button>
       </div> : <div></div>}
+      {reco == show.showId ?
+        <div>
+        <label>Recommend</label>
+          <select  onChange={event => handleReco(event, show)}>
+          {/* <option  defaultValue={show.rating}>{show.rating}</option> */}
+          <option value="">Select Friend</option>
+              {users.map((event) => <option key={event.id} value={event.username}>{event.username}</option>)}
+          </select>
+          <button onClick={event => submitReco(event)}>Submit</button>
+          </div> : <div></div>}
       <button onClick={event => handleClick3(event, show)}>Add To Watched</button>
       </div>)}): <div></div>}
         <hr></hr>
