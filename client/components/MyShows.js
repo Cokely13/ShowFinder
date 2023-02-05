@@ -34,14 +34,21 @@ export default function MyShow() {
 
   const handleClick2 = (event, show) => {
     event.preventDefault()
-    // const newRating = {
-    //   showId: props.show.id,
-    //   showName: props.show.name,
-    //   status: "WATCHING",
-    //   userId: props.id
-    // }
-    // dispatch(createRating(newRating))
     show.rating= event.target.value
+    dispatch(updateSingleRating(show))
+
+  }
+
+  const handleClick = (event, show) => {
+    event.preventDefault()
+    show.status= "WATCHING"
+    dispatch(updateSingleRating(show))
+
+  }
+
+  const handleClick3 = (event, show) => {
+    event.preventDefault()
+    show.status= "WATCHED"
     dispatch(updateSingleRating(show))
 
   }
@@ -117,6 +124,7 @@ export default function MyShow() {
         <div>ID:{show.showId}</div>
         <div>Rating={show.rating}</div>
         <button onClick={() => setEditShow(show.showId)}>Update Rating</button>
+        <button onClick={event => handleClick3(event, show)}>Add To Watched</button>
         {editShow == show.showId ?
         <div>
         <label>Rating</label>
@@ -147,6 +155,8 @@ export default function MyShow() {
           <div>ID:{show.showId}</div>
         <Link to={`/shows/${show.showId}`}>{show.showName}</Link>
         <div>Rating={show.rating}</div>
+        <button onClick={event => handleClick(event, show)}>Add To Watching</button>
+        <button onClick={event => handleClick3(event, show)}>Add To Watched</button>
         </div>)}): <div></div>}
         <hr></hr>
     </div>
@@ -213,25 +223,8 @@ export default function MyShow() {
     <div>ID:{show.showId}</div>
     <Link to={`/shows/${show.showId}`}>{show.showName}</Link>
     <div>Rating={show.rating}</div>
-    <button onClick={() => setEditShow(show.showId)}>Update Rating</button>
-    {editShow == show.showId ?
-    <div>
-    <label>Rating</label>
-      <select  onChange={event => handleClick2(event, show)}>
-      <option  defaultValue={show.rating}>{show.rating}</option>
-      <option value="1">1</option>
-      <option value="2">2</option>
-      <option value="3">3</option>
-      <option value="4">4</option>
-      <option value="5">5</option>
-      <option value="6">6</option>
-      <option value="7">7</option>
-      <option value="8">8</option>
-      <option value="9">9</option>
-      <option value="10">10</option>
-      </select>
-      <button onClick={() => setEditShow(0)}>Submit</button>
-      </div> : <div></div>}
+    <button onClick={event => handleClick(event, show)}>Add To Watching</button>
+        <button onClick={event => handleClick3(event, show)}>Add To Watched</button>
       </div>)}): <div></div>}
         <hr></hr>
         <hr></hr>
@@ -274,6 +267,7 @@ export default function MyShow() {
       </select>
       <button onClick={() => setEditShow(0)}>Submit</button>
       </div> : <div></div>}
+      <button onClick={event => handleClick3(event, show)}>Add To Watched</button>
       </div>)}): <div></div>}
         <hr></hr>
         <hr></hr>
