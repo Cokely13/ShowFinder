@@ -17,6 +17,7 @@ export default function MyShow() {
   const user = useSelector((state) => state.singleUser )
   const {id} = useSelector((state) => state.auth )
   const [editShow, setEditShow] = useState();
+  const [statusView, setStatusView] = useState();
   useEffect(() => {
     dispatch(fetchShows())
 
@@ -47,13 +48,37 @@ export default function MyShow() {
   // console.log("GIVE ME", ratings)
   // const watched = ratings.filter((rating) =>rating.status == "WATCHED") || []
 
-
+  const handleChange = (event) => {
+    event.preventDefault()
+    setStatusView(event.target.value)
+    console.log("HEYAAA", statusView)
+    console.log("VALUE", event.target.value)
+    // getBackgroundColor(thing) {
+    //   if (thing === 'approved') {
+    //       return 'blue';
+    //   }
+    //   if (status === 'pending') {
+    //       return 'red';
+    //   }
+    //   return 'black';
+  }
 
 
 
   return (
     <div>
+      {!statusView?
+      <div>
     <div>
+    <div>
+      <select onChange={handleChange} name="filterEvents" className='custom-select'>
+              <option value="">Filter by Status</option>
+              <option value="WATCHED">WATCHED</option>
+          <option value="WATCHING">WATCHING</option>
+          <option value="WATCHLIST">WATCHLIST</option>
+          <option value="">ALL</option>
+              </select>
+              </div>
       <div>WATCHED:</div>
       {ratings ? ratings.filter((rating) =>rating.status == "WATCHED").map((show)=> {
         return(
@@ -125,7 +150,137 @@ export default function MyShow() {
         </div>)}): <div></div>}
         <hr></hr>
     </div>
+    </div>: <div></div>}
+    <div>
+    {statusView == "WATCHED"?
+<div>
+<div>
+      <select onChange={handleChange} name="filterEvents" className='custom-select'>
+              <option value="">Filter by Status</option>
+              <option value="WATCHED">WATCHED</option>
+          <option value="WATCHING">WATCHING</option>
+          <option value="WATCHLIST">WATCHLIST</option>
+          <option value="">ALL</option>
+              </select>
+              </div>
+
+  <div>Watched:</div>
+  {ratings ? ratings.filter((rating) =>rating.status ==="WATCHED").map((show)=> {
+    return(
+    <div key={show.id}>
+    <div>ID:{show.showId}</div>
+    <Link to={`/shows/${show.showId}`}>{show.showName}</Link>
+    <div>Rating={show.rating}</div>
+    <button onClick={() => setEditShow(show.showId)}>Update Rating</button>
+    {editShow == show.showId ?
+    <div>
+    <label>Rating</label>
+      <select  onChange={event => handleClick2(event, show)}>
+      <option  defaultValue={show.rating}>{show.rating}</option>
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5">5</option>
+      <option value="6">6</option>
+      <option value="7">7</option>
+      <option value="8">8</option>
+      <option value="9">9</option>
+      <option value="10">10</option>
+      </select>
+      <button onClick={() => setEditShow(0)}>Submit</button>
+      </div> : <div></div>}
+      </div>)}): <div></div>}
+        <hr></hr>
+        <hr></hr>
+    </div>: <div></div>}
+    {statusView == "WATCHLIST"?
+<div>
+<div>
+      <select onChange={handleChange} name="filterEvents" className='custom-select'>
+              <option value="">Filter by Status</option>
+              <option value="WATCHED">WATCHED</option>
+          <option value="WATCHING">WATCHING</option>
+          <option value="WATCHLIST">WATCHLIST</option>
+          <option value="">ALL</option>
+              </select>
+              </div>
+
+  <div>Watchlist:</div>
+  {ratings ? ratings.filter((rating) =>rating.status ==="WATCHLIST").map((show)=> {
+    return(
+    <div key={show.id}>
+    <div>ID:{show.showId}</div>
+    <Link to={`/shows/${show.showId}`}>{show.showName}</Link>
+    <div>Rating={show.rating}</div>
+    <button onClick={() => setEditShow(show.showId)}>Update Rating</button>
+    {editShow == show.showId ?
+    <div>
+    <label>Rating</label>
+      <select  onChange={event => handleClick2(event, show)}>
+      <option  defaultValue={show.rating}>{show.rating}</option>
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5">5</option>
+      <option value="6">6</option>
+      <option value="7">7</option>
+      <option value="8">8</option>
+      <option value="9">9</option>
+      <option value="10">10</option>
+      </select>
+      <button onClick={() => setEditShow(0)}>Submit</button>
+      </div> : <div></div>}
+      </div>)}): <div></div>}
+        <hr></hr>
+        <hr></hr>
+    </div>: <div></div>}
+    {statusView == "WATCHING"?
+<div>
+<div>
+      <select onChange={handleChange} name="filterEvents" className='custom-select'>
+              <option value="">Filter by Status</option>
+              <option value="WATCHED">WATCHED</option>
+          <option value="WATCHING">WATCHING</option>
+          <option value="WATCHLIST">WATCHLIST</option>
+          <option value="">ALL</option>
+              </select>
+              </div>
+
+  <div>Watching:</div>
+  {ratings ? ratings.filter((rating) =>rating.status ==="WATCHING").map((show)=> {
+    return(
+    <div key={show.id}>
+    <div>ID:{show.showId}</div>
+    <Link to={`/shows/${show.showId}`}>{show.showName}</Link>
+    <div>Rating={show.rating}</div>
+    <button onClick={() => setEditShow(show.showId)}>Update Rating</button>
+    {editShow == show.showId ?
+    <div>
+    <label>Rating</label>
+      <select  onChange={event => handleClick2(event, show)}>
+      <option  defaultValue={show.rating}>{show.rating}</option>
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5">5</option>
+      <option value="6">6</option>
+      <option value="7">7</option>
+      <option value="8">8</option>
+      <option value="9">9</option>
+      <option value="10">10</option>
+      </select>
+      <button onClick={() => setEditShow(0)}>Submit</button>
+      </div> : <div></div>}
+      </div>)}): <div></div>}
+        <hr></hr>
+        <hr></hr>
+    </div>: <div></div>}
+    </div>
     </div>
   )
+
 
 }
