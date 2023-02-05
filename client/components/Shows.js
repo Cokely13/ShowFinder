@@ -5,7 +5,7 @@ import { useEffect } from 'react'
 import { fetchShows } from '../store/allShowsStore'
 import { fetchRatings } from '../store/allRatingsStore'
 import ShowStatus from './utilities/ShowStatus'
-import AverageRating from './utilities/AverageRating'
+// import AverageRating from './utilities/AverageRating'
 
 function Shows() {
   const dispatch = useDispatch()
@@ -23,23 +23,20 @@ function Shows() {
   const myRatings = ratings.filter((rating) => rating.userId == id)
 
 
-
-  console.log("RATING!!!!", shows)
-  console.log("MyRATING", myRatings)
-
   return (
     <div>
     <div>Shows</div>
     {shows.map((show) => {
       return(
         <div key={show.id}>
-        <div>{show.name}</div>
-        {/* <AverageRating idShow={show.id}/> */}
-        {show.ratings ? <div># of Ratings ={show.ratings.length}</div>: <div>Nothing</div>}
         <Link to={`/shows/${show.id}`}>
         <img style={{width: "18rem"}} src={show.image}/>
         </Link>
-        {show.ratings? <div>AverageRating ={(show.ratings.map(item => item.rating).reduce((prev, next) => prev + next))/(show.ratings.length)}</div>: <div>No Ratings</div>}
+        <div>{show.name}</div>
+        <div>ShowID:{show.id}</div>
+        {show.ratings ? <div>AverageRating ={(show.ratings.map(item => item.rating).reduce((prev, next) => prev + next))/(show.ratings.length)}</div>: <div>No Ratings Yet</div>}
+        {/* <AverageRating idShow={show.id}/> */}
+        {show.ratings.length ? <div>Number of Ratings ={(show.ratings.length)}</div>: <div>Nothing</div>}
         <ShowStatus show={show} id={id} allRatings={ratings}  test= {myRatings.filter((rating) =>rating.showId == show.id)}/>
         <p></p>
         </div>
