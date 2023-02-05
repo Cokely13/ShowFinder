@@ -12,7 +12,7 @@ export default function ShowDetail() {
   useEffect(() => {
     dispatch(fetchShow(showId))
     // Safe to add dispatch to the dependencies array
-  }, [dispatch])
+  }, [])
   const ratings =show.ratings
   // const ratings = useSelector((state) => state.allRatings)
   // useEffect(() => {

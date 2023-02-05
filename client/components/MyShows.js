@@ -18,12 +18,12 @@ export default function MyShow() {
   useEffect(() => {
     dispatch(fetchShows())
     // Safe to add dispatch to the dependencies array
-  }, [dispatch])
+  }, [])
   // const ratings = useSelector((state) => state.allRatings)
   useEffect(() => {
     dispatch(fetchSingleUser(id))
     // Safe to add dispatch to the dependencies array
-  }, [dispatch])
+  }, [])
   // const myRatings = ratings.filter((rating) => rating.userId == id)
   // const myshows = shows.filter((show) => show.rating.userId ==id)
   const ratings = user.ratings
@@ -31,7 +31,7 @@ export default function MyShow() {
 
 
 
-  console.log("MyRATING", user)
+
 
   return (
     <div>

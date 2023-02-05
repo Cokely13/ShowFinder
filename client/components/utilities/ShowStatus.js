@@ -12,7 +12,7 @@ export default function ShowStatus(props) {
   const dispatch = useDispatch()
   useEffect(() => {
     dispatch(fetchShow(props.show.id))
-  }, [dispatch])
+  }, [])
   const showInfo = useSelector((state) => state.singleShow)
   const thisRating = props.test[0]
   const ratings = props.allRatings

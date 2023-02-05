@@ -14,17 +14,17 @@ function Shows() {
   useEffect(() => {
     dispatch(fetchShows())
     // Safe to add dispatch to the dependencies array
-  }, [dispatch])
+  }, [])
   const ratings = useSelector((state) => state.allRatings)
   useEffect(() => {
     dispatch(fetchRatings())
     // Safe to add dispatch to the dependencies array
-  }, [dispatch])
+  }, [])
   const myRatings = ratings.filter((rating) => rating.userId == id)
 
 
 
-  console.log("RATING!!!!", ratings)
+  console.log("RATING!!!!", shows)
   console.log("MyRATING", myRatings)
 
   return (
@@ -35,10 +35,11 @@ function Shows() {
         <div key={show.id}>
         <div>{show.name}</div>
         {/* <AverageRating idShow={show.id}/> */}
-        {ratings.length ? <div>totalScore ={(ratings.map(item => item.rating).reduce((prev, next) => prev + next))/(ratings.length)}</div>: <div>Nothing</div>}
+        {show.ratings ? <div># of Ratings ={show.ratings.length}</div>: <div>Nothing</div>}
         <Link to={`/shows/${show.id}`}>
         <img style={{width: "18rem"}} src={show.image}/>
         </Link>
+        {show.ratings? <div>AverageRating ={(show.ratings.map(item => item.rating).reduce((prev, next) => prev + next))/(show.ratings.length)}</div>: <div>No Ratings</div>}
         <ShowStatus show={show} id={id} allRatings={ratings}  test= {myRatings.filter((rating) =>rating.showId == show.id)}/>
         <p></p>
         </div>

@@ -13,7 +13,7 @@ export default function AverageRating(props) {
   useEffect(() => {
     dispatch(fetchShow(props.idShow))
     // Safe to add dispatch to the dependencies array
-  }, [dispatch])
+  }, [])
   const show = useSelector((state) => state.singleShow )
   const ratings =show.ratings
 // console.log("TRYING", ratings)
