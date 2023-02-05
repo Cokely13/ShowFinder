@@ -10,7 +10,7 @@ export default function Profile() {
   useEffect(() => {
     dispatch(fetchUsers())
     // Safe to add dispatch to the dependencies array
-  }, [dispatch])
+  }, [])
   const ratings = useSelector((state) => state.allRatings)
   useEffect(() => {
     dispatch(fetchRatings())

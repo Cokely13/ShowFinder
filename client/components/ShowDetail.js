@@ -28,7 +28,7 @@ export default function ShowDetail() {
     <div>ShowDetail</div>
     <div>{show.name}</div>
         <img style={{width: "18rem"}}  src={show.image}/>
-    {ratings? ratings.map((show) => {
+    {/* {ratings? ratings.map((show) => {
       return(
         <div key={show.id}>
         <div>Rating: {show.rating}</div>
@@ -36,7 +36,7 @@ export default function ShowDetail() {
         </div>
       )
     }): <div>No Ratings</div>}
-    {ratings ? <div>AverageRating ={(ratings.map(item => item.rating).reduce((prev, next) => prev + next))/(ratings.length)}</div>: <div>Nothing</div>}
+    {ratings ? <div>AverageRating ={(ratings.map(item => item.rating).reduce((prev, next) => prev + next))/(ratings.length)}</div>: <div>Nothing</div>} */}
     </div>
   )
 

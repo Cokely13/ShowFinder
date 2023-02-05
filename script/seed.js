@@ -17,11 +17,11 @@ async function seed() {
   ])
 
   const shows = await Promise.all([
-    Show.create({ name: 'The Wire', image: 'https://m.media-amazon.com/images/I/511fyhhxpWL._AC_SY580_.jpg' }),
-    Show.create({ name: 'Sopranos', image: 'https://m.media-amazon.com/images/M/MV5BZGJjYzhjYTYtMDBjYy00OWU1LTg5OTYtNmYwOTZmZjE3ZDdhXkEyXkFqcGdeQXVyNTAyODkwOQ@@._V1_.jpg' }),
-    Show.create({ name: 'Breaking Bad', image: 'https://ntvb.tmsimg.com/assets/p8696131_b_h10_aa.jpg?w=1280&h=720' }),
-    Show.create({ name: 'Game of Thrones', image: 'https://flxt.tmsimg.com/assets/p8553063_b_v13_ax.jpg' }),
-    Show.create({ name: 'Leftovers', image: 'https://yt3.googleusercontent.com/nWj9b_0cSPQCWznelxGwjM4xR2DNYHrowBZJX9Xp7FUd06bPPYAYTwcAJ_mqOK-SBXY8EdQUj68' })
+    Show.create({ id: 1, name: 'The Wire', image: 'https://m.media-amazon.com/images/I/511fyhhxpWL._AC_SY580_.jpg' }),
+    Show.create({ id: 2, name: 'Sopranos', image: 'https://m.media-amazon.com/images/M/MV5BZGJjYzhjYTYtMDBjYy00OWU1LTg5OTYtNmYwOTZmZjE3ZDdhXkEyXkFqcGdeQXVyNTAyODkwOQ@@._V1_.jpg' }),
+    Show.create({ id: 3, name: 'Breaking Bad', image: 'https://ntvb.tmsimg.com/assets/p8696131_b_h10_aa.jpg?w=1280&h=720' }),
+    Show.create({ id: 4, name: 'Game of Thrones', image: 'https://flxt.tmsimg.com/assets/p8553063_b_v13_ax.jpg' }),
+    Show.create({ id: 5, name: 'Leftovers', image: 'https://yt3.googleusercontent.com/nWj9b_0cSPQCWznelxGwjM4xR2DNYHrowBZJX9Xp7FUd06bPPYAYTwcAJ_mqOK-SBXY8EdQUj68' })
 
   ])
 
@@ -31,7 +31,9 @@ async function seed() {
     Rating.create({ rating: 8, userId: 1, showId: 2, showName:"Sopranos", status: "WATCHING"}),
     Rating.create({ userId: 2, showId: 2, showName:"Sopranos",status: "WATCHLIST"}),
     Rating.create({ rating: 2, userId: 1, showId: 3,showName:"Breaking Bad", status: "WATCHING"}),
-    // Rating.create({ rating: 5, userId: 2, showId: 1}),
+    Rating.create({ rating: 5, userId: 1, showId: 4,showName:"Game of Thrones", status: "WATCHLIST"}),
+    Rating.create({ rating: 5, userId: 1, showId: 5,showName:"Leftovers", status: "WATCHLIST"}),
+
   ])
 
   console.log(`seeded ${users.length} users`)
