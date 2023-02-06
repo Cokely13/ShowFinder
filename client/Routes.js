@@ -7,6 +7,9 @@ import Shows from './components/Shows';
 import ShowDetail from './components/ShowDetail'
 import Profile from './components/Profile';
 import MyShows from './components/MyShows';
+import Recommendations from './components/Recommendations';
+import Users from './components/Users';
+import UserDetail from './components/UserDetail';
 import {me} from './store'
 
 /**
@@ -27,8 +30,11 @@ class Routes extends Component {
             <Route path="/home" component={Home} />
             <Route exact path="/myshows" component={MyShows}/>
             <Route exact path="/shows" component={Shows}/>
+            <Route exact path="/recommendations" component={Recommendations}/>
             <Route exact path="/shows/:showId" component={ShowDetail}/>
             <Route path="/profile" component={Profile}/>
+            <Route exact path="/users" component={Users}/>
+            <Route exact path="/users/:userId" component={UserDetail}/>
             <Redirect to="/home" />
           </Switch>
         ) : (
