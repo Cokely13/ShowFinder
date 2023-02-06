@@ -3,6 +3,8 @@ import { useSelector, useDispatch } from 'react-redux'
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { fetchRecommendations } from '../store/allRecommendationsStore'
+import {updateSingleRecommendation} from '../store/singleRecommendationStore'
+
 
 export default function Recommendations() {
   const dispatch = useDispatch()
@@ -12,9 +14,22 @@ export default function Recommendations() {
 
     // Safe to add dispatch to the dependencies array
   }, [])
-
+  const [like, setLike] = useState();
+  const [editLike, setEditLike] = useState();
   const recommendations = useSelector((state) => state.allRecommendations)
 
+  const handleChange = (event) => {
+    event.preventDefault()
+    setLike(event.target.value)
+    // console.log("HA", like)
+  }
+
+  const handleClick= (event, show) => {
+    event.preventDefault()
+    show.like = like
+    dispatch(updateSingleRecommendation(show))
+    setEditLike("")
+  }
 
   return (
     <div>
@@ -24,7 +39,18 @@ export default function Recommendations() {
         <div key={reco.id}>
         <div>ShowName:<Link to={`/shows/${reco.showId}`} >{reco.showName}</Link></div>
         <div>Recommended By:<Link to={`/users/${reco.userId}`}>{reco.userName}</Link></div>
-        </div>
+        <div>Like:{reco.like}</div>
+        <button onClick={() => setEditLike(reco.showId)}>Update Like</button>
+        {editLike == reco.showId ?
+         <div>
+           <select  onChange={event => handleChange(event)}>
+           <option value="NONE">Chose Like</option>
+           <option value="THUMBS UP">THUMBS UP</option>
+           <option value="THUMBS DOWN">THUMBS DOWN</option>
+           </select>
+           <button onClick={event => handleClick(event, reco)}>Submit</button>
+           </div> : <div></div>}
+           </div>
       )}) : <div>No</div>}
       <hr></hr>
        <div>Recommendations By Me</div>

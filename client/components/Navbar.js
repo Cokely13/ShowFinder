@@ -16,6 +16,7 @@ const Navbar = ({handleClick, isLoggedIn}) => (
           <Link to="/profile">Profile</Link>
           <Link to="/recommendations">Recommendations</Link>
           <Link to="/users">Users</Link>
+          <Link to="/friends">Friends</Link>
           <a href="#" onClick={handleClick}>
             Logout
           </a>

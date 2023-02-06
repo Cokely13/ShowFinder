@@ -11,15 +11,16 @@ const Recommendation = require('./models/Recommendation')
 
 //associations could go here!
 
-User.belongsToMany(User, { as: 'friends', through: {model:Friend, foreignKey: "friendId", otherKey: "userId", unique: false}})
+// User.belongsToMany(User, { as: 'friends', through: {model:Friend, foreignKey: "friendId", otherKey: "userId", unique: false}})
 // Rating.belongsTo(User)
 Rating.belongsTo(Show)
 Show.hasMany(Rating)
-// User.hasMany(Rating)
 Rating.belongsTo(User)
 User.hasMany(Rating)
 User.hasMany(Recommendation)
 Recommendation.belongsTo(User)
+User.hasMany(Friend)
+Friend.belongsTo(User)
 
 User.belongsToMany(Show, {through: {model: Rating, foreignKey: "userId", otherKey: "showId", unique: false}})
 Show.belongsToMany(User, {through: {model: Rating, foreignKey: "showId", otherKey: "userId", unique: false}})

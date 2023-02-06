@@ -10,7 +10,7 @@ const Recommendation = db.define('recommendation', {
         unique: true,
     },
     userId: {
-        type: Sequelize.FLOAT,
+        type: Sequelize.INTEGER,
         unique: false
     },
     userName: {
@@ -18,7 +18,7 @@ const Recommendation = db.define('recommendation', {
         allowNull: false
     },
     showId: {
-        type: Sequelize.FLOAT,
+        type: Sequelize.INTEGER,
         unique: false
     },
     showName: {
@@ -26,7 +26,7 @@ const Recommendation = db.define('recommendation', {
         allowNull: false
     },
     friendId: {
-        type: Sequelize.FLOAT,
+        type: Sequelize.INTEGER,
         unique: false
     },
     friendName: {

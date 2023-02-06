@@ -1,5 +1,5 @@
 const router = require('express').Router()
-const { models: { User, Rating }} = require('../db')
+const { models: { User, Rating, Friend }} = require('../db')
 module.exports = router
 
 router.get('/', async (req, res, next) => {
@@ -9,8 +9,8 @@ router.get('/', async (req, res, next) => {
       // users' passwords are encrypted, it won't help if we just
       // send everything to anyone who asks!
       // attributes: ['id', 'username'],
-      include: Rating
-    })
+      include: [Rating, Friend]},
+     )
     res.json(users)
   } catch (err) {
     next(err)

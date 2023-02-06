@@ -10,6 +10,8 @@ import singleShowReducer from './singleShowStore'
 import singleRatingReducer from './singleRatingStore'
 import singleUserReducer from './singleUserStore'
 import recommendationsReducer from './allRecommendationsStore'
+import friendsReducer from './allFriendsStore'
+import singleRecommendationReducer from './singleRecommendationStore'
 
 
 const reducer = combineReducers({ auth,
@@ -19,7 +21,9 @@ allUsers: usersReducer,
 singleShow: singleShowReducer,
 singleRating: singleRatingReducer,
 singleUser: singleUserReducer,
-allRecommendations: recommendationsReducer })
+allRecommendations: recommendationsReducer,
+allFriends: friendsReducer,
+singleRecommendation: singleRecommendationReducer })
 const middleware = composeWithDevTools(
   applyMiddleware(thunkMiddleware, createLogger({collapsed: true}))
 )

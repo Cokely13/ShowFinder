@@ -10,6 +10,7 @@ import MyShows from './components/MyShows';
 import Recommendations from './components/Recommendations';
 import Users from './components/Users';
 import UserDetail from './components/UserDetail';
+import Friends from './components/Friends';
 import {me} from './store'
 
 /**
@@ -34,6 +35,7 @@ class Routes extends Component {
             <Route exact path="/shows/:showId" component={ShowDetail}/>
             <Route path="/profile" component={Profile}/>
             <Route exact path="/users" component={Users}/>
+            <Route exact path="/friends" component={Friends}/>
             <Route exact path="/users/:userId" component={UserDetail}/>
             <Redirect to="/home" />
           </Switch>
