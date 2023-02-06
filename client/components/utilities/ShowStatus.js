@@ -1,7 +1,7 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import {updateSingleRating} from '../../store/singleRatingStore'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { fetchShow } from '../../store/singleShowStore'
 import { createRating } from '../../store/allRatingsStore'
 import { Link } from 'react-router-dom'
@@ -15,17 +15,20 @@ export default function ShowStatus(props) {
   }, [])
   const showInfo = useSelector((state) => state.singleShow)
   const thisRating = props.test[0]
+  const [stateReload, setStateReload] = useState(1);
   const ratings = props.allRatings
   // const totalRatings = ratings.map(item => item.rating).reduce((prev, next) => prev + next)
   const handleClick = (event) => {
     event.preventDefault()
     thisRating.status = "WATCHED"
     dispatch(updateSingleRating(thisRating))
+    setStateReload(stateReload + 1)
   }
   const handleClick2 = (event) => {
     event.preventDefault()
     thisRating.status = "WATCHING"
     dispatch(updateSingleRating(thisRating))
+    setStateReload(stateReload + 1)
   }
 
   const handleSubmit = (event) => {

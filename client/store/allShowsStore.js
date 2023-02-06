@@ -37,7 +37,7 @@ export const createShow = (show, history) => {
   return async (dispatch) => {
     const { data: created } = await Axios.post("/api/shows", show);
     dispatch(_createShow(created));
-    history.push("/shows");
+    // history.push("/shows");
   };
 };
 

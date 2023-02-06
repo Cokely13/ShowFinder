@@ -14,27 +14,21 @@ export default function ShowDetail() {
     // Safe to add dispatch to the dependencies array
   }, [])
   const ratings =show.ratings
-  // const ratings = useSelector((state) => state.allRatings)
-  // useEffect(() => {
-  //   dispatch(fetchRatings())
-  //   // Safe to add dispatch to the dependencies array
-  // }, [dispatch])
-  // console.log("SHOWS", ratings)
-  // console.log("RATING", ratings)
+
   return (
     <div>
     <div>ShowDetail</div>
     <div>{show.name}</div>
         <img style={{width: "18rem"}}  src={show.image}/>
-    {ratings? ratings.map((show) => {
+    {ratings? ratings.length ? ratings.map((show) => {
       return(
         <div key={show.id}>
         <div>Rating: {show.rating}</div>
         <div>User Id:{show.userId}</div>
         </div>
       )
-    }): <div>No Ratings</div>}
-    {ratings ? <div>AverageRating ={(ratings.map(item => item.rating).reduce((prev, next) => prev + next))/(ratings.length)}</div>: <div>Nothing</div>}
+    }): <div></div> : <div>No Ratings</div> }
+    {ratings ? ratings.length ?  <div>AverageRating ={(ratings.map(item => item.rating).reduce((prev, next) => prev + next))/(ratings.length)}</div>: <div>No Ratings Yet</div> : <div>No Ratings</div> }
     </div>
   )
 

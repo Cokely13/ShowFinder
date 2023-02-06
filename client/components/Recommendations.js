@@ -47,6 +47,7 @@ export default function Recommendations() {
            <option value="NONE">Chose Like</option>
            <option value="THUMBS UP">THUMBS UP</option>
            <option value="THUMBS DOWN">THUMBS DOWN</option>
+           <option value="NOT GOING TO WATCH">NOT GOING TO WATCH</option>
            </select>
            <button onClick={event => handleClick(event, reco)}>Submit</button>
            </div> : <div></div>}
@@ -59,6 +60,7 @@ export default function Recommendations() {
         <div key={reco.id}>
         <div>ShowName:<Link to={`/shows/${reco.showId}`} >{reco.showName}</Link></div>
         <div>Recommended To:<Link to={`/users/${reco.friendId}`}>{reco.friendName}</Link></div>
+        <div>Did they like it?:{reco.like}</div>
         </div>
       )}) : <div>No</div>}
       </div>

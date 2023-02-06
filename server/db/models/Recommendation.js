@@ -34,7 +34,7 @@ const Recommendation = db.define('recommendation', {
         allowNull: false
     },
     like: {
-        type: Sequelize.DataTypes.ENUM("THUMBS UP", "THUMBS DOWN", "NONE"),
+        type: Sequelize.DataTypes.ENUM("THUMBS UP", "THUMBS DOWN", "NOT GOING TO WATCH", "NONE"),
         defaultValue: "NONE",
         allowNull: false,
       },

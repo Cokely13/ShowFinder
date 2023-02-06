@@ -20,6 +20,7 @@ export default function MyShow() {
   const {id} = useSelector((state) => state.auth )
   const users = useSelector((state) => state.allUsers)
   const [editShow, setEditShow] = useState();
+  const [stateReload, setStateReload] = useState(1);
   const [statusView, setStatusView] = useState();
   const [reco, setReco] = useState();
   const [newRec, setNewRec] = useState();
@@ -53,6 +54,7 @@ export default function MyShow() {
     event.preventDefault()
     show.status= "WATCHING"
     dispatch(updateSingleRating(show))
+    setStateReload(stateReload + 1)
 
   }
 
@@ -60,6 +62,7 @@ export default function MyShow() {
     event.preventDefault()
     show.status= "WATCHED"
     dispatch(updateSingleRating(show))
+    setStateReload(stateReload + 1)
 
   }
   // console.log("GIVE ME", ratings)
