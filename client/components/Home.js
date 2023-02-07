@@ -1,6 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import TopShows from './TopShows'
+// import "../index.css"
 
 /**
  * COMPONENT
@@ -10,7 +11,7 @@ export const Home = props => {
 
   return (
     <div>
-      <h3>Welcome, {username}</h3>
+      <h3 className="text-3xl font-bold underline">Welcome, {username}</h3>
       <TopShows/>
     </div>
   )

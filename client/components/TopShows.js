@@ -9,6 +9,7 @@ export default function TopShows() {
   const dispatch = useDispatch()
   const shows = useSelector((state) => state.allShows )
   const {id} = useSelector((state) => state.auth )
+
   useEffect(() => {
     dispatch(fetchShows())
     // Safe to add dispatch to the dependencies array
@@ -43,6 +44,7 @@ export default function TopShows() {
   }
 
   function mostSort(ratings) {
+
     let sortedProducts = [...ratings].sort(
        (p1, p2) => (p1.ratings.length < p2.ratings.length ) ? 1 : (p1.ratings.length > p2.ratings.length ) ? -1 : 0)
        return sortedProducts;
@@ -50,14 +52,43 @@ export default function TopShows() {
 
   const most = mostSort(shows)
   const newest = newSort(shows)
+  const images = most.map(({ image }) => image)
 
   console.log("CHECK", most)
-  console.log("REVERSE", newest)
+  console.log("REVERSE", images[2])
 
 
   return (
     <div>
-    <div>Newest Shows:</div>
+    <h1>Newest Shows:</h1>
+    <div id="carouselExampleIndicators" style={{width: "18rem"}} className="carousel slide" data-ride="carousel">
+  <ol className="carousel-indicators">
+    <li data-target="#carouselExampleIndicators" data-slide-to="0" className="active"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+  </ol>
+<div className="carousel-inner">
+    <div className="carousel-item active">
+      <img className="d-block w-100" src={images[0]} alt="First slide"/>
+    </div>
+
+    <div className="carousel-item">
+    <img className="d-block w-100" src={images[1]} alt="Second slide"/>
+    </div>
+    <div className="carousel-item">
+    <img className="d-block w-100" src={images[2]}alt="Third slide"/>
+    </div>
+    </div>
+  <a className="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+    <span className="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span className="sr-only">Previous</span>
+  </a>
+  <a className="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+    <span className="carousel-control-next-icon" aria-hidden="true"></span>
+    <span className="sr-only">Next</span>
+  </a>
+</div>
+
     {newest.slice(0,3).map((show) => {
       return(
         <div key={show.id}>
