@@ -12,6 +12,7 @@ import Users from './components/Users';
 import UserDetail from './components/UserDetail';
 import Friends from './components/Friends';
 import AddShow from './components/AddShow';
+import TopShows from './components/TopShows';
 import {me} from './store'
 
 /**
@@ -39,6 +40,7 @@ class Routes extends Component {
             <Route exact path="/users" component={Users}/>
             <Route exact path="/friends" component={Friends}/>
             <Route exact path="/users/:userId" component={UserDetail}/>
+            <Route exact path="/topshows" component={TopShows}/>
             <Redirect to="/home" />
           </Switch>
         ) : (

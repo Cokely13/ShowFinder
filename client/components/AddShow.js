@@ -1,14 +1,18 @@
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { useEffect, useState } from 'react'
-import { Link, useParams } from 'react-router-dom'
+// import { Link, useParams, } from 'react-router-dom'
+import { useNavigate } from "react-router-dom"
 import {createShow} from '../store/allShowsStore'
 // // import { fetchUsers } from '../store/allUsersStore'
 // import { fetchSingleUser } from '../store/singleUserStore'
 
 export default function AddShow() {
   const dispatch = useDispatch()
-  const [name, setName] = useState();
+  // const navigate = useNavigate();
+  // console.log("NAV", useNavigate())
+  const [name, setName] = useState("HEy");
+  const [reload, setReload] = useState(1);
   const [createdBy, setCreatedBy] = useState();
   const [channel, setChannel] = useState();
   const {id} = useSelector((state) => state.auth )
@@ -43,6 +47,7 @@ export default function AddShow() {
     }
 
     dispatch(createShow(newShow))
+
   }
 
 
@@ -52,7 +57,7 @@ export default function AddShow() {
       <div >
         <div>
         <label>Show Name</label>
-          <input name='name' onChange={handleChange}  type="text" placeholder='Name'/>
+          <input name='name' onChange={handleChange}  type="text" placeholder="Name"/>
         </div>
         <div >
           <label>Channel</label>

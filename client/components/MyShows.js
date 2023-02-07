@@ -15,6 +15,7 @@ import Watchlist from './utilities/Watchlist'
 
 export default function MyShow() {
   const dispatch = useDispatch()
+
   // const shows = useSelector((state) => state.allShows )
   const user = useSelector((state) => state.singleUser )
   const {id} = useSelector((state) => state.auth )
@@ -24,11 +25,11 @@ export default function MyShow() {
   const [statusView, setStatusView] = useState();
   const [reco, setReco] = useState();
   const [newRec, setNewRec] = useState();
-  useEffect(() => {
-    dispatch(fetchShows())
+  // useEffect(() => {
+  //   dispatch(fetchShows())
 
-    // Safe to add dispatch to the dependencies array
-  }, [])
+  //   // Safe to add dispatch to the dependencies array
+  // }, [])
   useEffect(() => {
     dispatch(fetchUsers())
 
@@ -97,6 +98,7 @@ export default function MyShow() {
 
   return (
     <div>
+
       {!statusView?
       <div>
     <div>
@@ -340,6 +342,7 @@ export default function MyShow() {
         <hr></hr>
     </div>: <div></div>}
     </div>
+    <Link to="/show/add">Add Show</Link>
     </div>
   )
 

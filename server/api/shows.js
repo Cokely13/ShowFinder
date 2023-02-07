@@ -1,4 +1,5 @@
 const router = require('express').Router()
+const Sequelize = require('sequelize')
 const { models: { Show, Rating}} = require('../db')
 
 
@@ -14,7 +15,37 @@ router.get('/', async (req, res, next) => {
 router.get('/:id', async (req, res, next) => {
   try {
     // const eventId = req.params.id
-    const show= await Show.findByPk(req.params.id, {include: Rating});
+    // const show = await Show.findOne({
+    //   FROM: Show,
+    //   where: {id: req.params.id},
+    //   include: [
+    //     {
+    //       model: Rating, //including ratings array
+    //       as: 'ratings',
+    //       required: true,
+    //       attributes: [], //but making it empty
+    //     },
+    //   ],
+    //   // attributes: {
+    //   //   include: [ // this adds AVG attribute to others instead of rewriting
+    //   //     [Sequelize.fn('AVG', Sequelize.col('ratings.rating')), 'avgRating'],
+    //   //   ],
+    //   // },
+    //   // group: ['Show.id'],
+    // });
+
+
+    const show= await Show.findByPk((req.params.id), {include: Rating})
+    //     where: {id : req.params.id},
+    //     include: Rating
+    //   , attributes: {
+    //     include: [ // this adds AVG attribute to others instead of rewriting
+    //       [Sequelize.fn('AVG', Sequelize.col('ratings.rating')), 'avgRating'],
+    //     ]},
+    //     group: ['Show.id'],}
+    // )
+    //   attributes: [sequelize.fn("COUNT", sequelize.col("id"))],
+    // });
     res.json(show);
   } catch (err) {
     next(err);

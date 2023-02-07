@@ -10,7 +10,8 @@ const Show = db.define('show', {
 // },
   name: {
     type: Sequelize.STRING,
-    allowNull: false
+    allowNull: false,
+    unique: true,
   },
   channel: {
     type: Sequelize.STRING,
