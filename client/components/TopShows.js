@@ -42,10 +42,16 @@ export default function TopShows() {
       return sortedProducts;
   }
 
-  const check = testNum(shows)
+  function mostSort(ratings) {
+    let sortedProducts = [...ratings].sort(
+       (p1, p2) => (p1.ratings.length < p2.ratings.length ) ? 1 : (p1.ratings.length > p2.ratings.length ) ? -1 : 0)
+       return sortedProducts;
+   }
+
+  const most = mostSort(shows)
   const newest = newSort(shows)
 
-  console.log("CHECK", check)
+  console.log("CHECK", most)
   console.log("REVERSE", newest)
 
 
@@ -53,6 +59,16 @@ export default function TopShows() {
     <div>
     <div>Newest Shows:</div>
     {newest.slice(0,3).map((show) => {
+      return(
+        <div key={show.id}>
+        <Link to={`/shows/${show.id}`}>
+        <img style={{width: "18rem"}} src={show.image}/>
+        </Link>
+        <div>{show.name}</div>
+        </div>
+      )})}
+      <div>Most Watched Shows:</div>
+    {most.slice(0,3).map((show) => {
       return(
         <div key={show.id}>
         <Link to={`/shows/${show.id}`}>
