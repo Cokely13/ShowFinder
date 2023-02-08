@@ -57,6 +57,22 @@ export default function UserDetail() {
         <Link to={`/shows/${show.showId}`}>{show.showName}</Link>
         <div>ID:{show.showId}</div>
         <div>Rating={show.rating}</div>
+        {show.progress == 0 ?
+        <div className="progress">
+        <div className="progress-bar" role="progressbar" style={{width: "0%"}} aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+        </div> : <div></div>}
+        {show.progress == 1 ?
+        <div className="progress">
+        <div className="progress-bar" role="progressbar" style={{width: "25%"}} aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+        </div> : <div></div>}
+        {show.progress == 2 ?
+        <div className="progress">
+        <div className="progress-bar" role="progressbar" style={{width: "50%"}} aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+        </div> : <div></div>}
+        {show.progress == 3 ?
+        <div className="progress">
+        <div className="progress-bar" role="progressbar" style={{width: "75%"}} aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+        </div> : <div></div>}
         </div>)}): <div></div>}
         <hr></hr>
         <hr></hr>
@@ -139,6 +155,22 @@ export default function UserDetail() {
     <div>ID:{show.showId}</div>
     <Link to={`/shows/${show.showId}`}>{show.showName}</Link>
     <div>Rating={show.rating}</div>
+    {show.progress == 0 ?
+        <div className="progress">
+        <div className="progress-bar" role="progressbar" style={{width: "0%"}} aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+        </div> : <div></div>}
+        {show.progress == 1 ?
+        <div className="progress">
+        <div className="progress-bar" role="progressbar" style={{width: "25%"}} aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+        </div> : <div></div>}
+        {show.progress == 2 ?
+        <div className="progress">
+        <div className="progress-bar" role="progressbar" style={{width: "50%"}} aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+        </div> : <div></div>}
+        {show.progress == 3 ?
+        <div className="progress">
+        <div className="progress-bar" role="progressbar" style={{width: "75%"}} aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+        </div> : <div></div>}
       </div>)}): <div></div>}
         <hr></hr>
         <hr></hr>

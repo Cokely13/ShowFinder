@@ -13,6 +13,7 @@ import UserDetail from './components/UserDetail';
 import Friends from './components/Friends';
 import AddShow from './components/AddShow';
 import TopShows from './components/TopShows';
+import Progress from './components/utilities/Progress';
 import {me} from './store'
 
 /**
@@ -38,6 +39,7 @@ class Routes extends Component {
             <Route exact path="/show/add" component={AddShow}/>
             <Route path="/profile" component={Profile}/>
             <Route exact path="/users" component={Users}/>
+            <Route exact path="/progress" component={Progress}/>
             <Route exact path="/friends" component={Friends}/>
             <Route exact path="/users/:userId" component={UserDetail}/>
             <Route exact path="/topshows" component={TopShows}/>

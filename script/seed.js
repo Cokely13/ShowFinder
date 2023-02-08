@@ -26,11 +26,11 @@ async function seed() {
   ])
 
   const Ratings = await Promise.all([
-    Rating.create({ rating: 10, userId: 1, showId: 1, showName:"The Wire", status: "WATCHED"}),
-    Rating.create({ rating: 5, userId: 2, showId: 1, showName:"The Wire", status: "WATCHED"}),
-    Rating.create({ rating: 8, userId: 1, showId: 2, showName:"Sopranos", status: "WATCHING"}),
+    Rating.create({ rating: 10, userId: 1, showId: 1, showName:"The Wire", status: "WATCHED", progress: 4}),
+    Rating.create({ rating: 5, userId: 2, showId: 1, showName:"The Wire", status: "WATCHED", progress: 4}),
+    Rating.create({ rating: 8, userId: 1, showId: 2, showName:"Sopranos", status: "WATCHING", progress: 2}),
     Rating.create({ userId: 2, showId: 2, showName:"Sopranos",status: "WATCHLIST"}),
-    Rating.create({ rating: 2, userId: 1, showId: 3,showName:"Breaking Bad", status: "WATCHING"}),
+    Rating.create({ rating: 2, userId: 1, showId: 3,showName:"Breaking Bad", status: "WATCHING", progress: 1}),
     Rating.create({ rating: 5, userId: 1, showId: 4,showName:"Game of Thrones", status: "WATCHLIST"}),
     Rating.create({ rating: 5, userId: 1, showId: 5,showName:"Leftovers", status: "WATCHLIST"}),
 

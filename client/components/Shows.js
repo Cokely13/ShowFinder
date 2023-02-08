@@ -26,11 +26,12 @@ function Shows() {
   return (
     <div>
     <div>Shows</div>
+    <div className="row">
     {shows.map((show) => {
       return(
-        <div key={show.id}>
+        <div key={show.id} className="col">
         <Link to={`/shows/${show.id}`}>
-        <img style={{width: "18rem"}} src={show.image}/>
+        <img style={{width: "18rem"}}  src={show.image}/>
         </Link>
         <div>{show.name}</div>
         <div>ShowID:{show.id}</div>
@@ -42,6 +43,7 @@ function Shows() {
         </div>
       )
     })}
+    </div>
     <Link  to={`/show/add`}>ADD SHOW</Link>
     </div>
   )

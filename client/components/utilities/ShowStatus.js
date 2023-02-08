@@ -59,13 +59,13 @@ export default function ShowStatus(props) {
     <div>My Rating: {thisRating.rating}</div>
     <div>Status: {thisRating.status}</div>
     </div>:  <div> <Link to={`/myshows`} > <button onClick={handleSubmit}>Add To Watchlist</button></Link>
-    <button onClick={handleSubmit2}>Add To Watching</button> </div>}
+    <button className="btn btn-primary" onClick={handleSubmit2}>Add To Watching</button> </div>}
     {thisRating ?
     thisRating.status == "WATCHING" ?
-     <button onClick={handleClick}>Add To Watched</button>: <div></div> : <div></div> }
+     <button className="btn btn-primary" onClick={handleClick}>Add To Watched</button>: <div></div> : <div></div> }
       {thisRating ?
     thisRating.status == "WATCHLIST" ?
-        <button onClick={handleClick2}>Add To Watching</button>: <div></div> : <div></div> }
+        <button className="btn btn-primary" onClick={handleClick2}>Add To Watching</button>: <div></div> : <div></div> }
     </div>
   )
 }

@@ -118,6 +118,11 @@ export default function MyShow() {
         <div>ID:{show.showId}</div>
         <Link to={`/shows/${show.showId}`}>{show.showName}</Link>
         <div>Rating={show.rating}</div>
+        <div>Progress:</div>
+        {show.progress == 4 ?
+        <div className="progress">
+        <div className="progress-bar" role="progressbar" style={{width: "100%"}} aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+        </div> : <div></div>}
         <button onClick={() => setEditShow(show.showId)}>Update Rating</button>
         <button onClick={() => setReco(show.showId)}>Recommend Show</button>
         {editShow == show.showId ?
@@ -159,6 +164,23 @@ export default function MyShow() {
         <Link to={`/shows/${show.showId}`}>{show.showName}</Link>
         <div>ID:{show.showId}</div>
         <div>Rating={show.rating}</div>
+        <div>Progress: {show.progress}</div>
+        {show.progress == 0 ?
+        <div className="progress">
+        <div className="progress-bar" role="progressbar" style={{width: "0%"}} aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+        </div> : <div></div>}
+        {show.progress == 1 ?
+        <div className="progress">
+        <div className="progress-bar" role="progressbar" style={{width: "25%"}} aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+        </div> : <div></div>}
+        {show.progress == 2 ?
+        <div className="progress">
+        <div className="progress-bar" role="progressbar" style={{width: "50%"}} aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+        </div> : <div></div>}
+        {show.progress == 3 ?
+        <div className="progress">
+        <div className="progress-bar" role="progressbar" style={{width: "75%"}} aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+        </div> : <div></div>}
         <button onClick={() => setEditShow(show.showId)}>Update Rating</button>
         <button onClick={event => handleClick3(event, show)}>Add To Watched</button>
         <button onClick={() => setReco(show.showId)}>Recommend Show</button>
@@ -202,6 +224,7 @@ export default function MyShow() {
           <div>ID:{show.showId}</div>
         <Link to={`/shows/${show.showId}`}>{show.showName}</Link>
         <div>Rating={show.rating}</div>
+        <div>Progress: {show.progress}</div>
         <button onClick={event => handleClick(event, show)}>Add To Watching</button>
         <button onClick={event => handleClick3(event, show)}>Add To Watched</button>
         </div>)}): <div></div>}
@@ -228,6 +251,7 @@ export default function MyShow() {
     <div>ID:{show.showId}</div>
     <Link to={`/shows/${show.showId}`}>{show.showName}</Link>
     <div>Rating={show.rating}</div>
+    <div>Progress: {show.progress}</div>
     <button onClick={() => setEditShow(show.showId)}>Update Rating</button>
     <button onClick={() => setReco(show.showId)}>Recommend Show</button>
     {editShow == show.showId ?
@@ -281,6 +305,7 @@ export default function MyShow() {
     <div>ID:{show.showId}</div>
     <Link to={`/shows/${show.showId}`}>{show.showName}</Link>
     <div>Rating={show.rating}</div>
+    <div>Progress: {show.progress}</div>
     <button onClick={event => handleClick(event, show)}>Add To Watching</button>
         <button onClick={event => handleClick3(event, show)}>Add To Watched</button>
       </div>)}): <div></div>}
@@ -306,6 +331,23 @@ export default function MyShow() {
     <div>ID:{show.showId}</div>
     <Link to={`/shows/${show.showId}`}>{show.showName}</Link>
     <div>Rating={show.rating}</div>
+    <div>Progress: {show.progress}</div>
+    {show.progress == 0 ?
+        <div className="progress">
+        <div className="progress-bar" role="progressbar" style={{width: "0%"}} aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+        </div> : <div></div>}
+        {show.progress == 1 ?
+        <div className="progress">
+        <div className="progress-bar" role="progressbar" style={{width: "25%"}} aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+        </div> : <div></div>}
+        {show.progress == 2 ?
+        <div className="progress">
+        <div className="progress-bar" role="progressbar" style={{width: "50%"}} aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+        </div> : <div></div>}
+        {show.progress == 3 ?
+        <div className="progress">
+        <div className="progress-bar" role="progressbar" style={{width: "75%"}} aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+        </div> : <div></div>}
     <button onClick={() => setEditShow(show.showId)}>Update Rating</button>
     <button onClick={() => setReco(show.showId)}>Recommend Show</button>
     {editShow == show.showId ?

@@ -30,6 +30,15 @@ const Rating = db.define('rating', {
       defaultValue: "NONE",
       allowNull: false,
     },
+    progress: {
+        type: Sequelize.INTEGER,
+        defaultValue: 0,
+        allowNull: false,
+        validate: {
+            max: 4,
+            min: 0
+          },
+      },
 })
 
 

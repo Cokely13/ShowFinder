@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react'
 import { fetchShows } from '../store/allShowsStore'
 import { fetchRatings } from '../store/allRatingsStore'
 
-export default function TopShows() {
+export default function NewestShows() {
   const dispatch = useDispatch()
   const shows = useSelector((state) => state.allShows )
   const {id} = useSelector((state) => state.auth )
@@ -22,19 +22,21 @@ export default function TopShows() {
   const myRatings = ratings.filter((rating) => rating.userId == id)
 
 
-  function mostSort(ratings) {
+  function newSort(ratings) {
+   let sortedProducts = [...ratings].sort(
+      (p1, p2) => (p1.id < p2.id) ? 1 : (p1.id> p2.id) ? -1 : 0)
+      return sortedProducts;
+  }
 
-    let sortedProducts = [...ratings].sort(
-       (p1, p2) => (p1.ratings.length < p2.ratings.length ) ? 1 : (p1.ratings.length > p2.ratings.length ) ? -1 : 0)
-       return sortedProducts;
-   }
 
-  const most = mostSort(shows)
-  const mostimages = most.map(({ image }) => image)
+  const newest = newSort(shows)
+  const newestimages = newest.map(({ image }) => image)
+
+
 
   return (
     <div>
-    <h1>Most Watched Shows:</h1>
+    <h1>Newest Shows:</h1>
     <div id="carouselExampleIndicators" style={{width: "18rem"}} className="carousel slide" data-ride="carousel">
   <ol className="carousel-indicators">
     <li data-target="#carouselExampleIndicators" data-slide-to="0" className="active"></li>
@@ -43,14 +45,14 @@ export default function TopShows() {
   </ol>
 <div className="carousel-inner">
     <div className="carousel-item active">
-      <img className="d-block w-100" src={mostimages[0]} alt="First slide"/>
+      <img className="d-block w-100" src={newestimages[0]} alt="First slide"/>
     </div>
 
     <div className="carousel-item">
-    <img className="d-block w-100" src={mostimages[1]} alt="Second slide"/>
+    <img className="d-block w-100" src={newestimages[1]} alt="Second slide"/>
     </div>
     <div className="carousel-item">
-    <img className="d-block w-100" src={mostimages[2]}alt="Third slide"/>
+    <img className="d-block w-100" src={newestimages[2]}alt="Third slide"/>
     </div>
     </div>
   <a className="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -62,6 +64,6 @@ export default function TopShows() {
     <span className="sr-only">Next</span>
   </a>
 </div>
-    </div>
+</div>
   )
 }
