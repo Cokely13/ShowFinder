@@ -11,10 +11,11 @@ export default function AddShow() {
   const dispatch = useDispatch()
   // const navigate = useNavigate();
   // console.log("NAV", useNavigate())
-  const [name, setName] = useState("HEy");
+  const [name, setName] = useState();
   const [reload, setReload] = useState(1);
   const [createdBy, setCreatedBy] = useState();
   const [channel, setChannel] = useState();
+  const [image, setImage] = useState();
   const {id} = useSelector((state) => state.auth )
   // const { userId } = useParams();
   // useEffect(() => {
@@ -38,16 +39,23 @@ export default function AddShow() {
     // console.log("HA", like)
   }
 
+  const handleChange3 = (event) => {
+    event.preventDefault()
+    setImage(event.target.value)
+    // console.log("HA", like)
+  }
+
   const handleClick = (e) => {
     e.preventDefault()
     const newShow = {
       name: name,
       channel: channel,
-      createdBy: createdBy
+      createdBy: createdBy,
+      image: image
     }
 
     dispatch(createShow(newShow))
-
+    setName("")
   }
 
 
@@ -59,6 +67,7 @@ export default function AddShow() {
         <label>Show Name</label>
           <input name='name' onChange={handleChange}  type="text" placeholder="Name"/>
         </div>
+        {name?
         <div >
           <label>Channel</label>
           <select  onChange={handleChange2} name="channel" className="form-control">
@@ -69,7 +78,12 @@ export default function AddShow() {
           <option value="AMAZON">AMAZON</option>
           <option value="OTHER">OTHER</option>
           </select>
-        </div>
+        </div> : <div></div>}
+        {channel?
+        <div>
+        <label>Image</label>
+          <input name='image' onChange={handleChange3}  type="text" placeholder="Copy Image Address"/>
+        </div>: <div></div>}
       </div>
     </form>
     <button onClick={handleClick}>Add Show</button>

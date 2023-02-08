@@ -30,6 +30,7 @@ export default function Recommendations() {
     dispatch(updateSingleRecommendation(show))
     setEditLike("")
   }
+  console.log("reco", recommendations)
 
   return (
     <div>
@@ -39,9 +40,10 @@ export default function Recommendations() {
         <div key={reco.id}>
         <div>ShowName:<Link to={`/shows/${reco.showId}`} >{reco.showName}</Link></div>
         <div>Recommended By:<Link to={`/users/${reco.userId}`}>{reco.userName}</Link></div>
+        <div>Comments:{reco.comments}</div>
         <div>Like:{reco.like}</div>
-        <button onClick={() => setEditLike(reco.showId)}>Update Like</button>
-        {editLike == reco.showId ?
+        <button onClick={() => setEditLike(reco.id)}>Update Like</button>
+        {editLike == reco.id?
          <div>
            <select  onChange={event => handleChange(event)}>
            <option value="NONE">Chose Like</option>

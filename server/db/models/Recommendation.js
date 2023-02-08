@@ -38,6 +38,9 @@ const Recommendation = db.define('recommendation', {
         defaultValue: "NONE",
         allowNull: false,
       },
+     comments: {
+        type: Sequelize.TEXT,
+    },
 })
 
 

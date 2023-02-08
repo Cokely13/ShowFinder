@@ -21,6 +21,7 @@ export default function MyShow() {
   const {id} = useSelector((state) => state.auth )
   const users = useSelector((state) => state.allUsers)
   const [editShow, setEditShow] = useState();
+  const [editProgress, setEditProgress] = useState();
   const [stateReload, setStateReload] = useState(1);
   const [statusView, setStatusView] = useState();
   const [reco, setReco] = useState();
@@ -47,6 +48,13 @@ export default function MyShow() {
   const handleClick2 = (event, show) => {
     event.preventDefault()
     show.rating= event.target.value
+    dispatch(updateSingleRating(show))
+
+  }
+
+  const handleClick4 = (event, show) => {
+    event.preventDefault()
+    show.progress= event.target.value
     dispatch(updateSingleRating(show))
 
   }
@@ -83,16 +91,25 @@ export default function MyShow() {
       userId: id,
       userName: user.username,
       friendName: event.target.value,
-      friendId: recoFriend[0].id
+      friendId: recoFriend[0].id,
+      comments: ""
     }
    setNewRec(recommend)
   }
 
+  const handleComments=(event) =>{
+    event.preventDefault()
+    newRec.comments= event.target.value
+    setNewRec(newRec)
+  }
+
   const submitReco=(event) =>{
     event.preventDefault()
+    console.log("NEW REC", newRec)
     dispatch(createRecommendation(newRec))
     setReco(0)
   }
+
 
 
 
@@ -151,6 +168,13 @@ export default function MyShow() {
           <option value="">Select Friend</option>
               {users.map((event) => <option key={event.id} value={event.username}>{event.username}</option>)}
           </select>
+          {newRec?
+          <form>
+          <div>
+        <label>Comments</label>
+          <input onChange={handleComments} name='comments'  type="text" placeholder="Comments"/>
+        </div>
+        </form> : <div></div>}
           <button onClick={event => submitReco(event)}>Submit</button>
           </div> : <div></div>}
         </div>)}): <div></div>}
@@ -181,9 +205,26 @@ export default function MyShow() {
         <div className="progress">
         <div className="progress-bar" role="progressbar" style={{width: "75%"}} aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
         </div> : <div></div>}
+        {show.progress == 4 ?
+        <div className="progress">
+        <div className="progress-bar" role="progressbar" style={{width: "100%"}} aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+        </div> : <div></div>}
+        <button onClick={() => setEditProgress(show.showId)}>Update Progress</button>
         <button onClick={() => setEditShow(show.showId)}>Update Rating</button>
         <button onClick={event => handleClick3(event, show)}>Add To Watched</button>
         <button onClick={() => setReco(show.showId)}>Recommend Show</button>
+        {editProgress == show.showId ?
+        <div>
+        <label>Progress</label>
+          <select   onChange={event => handleClick4(event, show)}>
+          <option  defaultValue={show.progress}>{show.progress}</option>
+          <option value="1">25%</option>
+          <option value="2">50%</option>
+          <option value="3">75%</option>
+          <option value="4">100%</option>
+          </select>
+          <button onClick={() => setEditProgress(0)}>Submit</button>
+          </div> : <div></div>}
         {editShow == show.showId ?
         <div>
         <label>Rating</label>
@@ -210,6 +251,13 @@ export default function MyShow() {
           <option value="">Select Friend</option>
               {users.map((event) => <option key={event.id} value={event.username}>{event.username}</option>)}
           </select>
+          {newRec?
+          <form>
+          <div>
+        <label>Comments</label>
+          <input onChange={handleComments} name='comments'  type="text" placeholder="Comments"/>
+        </div>
+        </form> : <div></div>}
           <button onClick={event => submitReco(event)}>Submit</button>
           </div> : <div></div>}
         </div>)}): <div></div>}
@@ -280,6 +328,13 @@ export default function MyShow() {
           <option value="">Select Friend</option>
               {users.map((event) => <option key={event.id} value={event.username}>{event.username}</option>)}
           </select>
+          {newRec?
+          <form>
+          <div>
+        <label>Comments</label>
+          <input onChange={handleComments} name='comments'  type="text" placeholder="Comments"/>
+        </div>
+        </form> : <div></div>}
           <button onClick={event => submitReco(event)}>Submit</button>
           </div> : <div></div>}
       </div>)}): <div></div>}
@@ -348,8 +403,25 @@ export default function MyShow() {
         <div className="progress">
         <div className="progress-bar" role="progressbar" style={{width: "75%"}} aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
         </div> : <div></div>}
+        {show.progress == 4 ?
+        <div className="progress">
+        <div className="progress-bar" role="progressbar" style={{width: "75%"}} aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+        </div> : <div></div>}
+      <button onClick={() => setEditProgress(show.showId)}>Update Progress</button>
     <button onClick={() => setEditShow(show.showId)}>Update Rating</button>
     <button onClick={() => setReco(show.showId)}>Recommend Show</button>
+    {editProgress == show.showId ?
+        <div>
+        <label>Progress</label>
+          <select   onChange={event => handleClick4(event, show)}>
+          <option  defaultValue={show.progress}>{show.progress}</option>
+          <option value="1">25%</option>
+          <option value="2">50%</option>
+          <option value="3">75%</option>
+          <option value="4">100%</option>
+          </select>
+          <button onClick={() => setEditProgress(0)}>Submit</button>
+          </div> : <div></div>}
     {editShow == show.showId ?
     <div>
     <label>Rating</label>
@@ -376,6 +448,13 @@ export default function MyShow() {
           <option value="">Select Friend</option>
               {users.map((event) => <option key={event.id} value={event.username}>{event.username}</option>)}
           </select>
+          {newRec?
+          <form>
+          <div>
+        <label>Comments</label>
+          <input onChange={handleComments} name='comments'  type="text" placeholder="Comments"/>
+        </div>
+        </form> : <div></div>}
           <button onClick={event => submitReco(event)}>Submit</button>
           </div> : <div></div>}
       <button onClick={event => handleClick3(event, show)}>Add To Watched</button>

@@ -45,10 +45,10 @@ function Shows() {
         <img style={{width: "18rem"}}  src={show.image}/>
         </Link>
         <div>{show.name}</div>
-        <div>ShowID:{show.id}</div>
-        {(show.ratings.length)  ? <div>AverageRating ={(show.ratings.map(item => item.rating).reduce((prev, next) => prev + next))/(show.ratings.length)}</div>: <div>No Ratings Yet</div>}
+        {/* <div>ShowID:{show.id}</div> */}
+        {(show.ratings.length)  ? <div>AverageRating: {(show.ratings.map(item => item.rating).reduce((prev, next) => prev + next))/(show.ratings.length)}</div>: <div>No Ratings Yet</div>}
         {/* <AverageRating idShow={show.id}/> */}
-        {show.ratings.length ? <div>Number of Ratings ={(show.ratings.length)}</div>: <div>Nothing</div>}
+        {show.ratings.length ? <div>Number of Ratings: {(show.ratings.length)}</div>: <div></div>}
         <ShowStatus show={show} id={id} allRatings={ratings}  test= {myRatings.filter((rating) =>rating.showId == show.id)}/>
         <p></p>
         </div>
