@@ -24,6 +24,8 @@ export default function UserDetail() {
     setStatusView(event.target.value)
   }
 
+  console.log("USER", user)
+
   return (
     <div>
       <div>{user.username}'s Shows:</div>

@@ -14,6 +14,22 @@ export default function ShowDetail() {
     // Safe to add dispatch to the dependencies array
   }, [])
   const ratings =show.ratings
+  // const peopleWatching = ratings.filter((ratings.status == "WATCHED"))
+
+
+
+  // function peopleWatching(ratings) {
+  //   let people = []
+  //   if (ratings) {
+  //   people = ratings.filter((ratings.status == "WATCHED"))} else {
+  //     people = [1]
+  //   }
+  //      return people;
+  //  }
+
+  //  const peeps = peopleWatching(ratings)
+
+   console.log("SHOW", ratings)
 
   return (
     <div>
@@ -28,6 +44,9 @@ export default function ShowDetail() {
         </div>
       )
     }): <div></div> : <div>No Ratings</div> }
+    {ratings ? ratings.length ? <div> People Watched: {ratings.filter((rating) =>rating.status ==="WATCHED").length} </div> : <div>TEST</div> : <div>TEST 2</div>}
+    {ratings ? ratings.length ? <div> People Watching: {ratings.filter((rating) =>rating.status ==="WATCHING").length} </div> : <div>TEST</div> : <div>TEST 2</div>}
+    {ratings ? ratings.length ? <div> People Watchlist: {ratings.filter((rating) =>rating.status ==="WATCHLIST").length} </div> : <div>TEST</div> : <div>TEST 2</div>}
     {ratings ? ratings.length ?  <div>AverageRating ={(ratings.map(item => item.rating).reduce((prev, next) => prev + next))/(ratings.length)}</div>: <div>No Ratings Yet</div> : <div>No Ratings</div> }
     </div>
   )

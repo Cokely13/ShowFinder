@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { fetchShows } from '../store/allShowsStore'
 import { fetchRatings } from '../store/allRatingsStore'
 import ShowStatus from './utilities/ShowStatus'
@@ -9,6 +9,7 @@ import ShowStatus from './utilities/ShowStatus'
 
 function Shows() {
   const dispatch = useDispatch()
+  const [query, setQuery] = useState("")
   const shows = useSelector((state) => state.allShows )
   const {id} = useSelector((state) => state.auth )
   useEffect(() => {
@@ -25,11 +26,21 @@ function Shows() {
 
   return (
     <div>
+     <div>
+
     <div>Shows</div>
-    <div className="row">
-    {shows.map((show) => {
+    <div className="row"><input placeholder="Enter Show Title" onChange={event => setQuery(event.target.value)} />
+    { shows.filter(show => {
+    if (query === '') {
+      return show;
+    } else if (show.name.toLowerCase().includes(query.toLowerCase())) {
+      return show;
+    }
+  }).map((show) => {
       return(
         <div key={show.id} className="col">
+          <hr></hr>
+          <hr></hr>
         <Link to={`/shows/${show.id}`}>
         <img style={{width: "18rem"}}  src={show.image}/>
         </Link>
@@ -43,6 +54,7 @@ function Shows() {
         </div>
       )
     })}
+     </div>
     </div>
     <Link  to={`/show/add`}>ADD SHOW</Link>
     </div>
