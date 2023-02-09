@@ -4,13 +4,11 @@ import { useSelector, useDispatch } from 'react-redux'
 import { useEffect, useState } from 'react'
 import { fetchShows } from '../store/allShowsStore'
 import { fetchRatings } from '../store/allRatingsStore'
-import {fetchSingleUser} from '../store/singleUserStore'
+import {fetchSingleUser, updateSingleUser} from '../store/singleUserStore'
 import {fetchUsers} from '../store/allUsersStore'
 import { updateSingleRating } from '../store/singleRatingStore'
 import { createRecommendation } from '../store/allRecommendationsStore'
-import WatchedShows from './utilities/WatchedShows'
-import Watching from './utilities/Watching'
-import Watchlist from './utilities/Watchlist'
+
 
 
 export default function MyShow() {
@@ -67,13 +65,7 @@ export default function MyShow() {
 
   }
 
-  const handleClick3 = (event, show) => {
-    event.preventDefault()
-    show.status= "WATCHED"
-    dispatch(updateSingleRating(show))
-    setStateReload(stateReload + 1)
 
-  }
   // console.log("GIVE ME", ratings)
   // const watched = ratings.filter((rating) =>rating.status == "WATCHED") || []
 
@@ -110,6 +102,21 @@ export default function MyShow() {
     setReco(0)
   }
 
+  const handleClick3 = (event, show) => {
+    event.preventDefault()
+    show.status= "WATCHED"
+    dispatch(updateSingleRating(show))
+    setStateReload(stateReload + 1)
+
+  }
+
+  const makeFave = (event, show) =>{
+    event.preventDefault()
+    user.favShowName= show.showName
+    dispatch(updateSingleUser(user))
+    console.log("NEW REC", user)
+
+  }
 
 
 
@@ -142,6 +149,7 @@ export default function MyShow() {
         </div> : <div></div>}
         <button onClick={() => setEditShow(show.showId)}>Update Rating</button>
         <button onClick={() => setReco(show.showId)}>Recommend Show</button>
+        {show.showName == user.favShowName ?<div>FAVORITE!</div>: <button onClick={event => makeFave(event, show)}>Make Fav</button>}
         {editShow == show.showId ?
         <div>
         <label>Rating</label>
@@ -213,6 +221,7 @@ export default function MyShow() {
         <button onClick={() => setEditShow(show.showId)}>Update Rating</button>
         <button onClick={event => handleClick3(event, show)}>Add To Watched</button>
         <button onClick={() => setReco(show.showId)}>Recommend Show</button>
+        {show.showName == user.favShowName ?<div>FAVORITE!</div>: <button onClick={event => makeFave(event, show)}>Make Fav</button>}
         {editProgress == show.showId ?
         <div>
         <label>Progress</label>
@@ -302,6 +311,7 @@ export default function MyShow() {
     <div>Progress: {show.progress}</div>
     <button onClick={() => setEditShow(show.showId)}>Update Rating</button>
     <button onClick={() => setReco(show.showId)}>Recommend Show</button>
+    {show.showName == user.favShowName ?<div>FAVORITE!</div>: <button onClick={event => makeFave(event, show)}>Make Fav</button>}
     {editShow == show.showId ?
     <div>
     <label>Rating</label>
@@ -410,6 +420,7 @@ export default function MyShow() {
       <button onClick={() => setEditProgress(show.showId)}>Update Progress</button>
     <button onClick={() => setEditShow(show.showId)}>Update Rating</button>
     <button onClick={() => setReco(show.showId)}>Recommend Show</button>
+    {show.showName == user.favShowName ?<div>FAVORITE!</div>: <button onClick={event => makeFave(event, show)}>Make Fav</button>}
     {editProgress == show.showId ?
         <div>
         <label>Progress</label>

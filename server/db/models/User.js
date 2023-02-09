@@ -22,7 +22,15 @@ const User = db.define('user', {
   admin: {
     type: Sequelize.BOOLEAN,
     defaultValue: false
-  }
+  },
+  favShowName: {
+    type: Sequelize.STRING,
+  },
+ favShowImage: {
+  type: Sequelize.TEXT,
+    defaultValue: 'https://styleandshenanigans.com/wp-content/uploads/2017/02/My-Ten-Favourite-TV-Series-1-1-600x454.png',
+  },
+
 })
 
 module.exports = User
