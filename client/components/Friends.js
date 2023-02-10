@@ -22,10 +22,12 @@ export default function Friends() {
     <h1>Friends: </h1>
     {friends ? friends.map((friend)=> {
       return(
-        <div key={friend.id}>
+        <div className="col" key={friend.id}>
+          <div className="container text-center mt-2" >
+      <div   className="card border border-dark" style={{width: "18rem", border: "solid black"}}>
         <div>Friend Name: <Link to={`/users/${friend.friendId}`} >{friend.friendName}</Link></div>
         <div>Friend Id: {friend.friendId}</div>
-        </div>
+        </div></div></div>
       )}) : <div>No</div>}
       </div>
   )
