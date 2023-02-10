@@ -106,6 +106,7 @@ export default function MyShow() {
   const handleClick3 = (event, show) => {
     event.preventDefault()
     show.status= "WATCHED"
+    show.progress= 4
     dispatch(updateSingleRating(show))
     setStateReload(stateReload + 1)
 
@@ -138,12 +139,12 @@ export default function MyShow() {
               </select>
               </div>
       <div>WATCHED:</div>
+      <div className ="row">
       {ratings ? ratings.filter((rating) =>rating.status == "WATCHED").map((show)=> {
         return(
           <div className="col" key={show.id} >
           <div className="container text-center mt-2" >
       <div  className="card border border-dark" style={{width: "18rem", border: "solid black"}}>
-        <div>ID:{show.showId}</div>
         <Link to={`/shows/${show.showId}`}>{show.showName}</Link>
         <div>Rating={show.rating}</div>
         <div>Progress:</div>
@@ -190,6 +191,7 @@ export default function MyShow() {
           <button onClick={event => submitReco(event)}>Submit</button>
           </div> : <div></div>}
         </div></div></div>)}): <div></div>}
+        </div>
         <hr></hr>
     </div>
     {/* style={{height: "200px",
@@ -203,7 +205,6 @@ export default function MyShow() {
             <div className="container text-center mt-2" >
         <div   className="card border border-dark" style={{width: "18rem", border: "solid black"}}>
         <Link to={`/shows/${show.showId}`}>{show.showName}</Link>
-        <div>ID:{show.showId}</div>
         <div>Rating={show.rating}</div>
         <div>Progress: {show.progress}</div>
         {show.progress == 0 ?
@@ -211,15 +212,15 @@ export default function MyShow() {
         <div className="progress-bar" role="progressbar" style={{width: "0%"}} aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
         </div> : <div></div>}
         {show.progress == 1 ?
-        <div className="progress" style={{width: "75%"}}>
+        <div className="progress" >
         <div className="progress-bar" role="progressbar" style={{width: "25%"}} aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
         </div> : <div></div>}
         {show.progress == 2 ?
-        <div className="progress" style={{width: "75%"}}>
+        <div className="progress" >
         <div className="progress-bar" role="progressbar" style={{width: "50%"}} aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">50%</div>
         </div> : <div></div>}
         {show.progress == 3 ?
-        <div className="progress" style={{width: "75%"}}>
+        <div className="progress">
         <div className="progress-bar" role="progressbar" style={{width: "75%"}} aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">75%</div>
         </div> : <div></div>}
         {show.progress == 4 ?
@@ -290,10 +291,8 @@ export default function MyShow() {
           <div className="col" key={show.id}>
           <div className="container text-center mt-2" >
       <div   className="card border border-dark" style={{width: "18rem", border: "solid black"}}>
-          <div>ID:{show.showId}</div>
         <Link to={`/shows/${show.showId}`}>{show.showName}</Link>
         <div>Rating={show.rating}</div>
-        <div>Progress: {show.progress}</div>
         <button onClick={event => handleClick(event, show)}>Add To Watching</button>
         <button onClick={event => handleClick3(event, show)}>Add To Watched</button>
         </div></div></div>)}): <div></div>}
@@ -315,10 +314,12 @@ export default function MyShow() {
               </div>
 
   <div>Watched:</div>
+  <div className ="row">
   {ratings ? ratings.filter((rating) =>rating.status ==="WATCHED").map((show)=> {
     return(
-    <div key={show.id}>
-    <div>ID:{show.showId}</div>
+      <div className="col" key={show.id} >
+      <div className="container text-center mt-2" >
+  <div  className="card border border-dark" style={{width: "18rem", border: "solid black"}}>
     <Link to={`/shows/${show.showId}`}>{show.showName}</Link>
     <div>Rating={show.rating}</div>
     <div>Progress: {show.progress}</div>
@@ -360,7 +361,8 @@ export default function MyShow() {
         </form> : <div></div>}
           <button onClick={event => submitReco(event)}>Submit</button>
           </div> : <div></div>}
-      </div>)}): <div></div>}
+      </div></div></div>)}): <div></div>}
+      </div>
         <hr></hr>
         <hr></hr>
     </div>: <div></div>}
@@ -377,16 +379,18 @@ export default function MyShow() {
               </div>
 
   <div>Watchlist:</div>
+  <div className ="row">
   {ratings ? ratings.filter((rating) =>rating.status ==="WATCHLIST").map((show)=> {
     return(
-    <div key={show.id}>
-    <div>ID:{show.showId}</div>
+      <div className="col" key={show.id} >
+      <div className="container text-center mt-2" >
+  <div  className="card border border-dark" style={{width: "18rem", border: "solid black"}}>
     <Link to={`/shows/${show.showId}`}>{show.showName}</Link>
     <div>Rating={show.rating}</div>
-    <div>Progress: {show.progress}</div>
     <button onClick={event => handleClick(event, show)}>Add To Watching</button>
         <button onClick={event => handleClick3(event, show)}>Add To Watched</button>
-      </div>)}): <div></div>}
+      </div></div></div>)}): <div></div>}
+      </div>
         <hr></hr>
         <hr></hr>
     </div>: <div></div>}
@@ -403,11 +407,13 @@ export default function MyShow() {
               </div>
 
   <div>Watching:</div>
+  <div className ="row">
   {ratings ? ratings.filter((rating) =>rating.status ==="WATCHING").map((show)=> {
     return(
 
-    <div style={{width: "18rem"}} key={show.id}>
-    <div>ID:{show.showId}</div>
+      <div className="col" key={show.id} >
+      <div className="container text-center mt-2" >
+  <div  className="card border border-dark" style={{width: "18rem", border: "solid black"}}>
     <Link to={`/shows/${show.showId}`}>{show.showName}</Link>
     <div>Rating={show.rating}</div>
     <div>Progress: {show.progress}</div>
@@ -483,7 +489,8 @@ export default function MyShow() {
           <button onClick={event => submitReco(event)}>Submit</button>
           </div> : <div></div>}
       <button onClick={event => handleClick3(event, show)}>Add To Watched</button>
-      </div>)}): <div></div>}
+      </div></div></div>)}): <div></div>}
+      </div>
         <hr></hr>
         <hr></hr>
     </div>: <div></div>}
