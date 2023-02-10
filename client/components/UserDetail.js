@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react'
 import {fetchSingleUser} from '../store/singleUserStore'
 
 
+
 export default function UserDetail() {
   const dispatch = useDispatch()
   const {id} = useSelector((state) => state.auth )
@@ -24,10 +25,17 @@ export default function UserDetail() {
     setStatusView(event.target.value)
   }
 
-  console.log("USER", user)
 
   return (
     <div>
+      <div>
+    <div>Profile</div>
+    <img style={{width: "18rem"}}  src={user.imageUrl}/>
+
+    <div>Name: {user.favShowName}</div>
+    <img style={{width: "18rem"}}  src={user.favShowImage}/>
+    <hr></hr>
+    </div>
       <div>{user.username}'s Shows:</div>
       {!statusView?
       <div>

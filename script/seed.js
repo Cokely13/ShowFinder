@@ -14,6 +14,10 @@ async function seed() {
   const users = await Promise.all([
     User.create({ username: 'Ryan', password: '123', admin: true }),
     User.create({ username: 'Scott', password: '123' }),
+    User.create({ username: 'Jamal', password: '123' }),
+    User.create({ username: 'Matt', password: '123' }),
+    User.create({ username: 'Zarmon', password: '123' }),
+    User.create({ username: 'Tebo', password: '123' })
   ])
 
   const shows = await Promise.all([
@@ -21,7 +25,7 @@ async function seed() {
     Show.create({ name: 'Sopranos', image: 'https://m.media-amazon.com/images/M/MV5BZGJjYzhjYTYtMDBjYy00OWU1LTg5OTYtNmYwOTZmZjE3ZDdhXkEyXkFqcGdeQXVyNTAyODkwOQ@@._V1_.jpg', channel: "HBO" }),
     Show.create({ name: 'Breaking Bad', image: 'https://ntvb.tmsimg.com/assets/p8696131_b_h10_aa.jpg?w=1280&h=720', channel: "NETFLIX" }),
     Show.create({ name: 'Game of Thrones', image: 'https://flxt.tmsimg.com/assets/p8553063_b_v13_ax.jpg', channel: "HBO" }),
-    Show.create({ name: 'Leftovers', image: 'https://yt3.googleusercontent.com/nWj9b_0cSPQCWznelxGwjM4xR2DNYHrowBZJX9Xp7FUd06bPPYAYTwcAJ_mqOK-SBXY8EdQUj68', channel: "HBO" })
+    Show.create({ name: 'Leftovers', image: 'https://flxt.tmsimg.com/assets/p10475256_b_v9_ac.jpg', channel: "HBO" })
 
   ])
 

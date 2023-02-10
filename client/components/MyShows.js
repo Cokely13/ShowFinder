@@ -8,6 +8,7 @@ import {fetchSingleUser, updateSingleUser} from '../store/singleUserStore'
 import {fetchUsers} from '../store/allUsersStore'
 import { updateSingleRating } from '../store/singleRatingStore'
 import { createRecommendation } from '../store/allRecommendationsStore'
+import Profile from './Profile'
 
 
 
@@ -118,11 +119,14 @@ export default function MyShow() {
 
   }
 
-
+console.log("BOG", users)
 
   return (
     <div>
-
+      <div>
+        <Profile/>
+      </div>
+      <hr></hr>
       {!statusView?
       <div>
     <div>
@@ -138,14 +142,15 @@ export default function MyShow() {
       <div>WATCHED:</div>
       {ratings ? ratings.filter((rating) =>rating.status == "WATCHED").map((show)=> {
         return(
+          <div class="col">
         <div key={show.id}>
         <div>ID:{show.showId}</div>
         <Link to={`/shows/${show.showId}`}>{show.showName}</Link>
         <div>Rating={show.rating}</div>
         <div>Progress:</div>
         {show.progress == 4 ?
-        <div className="progress">
-        <div className="progress-bar" role="progressbar" style={{width: "100%"}} aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+        <div className="progress" style={{width: "18rem"}}>
+        <div className="progress-bar" role="progressbar" style={{width: "100%"}} aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">100%</div>
         </div> : <div></div>}
         <button onClick={() => setEditShow(show.showId)}>Update Rating</button>
         <button onClick={() => setReco(show.showId)}>Recommend Show</button>
@@ -174,7 +179,7 @@ export default function MyShow() {
           <select  onChange={event => handleReco(event, show)}>
           {/* <option  defaultValue={show.rating}>{show.rating}</option> */}
           <option value="">Select Friend</option>
-              {users.map((event) => <option key={event.id} value={event.username}>{event.username}</option>)}
+              {user.friends.map((event) => <option key={event.id} value={event.friendName}>{event.friendName}</option>)}
           </select>
           {newRec?
           <form>
@@ -185,36 +190,41 @@ export default function MyShow() {
         </form> : <div></div>}
           <button onClick={event => submitReco(event)}>Submit</button>
           </div> : <div></div>}
-        </div>)}): <div></div>}
+        </div></div>)}): <div></div>}
         <hr></hr>
     </div>
+    {/* style={{height: "200px",
+  width: "50%"}}  */}
     <div>
       <div>WATCHING:</div>
+      <div class ="row">
       {ratings ? ratings.filter((rating) =>rating.status == "WATCHING").map((show)=> {
         return(
-        <div key={show.id}>
+          <div class="col">
+            <div class="container text-center mt-2" >
+        <div  key={show.id} class="card border border-dark" style={{width: "18rem", border: "solid black"}}>
         <Link to={`/shows/${show.showId}`}>{show.showName}</Link>
         <div>ID:{show.showId}</div>
         <div>Rating={show.rating}</div>
         <div>Progress: {show.progress}</div>
         {show.progress == 0 ?
-        <div className="progress">
+        <div className="progress" style={{width: "75%"}}>
         <div className="progress-bar" role="progressbar" style={{width: "0%"}} aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
         </div> : <div></div>}
         {show.progress == 1 ?
-        <div className="progress">
-        <div className="progress-bar" role="progressbar" style={{width: "25%"}} aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+        <div className="progress" style={{width: "75%"}}>
+        <div className="progress-bar" role="progressbar" style={{width: "25%"}} aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
         </div> : <div></div>}
         {show.progress == 2 ?
-        <div className="progress">
-        <div className="progress-bar" role="progressbar" style={{width: "50%"}} aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+        <div className="progress" style={{width: "75%"}}>
+        <div className="progress-bar" role="progressbar" style={{width: "50%"}} aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">50%</div>
         </div> : <div></div>}
         {show.progress == 3 ?
-        <div className="progress">
-        <div className="progress-bar" role="progressbar" style={{width: "75%"}} aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+        <div className="progress" style={{width: "75%"}}>
+        <div className="progress-bar" role="progressbar" style={{width: "75%"}} aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">75%</div>
         </div> : <div></div>}
         {show.progress == 4 ?
-        <div className="progress">
+        <div className="progress" style={{width: "18rem"}}>
         <div className="progress-bar" role="progressbar" style={{width: "100%"}} aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
         </div> : <div></div>}
         <button onClick={() => setEditProgress(show.showId)}>Update Progress</button>
@@ -258,7 +268,7 @@ export default function MyShow() {
           <select  onChange={event => handleReco(event, show)}>
           {/* <option  defaultValue={show.rating}>{show.rating}</option> */}
           <option value="">Select Friend</option>
-              {users.map((event) => <option key={event.id} value={event.username}>{event.username}</option>)}
+              {user.friends.map((event) => <option key={event.id} value={event.friendName}>{event.friendName}</option>)}
           </select>
           {newRec?
           <form>
@@ -269,7 +279,7 @@ export default function MyShow() {
         </form> : <div></div>}
           <button onClick={event => submitReco(event)}>Submit</button>
           </div> : <div></div>}
-        </div>)}): <div></div>}
+        </div></div></div>)}): <div></div>}</div>
         <hr></hr>
         <hr></hr>
     </div>
@@ -336,7 +346,7 @@ export default function MyShow() {
           <select  onChange={event => handleReco(event, show)}>
           {/* <option  defaultValue={show.rating}>{show.rating}</option> */}
           <option value="">Select Friend</option>
-              {users.map((event) => <option key={event.id} value={event.username}>{event.username}</option>)}
+          {user.friends.map((event) => <option key={event.id} value={event.friendName}>{event.friendName}</option>)}
           </select>
           {newRec?
           <form>
@@ -392,29 +402,30 @@ export default function MyShow() {
   <div>Watching:</div>
   {ratings ? ratings.filter((rating) =>rating.status ==="WATCHING").map((show)=> {
     return(
-    <div key={show.id}>
+
+    <div style={{width: "18rem"}} key={show.id}>
     <div>ID:{show.showId}</div>
     <Link to={`/shows/${show.showId}`}>{show.showName}</Link>
     <div>Rating={show.rating}</div>
     <div>Progress: {show.progress}</div>
     {show.progress == 0 ?
-        <div className="progress">
+        <div className="progress" style={{width: "18rem"}}>
         <div className="progress-bar" role="progressbar" style={{width: "0%"}} aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
         </div> : <div></div>}
         {show.progress == 1 ?
-        <div className="progress">
-        <div className="progress-bar" role="progressbar" style={{width: "25%"}} aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+        <div className="progress" style={{width: "18rem"}}>
+        <div className="progress-bar" role="progressbar" style={{width: "25%"}} aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
         </div> : <div></div>}
         {show.progress == 2 ?
-        <div className="progress">
-        <div className="progress-bar" role="progressbar" style={{width: "50%"}} aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+        <div className="progress" style={{width: "18rem"}}>
+        <div className="progress-bar" role="progressbar" style={{width: "50%"}} aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">50%</div>
         </div> : <div></div>}
         {show.progress == 3 ?
-        <div className="progress">
-        <div className="progress-bar" role="progressbar" style={{width: "75%"}} aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+        <div className="progress" style={{width: "18rem"}}>
+        <div className="progress-bar" role="progressbar" style={{width: "75%"}} aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">75%</div>
         </div> : <div></div>}
         {show.progress == 4 ?
-        <div className="progress">
+        <div className="progress" style={{width: "18rem"}}>
         <div className="progress-bar" role="progressbar" style={{width: "75%"}} aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
         </div> : <div></div>}
       <button onClick={() => setEditProgress(show.showId)}>Update Progress</button>
@@ -457,7 +468,7 @@ export default function MyShow() {
           <select  onChange={event => handleReco(event, show)}>
           {/* <option  defaultValue={show.rating}>{show.rating}</option> */}
           <option value="">Select Friend</option>
-              {users.map((event) => <option key={event.id} value={event.username}>{event.username}</option>)}
+              {user.friends.map((event) => <option key={event.id} value={event.friendName}>{event.friendName}</option>)}
           </select>
           {newRec?
           <form>
