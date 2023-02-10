@@ -115,11 +115,9 @@ export default function MyShow() {
     event.preventDefault()
     user.favShowName= show.showName
     dispatch(updateSingleUser(user))
-    console.log("NEW REC", user)
 
   }
 
-console.log("BOG", users)
 
   return (
     <div>
@@ -142,8 +140,9 @@ console.log("BOG", users)
       <div>WATCHED:</div>
       {ratings ? ratings.filter((rating) =>rating.status == "WATCHED").map((show)=> {
         return(
-          <div class="col">
-        <div key={show.id}>
+          <div className="col" key={show.id} >
+          <div className="container text-center mt-2" >
+      <div  className="card border border-dark" style={{width: "18rem", border: "solid black"}}>
         <div>ID:{show.showId}</div>
         <Link to={`/shows/${show.showId}`}>{show.showName}</Link>
         <div>Rating={show.rating}</div>
@@ -190,19 +189,19 @@ console.log("BOG", users)
         </form> : <div></div>}
           <button onClick={event => submitReco(event)}>Submit</button>
           </div> : <div></div>}
-        </div></div>)}): <div></div>}
+        </div></div></div>)}): <div></div>}
         <hr></hr>
     </div>
     {/* style={{height: "200px",
   width: "50%"}}  */}
     <div>
       <div>WATCHING:</div>
-      <div class ="row">
+      <div className ="row">
       {ratings ? ratings.filter((rating) =>rating.status == "WATCHING").map((show)=> {
         return(
-          <div class="col">
-            <div class="container text-center mt-2" >
-        <div  key={show.id} class="card border border-dark" style={{width: "18rem", border: "solid black"}}>
+          <div className="col" key={show.id}>
+            <div className="container text-center mt-2" >
+        <div   className="card border border-dark" style={{width: "18rem", border: "solid black"}}>
         <Link to={`/shows/${show.showId}`}>{show.showName}</Link>
         <div>ID:{show.showId}</div>
         <div>Rating={show.rating}</div>
@@ -285,16 +284,20 @@ console.log("BOG", users)
     </div>
     <div>
       <div>WATCHLIST:</div>
+      <div className ="row">
       {ratings ? ratings.filter((rating) =>rating.status == "WATCHLIST").map((show)=> {
         return(
-        <div key={show.id}>
+          <div className="col" key={show.id}>
+          <div className="container text-center mt-2" >
+      <div   className="card border border-dark" style={{width: "18rem", border: "solid black"}}>
           <div>ID:{show.showId}</div>
         <Link to={`/shows/${show.showId}`}>{show.showName}</Link>
         <div>Rating={show.rating}</div>
         <div>Progress: {show.progress}</div>
         <button onClick={event => handleClick(event, show)}>Add To Watching</button>
         <button onClick={event => handleClick3(event, show)}>Add To Watched</button>
-        </div>)}): <div></div>}
+        </div></div></div>)}): <div></div>}
+        </div>
         <hr></hr>
     </div>
     </div>: <div></div>}

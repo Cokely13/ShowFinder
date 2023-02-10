@@ -29,10 +29,10 @@ export default function UserDetail() {
   return (
     <div>
       <div>
-    <div>Profile</div>
+    <div>{user.username}'s Profile</div>
     <img style={{width: "18rem"}}  src={user.imageUrl}/>
 
-    <div>Name: {user.favShowName}</div>
+    <div>Favorite Show: {user.favShowName}</div>
     <img style={{width: "18rem"}}  src={user.favShowImage}/>
     <hr></hr>
     </div>
@@ -50,20 +50,26 @@ export default function UserDetail() {
               </select>
               </div>
       <div>WATCHED:</div>
+      <div className ="row">
       {ratings ? ratings.filter((rating) =>rating.status == "WATCHED").map((show)=> {
         return(
-        <div key={show.id}>
+          <div className="col" key={show.id}>
+          <div className="container text-center mt-2" >
+      <div   className="card border border-dark" style={{width: "18rem", border: "solid black"}}>
         <div>ID:{show.showId}</div>
         <Link to={`/shows/${show.showId}`}>{show.showName}</Link>
         <div>Rating={show.rating}</div>
-        </div>)}): <div></div>}
+        </div></div></div>)}): <div></div>}
         <hr></hr>
+        </div>
     </div>
-    <div>
       <div>WATCHING:</div>
+      <div className ="row">
       {ratings ? ratings.filter((rating) =>rating.status == "WATCHING").map((show)=> {
         return(
-        <div key={show.id}>
+          <div className="col" key={show.id}>
+          <div className="container text-center mt-2" >
+      <div   className="card border border-dark" style={{width: "18rem", border: "solid black"}}>
         <Link to={`/shows/${show.showId}`}>{show.showName}</Link>
         <div>ID:{show.showId}</div>
         <div>Rating={show.rating}</div>
@@ -73,31 +79,34 @@ export default function UserDetail() {
         </div> : <div></div>}
         {show.progress == 1 ?
         <div className="progress">
-        <div className="progress-bar" role="progressbar" style={{width: "25%"}} aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+        <div className="progress-bar" role="progressbar" style={{width: "25%"}} aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
         </div> : <div></div>}
         {show.progress == 2 ?
         <div className="progress">
-        <div className="progress-bar" role="progressbar" style={{width: "50%"}} aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+        <div className="progress-bar" role="progressbar" style={{width: "50%"}} aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">50%</div>
         </div> : <div></div>}
         {show.progress == 3 ?
         <div className="progress">
-        <div className="progress-bar" role="progressbar" style={{width: "75%"}} aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+        <div className="progress-bar" role="progressbar" style={{width: "75%"}} aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">75%</div>
         </div> : <div></div>}
-        </div>)}): <div></div>}
+        </div></div></div>)}): <div></div>}
         <hr></hr>
         <hr></hr>
     </div>
     <div>
       <div>WATCHLIST:</div>
+      <div className ="row">
       {ratings ? ratings.filter((rating) =>rating.status == "WATCHLIST").map((show)=> {
         return(
-        <div key={show.id}>
+          <div className="col" key={show.id}>
+          <div className="container text-center mt-2" >
+      <div   className="card border border-dark" style={{width: "18rem", border: "solid black"}}>
           <div>ID:{show.showId}</div>
         <Link to={`/shows/${show.showId}`}>{show.showName}</Link>
         <div>Rating={show.rating}</div>
-        </div>)}): <div></div>}
+        </div></div></div>)}): <div></div>}
         <hr></hr>
-    </div>
+    </div></div>
     </div>: <div></div>}
     <div>
     {statusView == "WATCHED"?
@@ -113,16 +122,19 @@ export default function UserDetail() {
               </div>
 
   <div>Watched:</div>
+  <div className ="row">
   {ratings ? ratings.filter((rating) =>rating.status ==="WATCHED").map((show)=> {
     return(
-    <div key={show.id}>
+      <div className="col" key={show.id}>
+      <div className="container text-center mt-2" >
+  <div   className="card border border-dark" style={{width: "18rem", border: "solid black"}}>
     <div>ID:{show.showId}</div>
     <Link to={`/shows/${show.showId}`}>{show.showName}</Link>
     <div>Rating={show.rating}</div>
-      </div>)}): <div></div>}
+      </div></div></div>)}): <div></div>}
         <hr></hr>
         <hr></hr>
-    </div>: <div></div>}
+    </div></div>: <div></div>}
     {statusView == "WATCHLIST"?
 <div>
 <div>
@@ -136,16 +148,19 @@ export default function UserDetail() {
               </div>
 
   <div>Watchlist:</div>
+  <div className ="row">
   {ratings ? ratings.filter((rating) =>rating.status ==="WATCHLIST").map((show)=> {
     return(
-    <div key={show.id}>
+      <div className="col" key={show.id}>
+      <div className="container text-center mt-2" >
+  <div   className="card border border-dark" style={{width: "18rem", border: "solid black"}}>
     <div>ID:{show.showId}</div>
     <Link to={`/shows/${show.showId}`}>{show.showName}</Link>
     <div>Rating={show.rating}</div>
-      </div>)}): <div></div>}
+      </div></div></div>)}): <div></div>}
         <hr></hr>
         <hr></hr>
-    </div>: <div></div>}
+    </div></div>: <div></div>}
     {statusView == "WATCHING"?
 <div>
 <div>
@@ -159,9 +174,12 @@ export default function UserDetail() {
               </div>
 
   <div>Watching:</div>
+  <div className ="row">
   {ratings ? ratings.filter((rating) =>rating.status ==="WATCHING").map((show)=> {
     return(
-    <div key={show.id}>
+      <div className="col" key={show.id}>
+      <div className="container text-center mt-2" >
+  <div   className="card border border-dark" style={{width: "18rem", border: "solid black"}}>
     <div>ID:{show.showId}</div>
     <Link to={`/shows/${show.showId}`}>{show.showName}</Link>
     <div>Rating={show.rating}</div>
@@ -171,20 +189,20 @@ export default function UserDetail() {
         </div> : <div></div>}
         {show.progress == 1 ?
         <div className="progress">
-        <div className="progress-bar" role="progressbar" style={{width: "25%"}} aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+        <div className="progress-bar" role="progressbar" style={{width: "25%"}} aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
         </div> : <div></div>}
         {show.progress == 2 ?
         <div className="progress">
-        <div className="progress-bar" role="progressbar" style={{width: "50%"}} aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+        <div className="progress-bar" role="progressbar" style={{width: "50%"}} aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">50%</div>
         </div> : <div></div>}
         {show.progress == 3 ?
         <div className="progress">
-        <div className="progress-bar" role="progressbar" style={{width: "75%"}} aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+        <div className="progress-bar" role="progressbar" style={{width: "75%"}} aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">75%</div>
         </div> : <div></div>}
-      </div>)}): <div></div>}
+      </div></div></div>)}): <div></div>}
         <hr></hr>
         <hr></hr>
-    </div>: <div></div>}
+    </div></div>: <div></div>}
     </div>
     </div>
   )

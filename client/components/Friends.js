@@ -19,12 +19,12 @@ export default function Friends() {
 
   return (
     <div>
-    <div>Friends</div>
+    <h1>Friends: </h1>
     {friends ? friends.map((friend)=> {
       return(
         <div key={friend.id}>
-        <div>UserName:<Link to={`/users/${friend.friendId}`} >{friend.friendName}</Link></div>
-        <div>UserId:{friend.friendId}</div>
+        <div>Friend Name: <Link to={`/users/${friend.friendId}`} >{friend.friendName}</Link></div>
+        <div>Friend Id: {friend.friendId}</div>
         </div>
       )}) : <div>No</div>}
       </div>

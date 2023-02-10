@@ -29,7 +29,7 @@ export default function Profile() {
     // Safe to add dispatch to the dependencies array
   }, [dispatch])
 
-console.log('user', user)
+
 
 const handleUpdate =(event) => {
   event.preventDefault()
@@ -41,7 +41,6 @@ const handleUpdate =(event) => {
 const handlePic =(event) => {
   event.preventDefault()
   const newPic = shows.filter((show) => show.name == user.favShowName)
-  console.log("NEW", newPic[0].image)
   const newUser = {
     id: user.id,
     favShowImage: newPic[0].image
@@ -80,7 +79,6 @@ const handleClick = (e) => {
   setEditProfile("")
 }
 
-console.log("SHOWSSS", shows)
 
   return (
     <div>
@@ -118,14 +116,15 @@ console.log("SHOWSSS", shows)
       <div>
     <div>Profile</div>
     <img style={{width: "18rem"}}  src={user.imageUrl}/>
+    <div><button onClick={handleUpdate}>Update Profile</button></div>
     {/* <form onSubmit={handleSubmit(onSubmit)}>
       <input {...register('picture')}  type="file" name="picture" />
       <button>Submit</button>
     </form> */}
-    <div>Name: {user.favShowName}</div>
+    <div> Fav Show: {user.favShowName}</div>
     <img style={{width: "18rem"}}  src={user.favShowImage}/>
     <div>
-    <button onClick={handleUpdate}>Update Profile</button>
+
     <button onClick={handlePic}>Update Pic</button>
     </div>
     </div>}

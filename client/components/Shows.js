@@ -27,11 +27,13 @@ function Shows() {
   return (
     <div>
      <div>
-
-    <div>Shows</div>
+     <div className="row">
+    <h1 className="col" >All Shows</h1>
+    <Link className="col" to={`/show/add`}>ADD SHOW</Link>
+    </div>
     <div className="row"><input style={{width: "100%",
   padding: "12px 20px",
-  margin: "8px 0", border: "2px solid red", }} placeholder="Enter Show Title" onChange={event => setQuery(event.target.value)} />
+  margin: "8px 0", border: "2px solid black", }} placeholder="Search Show Name" onChange={event => setQuery(event.target.value)} />
     { shows.filter(show => {
     if (query === '') {
       return show;
@@ -40,17 +42,17 @@ function Shows() {
     }
   }).map((show) => {
       return(
-        <div class="col">
-        <div class="container text-center mt-2">
-        <div key={show.id} class="card border border-dark" style={{width: "18rem", border: "solid black"}}>
+        <div className="col" key={show.id}>
+        <div className="container text-center mt-2">
+        <div  className="card border border-dark" style={{width: "18rem", border: "solid black"}}>
         <Link to={`/shows/${show.id}`}>
-        <img class="card-img-top"  src={show.image} alt="Card image"/>
+        <img className="card-img-top"  src={show.image} alt="Card image"/>
         </Link>
-        <h4 class="card-title">{show.name}</h4>
+        <h4 className="card-title">{show.name}</h4>
         {/* <div>ShowID:{show.id}</div> */}
-        {(show.ratings.length)  ? <div class="mt-1">AverageRating: {(show.ratings.map(item => item.rating).reduce((prev, next) => prev + next))/(show.ratings.length)}</div>: <div>No Ratings Yet</div>}
+        {(show.ratings.length)  ? <div className="mt-1">Average Rating: {Math.floor((show.ratings.map(item => item.rating).reduce((prev, next) => prev + next))/(show.ratings.length))}</div>: <div>No Ratings Yet</div>}
         {/* <AverageRating idShow={show.id}/> */}
-        {show.ratings.length ? <div class="mt-1">Number of Ratings: {(show.ratings.length)}</div>: <div></div>}
+        {show.ratings.length ? <div className="mt-1">Number of Ratings: {(show.ratings.length)}</div>: <div></div>}
         <ShowStatus show={show} id={id} allRatings={ratings}  test= {myRatings.filter((rating) =>rating.showId == show.id)}/>
         <p></p>
         </div>
@@ -60,7 +62,6 @@ function Shows() {
     })}
      </div>
     </div>
-    <Link  to={`/show/add`}>ADD SHOW</Link>
     </div>
   )
 

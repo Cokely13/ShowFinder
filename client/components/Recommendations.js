@@ -34,14 +34,18 @@ export default function Recommendations() {
 
   return (
     <div>
-    <div>Recommendations For Me</div>
+    <h1>Recommendations For Me:</h1>
+    <hr></hr>
+    <div className ="row">
     {recommendations ? recommendations.filter((reco) =>reco.friendId == id).map((reco)=> {
       return(
-        <div key={reco.id}>
-        <div>ShowName:<Link to={`/shows/${reco.showId}`} >{reco.showName}</Link></div>
-        <div>Recommended By:<Link to={`/users/${reco.userId}`}>{reco.userName}</Link></div>
-        <div>Comments:{reco.comments}</div>
-        <div>Like:{reco.like}</div>
+        <div className="col" key={reco.id}>
+          <div className="container text-center mt-2" >
+      <div   className="card border border-dark" style={{width: "18rem", border: "solid black"}}>
+        <div>Show: <Link to={`/shows/${reco.showId}`} >{reco.showName}</Link></div>
+        <div>Recommended By: <Link to={`/users/${reco.userId}`}>{reco.userName}</Link></div>
+        <div>Comments: {reco.comments}</div>
+        <div>Like: {reco.like}</div>
         <button onClick={() => setEditLike(reco.id)}>Update Like</button>
         {editLike == reco.id?
          <div>
@@ -53,18 +57,24 @@ export default function Recommendations() {
            </select>
            <button onClick={event => handleClick(event, reco)}>Submit</button>
            </div> : <div></div>}
-           </div>
+           </div> </div> </div>
       )}) : <div>No</div>}
+      </div>
       <hr></hr>
-       <div>Recommendations By Me</div>
+       <h1>Recommendations By Me: </h1>
+       <hr></hr>
+       <div className ="row">
     {recommendations ? recommendations.filter((reco) =>reco.userId == id).map((reco)=> {
       return(
-        <div key={reco.id}>
-        <div>ShowName:<Link to={`/shows/${reco.showId}`} >{reco.showName}</Link></div>
-        <div>Recommended To:<Link to={`/users/${reco.friendId}`}>{reco.friendName}</Link></div>
-        <div>Did they like it?:{reco.like}</div>
-        </div>
+        <div className="col" key={reco.id}>
+        <div className="container text-center mt-2" >
+    <div   className="card border border-dark" style={{width: "18rem", border: "solid black"}}>
+        <div>Show:<Link to={`/shows/${reco.showId}`} > {reco.showName}</Link></div>
+        <div>Recommended To:<Link to={`/users/${reco.friendId}`}> {reco.friendName}</Link></div>
+        <div>Did they like it?: {reco.like}</div>
+        </div></div></div>
       )}) : <div>No</div>}
+      </div>
       </div>
   )
 }
