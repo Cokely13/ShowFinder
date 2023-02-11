@@ -13,6 +13,7 @@ const Navbar = ({handleClick, isLoggedIn}) => (
           <Link to="/home">Home</Link>
           <Link to="/shows">Shows</Link>
           <Link to="/myshows">MyShows</Link>
+          <Link to="/topshows">TopShows</Link>
           <Link to="/profile">Profile</Link>
           <Link to="/recommendations">Recommendations</Link>
           <Link to="/users">Users</Link>

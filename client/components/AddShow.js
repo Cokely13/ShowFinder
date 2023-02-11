@@ -64,12 +64,13 @@ export default function AddShow() {
     <form>
       <div >
         <div>
-        <label>Show Name</label>
+        <label>Show Name: </label>
           <input name='name' onChange={handleChange}  type="text" placeholder="Name"/>
         </div>
         {name?
         <div >
-          <label>Channel</label>
+          <label>Channel: </label>
+          <div>
           <select  onChange={handleChange2} name="channel" className="form-control">
         <option disabled selected value="Channel">Select Channel</option>
           <option value="HBO">HBO</option>
@@ -78,10 +79,10 @@ export default function AddShow() {
           <option value="AMAZON">AMAZON</option>
           <option value="OTHER">OTHER</option>
           </select>
-        </div> : <div></div>}
+        </div> </div> : <div></div>}
         {channel?
         <div>
-        <label>Image</label>
+        <label>Image: </label>
           <input name='image' onChange={handleChange3}  type="text" placeholder="Copy Image Address"/>
         </div>: <div></div>}
       </div>

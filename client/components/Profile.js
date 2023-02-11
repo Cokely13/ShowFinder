@@ -12,6 +12,7 @@ export default function Profile() {
   const dispatch = useDispatch()
   const [name, setName] = useState();
   const [avatar, setAvatar] = useState();
+  const [password, setPassword] = useState();
   const user = useSelector((state) => state.singleUser )
   const shows = useSelector((state) => state.allShows)
   const [editProfile, setEditProfile] = useState()
@@ -35,6 +36,7 @@ const handleUpdate =(event) => {
   event.preventDefault()
   setName(user.username)
   setAvatar(user.imageUrl)
+  setPassword(user.password)
   setEditProfile(id)
 }
 
@@ -59,6 +61,12 @@ const handleChange2 = (event) => {
   // console.log("HA", like)
 }
 
+const handleChange3 = (event) => {
+  event.preventDefault()
+  setPassword(event.target.value)
+  // console.log("HA", like)
+}
+
 // const onSubmit =(data) =>{
 //   console.log("EVENT", data.picture[0].name)
 //   user.imageUrl = data.picture[0].name
@@ -71,7 +79,7 @@ const handleClick = (e) => {
   const newUser = {
     id: user.id,
     username: name,
-    password: user.password,
+    password: password,
     imageUrl: avatar,
     // admin: user.admin,
   }
@@ -86,11 +94,12 @@ const handleClick = (e) => {
     <form>
       <div >
         <div>
-        <label>Show Name</label>
+        <label>User Name: </label>
           <input name='username' onChange={handleChange}  type="text" placeholder={user.username}/>
         </div>
         <div >
-          <label>Avatar</label>
+          <label>Avatar: </label>
+          <div>
           <select  onChange={handleChange2} name="imageUrl" className="form-control">
         <option selected value={user.imageUrl}>Current Avatar</option>
           <option value="https://cdn2.iconfinder.com/data/icons/super-hero/154/ironman-head-comics-avatar-iron-man-512.png">Ironman</option>
@@ -105,13 +114,20 @@ const handleClick = (e) => {
           <option value="https://pbs.twimg.com/media/EaWJlsmWkAAg5VM.jpg">Jon Snow</option>
           <option value="https://s.studiobinder.com/wp-content/uploads/2018/09/Seinfeld-Scripts-Kramer-Avatar.png?resolution=1680,2">Kramer</option>
           <option value="https://static1.personality-database.com/profile_images/a727809cde6c4b85a0b3aa5d354baa14.png">Selina Meyer</option>
-          <option value="https://twitter.com/kuru_bwa/status/1623763736040206336?s=46&t=Gi08zNfqxftfHCVSELB12w">Tim Robinson</option>
+          <option value="https://statcdn.fandango.com/MPX/image/NBCU_Fandango/896/383/thumb_B43D145F-1C2B-4C90-A761-488EB16C3F59.jpg">Tim Robinson</option>
           <option value="https://tr.rbxcdn.com/dfe258d22c61cac01b86015d135c2314/420/420/Image/Png">Saul Goodman</option>
+          <option value="https://i.pinimg.com/originals/d1/70/2f/d1702f4ba2dad0d4478d69583c570d74.jpg">Archer</option>
           </select>
+          <img style={{width: "18rem"}}  src={avatar}/>
+        </div>
+        </div>
+        <div>
+        <label>password: </label>
+          <input name='password' onChange={handleChange3}  type="text" placeholder={user.password}/>
         </div>
       </div>
     </form>
-    <button onClick={handleClick}>Update</button>
+    <button onClick={handleClick}>Update Profile</button>
   </div>:
       <div>
     <div>Profile</div>

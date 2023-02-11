@@ -46,7 +46,7 @@ function Shows() {
         <div className="container text-center mt-2">
         <div  className="card border border-dark" style={{width: "18rem", border: "solid black"}}>
         <Link to={`/shows/${show.id}`}>
-        <img className="card-img-top"  src={show.image} alt="Card image"/>
+        <img className="card-img-top" style={{height: "18rem"}} src={show.image} alt="Card image"/>
         </Link>
         <h4 className="card-title">{show.name}</h4>
         {/* <div>ShowID:{show.id}</div> */}
