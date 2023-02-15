@@ -118,7 +118,7 @@ const handleClick = (e) => {
           <option value="https://tr.rbxcdn.com/dfe258d22c61cac01b86015d135c2314/420/420/Image/Png">Saul Goodman</option>
           <option value="https://i.pinimg.com/originals/d1/70/2f/d1702f4ba2dad0d4478d69583c570d74.jpg">Archer</option>
           </select>
-          <img style={{width: "18rem"}}  src={avatar}/>
+          <img class="rounded-circle"  style={{width: "18rem"}}  src={avatar}/>
         </div>
         </div>
         <div>
@@ -131,7 +131,7 @@ const handleClick = (e) => {
   </div>:
       <div>
     <div>Profile</div>
-    <img style={{width: "18rem"}}  src={user.imageUrl}/>
+    <img class="rounded-circle border border-5  border-dark" style={{width: "18rem"}}  src={user.imageUrl}/>
     <div><button onClick={handleUpdate}>Update Profile</button></div>
     {/* <form onSubmit={handleSubmit(onSubmit)}>
       <input {...register('picture')}  type="file" name="picture" />

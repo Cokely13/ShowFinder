@@ -144,7 +144,7 @@ export default function MyShow() {
         return(
           <div className="col" key={show.id} >
           <div className="container text-center mt-2" >
-      <div  className="card border border-dark" style={{width: "18rem", border: "solid black"}}>
+      <div  className="card border border-5 border-dark" style={{width: "18rem", border: "solid black"}}>
         <Link to={`/shows/${show.showId}`}>{show.showName}</Link>
         <div>Rating={show.rating}</div>
         <div>Progress:</div>
@@ -203,7 +203,7 @@ export default function MyShow() {
         return(
           <div className="col" key={show.id}>
             <div className="container text-center mt-2" >
-        <div   className="card border border-dark" style={{width: "18rem", border: "solid black"}}>
+        <div   className="card border border-5  border-dark" style={{width: "18rem", border: "solid black"}}>
         <Link to={`/shows/${show.showId}`}>{show.showName}</Link>
         <div>Rating={show.rating}</div>
         <div>Progress: {show.progress}</div>
@@ -290,7 +290,7 @@ export default function MyShow() {
         return(
           <div className="col" key={show.id}>
           <div className="container text-center mt-2" >
-      <div   className="card border border-dark" style={{width: "18rem", border: "solid black"}}>
+      <div   className="card border border-5  border-dark" style={{width: "18rem", border: "solid black"}}>
         <Link to={`/shows/${show.showId}`}>{show.showName}</Link>
         <div>Rating={show.rating}</div>
         <button onClick={event => handleClick(event, show)}>Add To Watching</button>
@@ -319,7 +319,7 @@ export default function MyShow() {
     return(
       <div className="col" key={show.id} >
       <div className="container text-center mt-2" >
-  <div  className="card border border-dark" style={{width: "18rem", border: "solid black"}}>
+  <div  className="card border border-5  border-dark" style={{width: "18rem", border: "solid black"}}>
     <Link to={`/shows/${show.showId}`}>{show.showName}</Link>
     <div>Rating={show.rating}</div>
     <div>Progress: {show.progress}</div>
@@ -384,7 +384,7 @@ export default function MyShow() {
     return(
       <div className="col" key={show.id} >
       <div className="container text-center mt-2" >
-  <div  className="card border border-dark" style={{width: "18rem", border: "solid black"}}>
+  <div  className="card border border-5  border-dark" style={{width: "18rem", border: "solid black"}}>
     <Link to={`/shows/${show.showId}`}>{show.showName}</Link>
     <div>Rating={show.rating}</div>
     <button onClick={event => handleClick(event, show)}>Add To Watching</button>
@@ -413,7 +413,7 @@ export default function MyShow() {
 
       <div className="col" key={show.id} >
       <div className="container text-center mt-2" >
-  <div  className="card border border-dark" style={{width: "18rem", border: "solid black"}}>
+  <div  className="card border border-5  border-dark" style={{width: "18rem", border: "solid black"}}>
     <Link to={`/shows/${show.showId}`}>{show.showName}</Link>
     <div>Rating={show.rating}</div>
     <div>Progress: {show.progress}</div>
