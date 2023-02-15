@@ -1,11 +1,14 @@
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
+import { Link } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import { fetchShow } from '../store/singleShowStore'
 import { useParams } from 'react-router-dom'
 import { updateSingleShow } from '../store/singleShowStore'
 import { deleteShow } from '../store/allShowsStore'
 import { fetchSingleUser } from '../store/singleUserStore'
+import usersReducer, {fetchUsers} from '../store/allUsersStore'
+import UserName from './utilities/UserName'
 // import { fetchRatings } from '../store/allRatingsStore'
 
 export default function ShowDetail() {
@@ -20,8 +23,13 @@ export default function ShowDetail() {
   const [image, setImage] = useState();
   const show = useSelector((state) => state.singleShow )
   const user = useSelector((state) => state.singleUser )
+  const allUsers = useSelector((state) => state.allUsers )
   useEffect(() => {
     dispatch(fetchSingleUser(id))
+    // Safe to add dispatch to the dependencies array
+  }, [])
+  useEffect(() => {
+    dispatch(fetchUsers())
     // Safe to add dispatch to the dependencies array
   }, [])
 
@@ -79,16 +87,20 @@ export default function ShowDetail() {
       createdBy: show.createdBy,
       image: image
     }
-    console.log("SHOW", newShow)
+    // console.log("SHOW", newShow)
     dispatch(updateSingleShow(newShow))
     setEditShow("")
   }
 
-  //  console.log("SHOW", user)
+   console.log("all", allUsers)
+
+
+   const test = allUsers.filter((user) =>user.id == 1)
+   console.log("testing", test)
 
   return (
     <div>
-    <div>ShowDetail</div>
+    <h1>ShowDetail:</h1>
     {editShow == show.id?
     <div >
     <form>
@@ -117,34 +129,39 @@ export default function ShowDetail() {
     <button onClick={handleClick}>Edit Show</button>
     <button onClick={event => dispatch(deleteShow(show.id))}>Delete Show</button>
   </div>:
-    <div>
-    <div>{show.name}</div>
-        <img style={{width: "18rem"}}  src={show.image}/>
+    <div className='text-center'>
+    <h1>{show.name}</h1>
+        <img className='border border-5  border-dark' style={{width: "18rem"}}  src={show.image}/>
         </div>}
         <hr></hr>
+        <div className="container text-center mt-2" >
+          <h2>Stats:</h2>
+    <div  className="card border border-dark text-center" >
+    {ratings ? ratings.length ? <div> People Watched: {ratings.filter((rating) =>rating.status ==="WATCHED").length} </div> : <div></div> : <div></div>}
+    {ratings ? ratings.length ? <div> People Watching: {ratings.filter((rating) =>rating.status ==="WATCHING").length} </div> : <div></div> : <div></div>}
+    {ratings ? ratings.length ? <div> People Watchlist: {ratings.filter((rating) =>rating.status ==="WATCHLIST").length} </div> : <div></div> : <div></div>}
+    {ratings ? ratings.length ?  <div>AverageRating: {Math.floor((ratings.map(item => item.rating).reduce((prev, next) => prev + next))/(ratings.length))}</div>: <div>No Ratings Yet</div> : <div>No Ratings</div> }
+    </div>
+    </div>
         {editShow == show.id? <div></div>: <div>
-        <div className="row">
+        <div className="row text-center" style={{padding:"50px"}}>
+        <h2>Ratings:</h2>
     {ratings? ratings.length ? ratings.map((show) => {
       return(
         <div className="col" key={show.id} >
         <div className="container text-center mt-2" >
         <div  className="card border border-dark" style={{width: "18rem", border: "solid black"}}>
+        <img className="rounded-circle border border-5  border-dark" style={{width: "18rem"}}  src={allUsers.filter((user) =>user.id == show.userId)[0].imageUrl}/>
+        <Link to={`/users/${show.userId}`}>{allUsers.filter((user) =>user.id == show.userId)[0].username}</Link>
         <div>Rating: {show.rating}</div>
-        <div>User Id:{show.userId}</div>
+        {/* <div>User Id:{show.userId}</div> */}
+        {/* ratings.filter((rating) =>rating.status == "WATCHED") */}
         </div>
         </div>
         </div>
       )
 
     }): <div></div> : <div>No Ratings</div> }
-    </div>
-    <div className="container text-center mt-2" >
-    <div  className="card border border-dark" style={{width: "18rem", border: "solid black"}}>
-    {ratings ? ratings.length ? <div> People Watched: {ratings.filter((rating) =>rating.status ==="WATCHED").length} </div> : <div></div> : <div></div>}
-    {ratings ? ratings.length ? <div> People Watching: {ratings.filter((rating) =>rating.status ==="WATCHING").length} </div> : <div></div> : <div></div>}
-    {ratings ? ratings.length ? <div> People Watchlist: {ratings.filter((rating) =>rating.status ==="WATCHLIST").length} </div> : <div></div> : <div></div>}
-    {ratings ? ratings.length ?  <div>AverageRating ={Math.floor((ratings.map(item => item.rating).reduce((prev, next) => prev + next))/(ratings.length))}</div>: <div>No Ratings Yet</div> : <div>No Ratings</div> }
-    </div>
     </div>
     {user.admin?<button onClick={handleUpdate}>Update Show</button>:<div></div> }
     </div>}
