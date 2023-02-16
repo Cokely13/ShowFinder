@@ -11,7 +11,6 @@ const Rating = db.define('rating', {
     },
     rating: {
         type: Sequelize.FLOAT,
-        defaultValue: 5,
     },
     userId: {
         type: Sequelize.FLOAT,

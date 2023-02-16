@@ -16,6 +16,7 @@ export default function Friends() {
 
   const friends = useSelector((state) => state.allFriends)
 
+  console.log("friends", friends)
 
   return (
     <div>
@@ -25,8 +26,7 @@ export default function Friends() {
         <div className="col" key={friend.id}>
           <div className="container text-center mt-2" >
       <div   className="card border border-dark" style={{width: "18rem", border: "solid black"}}>
-        <div>Friend Name: <Link to={`/users/${friend.friendId}`} >{friend.friendName}</Link></div>
-        <div>Friend Id: {friend.friendId}</div>
+        <div><Link to={`/users/${friend.friendId}`} >{friend.friendName}</Link></div>
         </div></div></div>
       )}) : <div>No</div>}
       </div>

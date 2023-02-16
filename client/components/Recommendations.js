@@ -60,7 +60,6 @@ export default function Recommendations() {
            </div> </div> </div>
       )}) : <div>No</div>}
       </div>
-      <hr></hr>
        <h1>Recommendations By Me: </h1>
        <hr></hr>
        <div className ="row">

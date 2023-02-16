@@ -90,6 +90,27 @@ export default function MyShow() {
    setNewRec(recommend)
   }
 
+  const handleProgress= (event, show) => {
+    event.preventDefault()
+    setEditProgress(show)
+    setEditShow(0)
+    setReco(0)
+  }
+
+  const handleRatings = (event, show) => {
+    event.preventDefault()
+    setEditProgress(0)
+    setEditShow(show)
+    setReco(0)
+  }
+
+  const handleNewRec = (event, show) => {
+    event.preventDefault()
+    setEditProgress(0)
+    setEditShow(0)
+    setReco(show)
+  }
+
   const handleComments=(event) =>{
     event.preventDefault()
     newRec.comments= event.target.value
@@ -122,8 +143,9 @@ export default function MyShow() {
 
   return (
     <div>
-      <div>
-        <Profile/>
+      <div className="container text-center mt-2">
+      <img className="rounded-circle border border-5  border-dark" style={{width: "18rem"}}  src={user.imageUrl}/>
+      <h1>{user.username}</h1>
       </div>
       <hr></hr>
       {!statusView?
@@ -138,7 +160,7 @@ export default function MyShow() {
           <option value="">ALL</option>
               </select>
               </div>
-      <div>WATCHED:</div>
+      <h2>Watched:</h2>
       <div className ="row ">
       {ratings ? ratings.filter((rating) =>rating.status == "WATCHED").map((show)=> {
         return(
@@ -153,31 +175,31 @@ export default function MyShow() {
         <div className="progress-bar " role="progressbar" style={{width: "100%"}} aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">100%</div>
         </div>: <div></div>}
         <div className="text-center" style={{padding:"20px"}}>
-        <button className="btn btn-secondary" style={{width: "75%", marginBottom: "10px" }} onClick={() => setEditShow(show.showId)}>Update Rating</button>
-        <button className="btn btn-success" style={{width: "75%", marginBottom: "10px"}} onClick={() => setReco(show.showId)}>Recommend Show</button>
+        <button className="btn btn-secondary" style={{width: "75%", marginBottom: "10px" }} onClick={(event) => handleRatings(event, show.showId)}>Update Rating</button>
+        <button className="btn btn-success" style={{width: "75%", marginBottom: "10px"}} onClick={(event) => handleNewRec(event, show.showId)}>Recommend Show</button>
         {show.showName == user.favShowName ?<div>FAVORITE!</div>: <button className="btn btn-danger" style={{width: "75%"}} onClick={event => makeFave(event, show)}>Make Fav</button>}
         </div>
         {editShow == show.showId ?
-        <div>
-        <label>Rating</label>
-          <select  onChange={event => handleClick2(event, show)}>
-          <option  defaultValue={show.rating}>{show.rating}</option>
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-          <option value="5">5</option>
-          <option value="6">6</option>
-          <option value="7">7</option>
-          <option value="8">8</option>
-          <option value="9">9</option>
-          <option value="10">10</option>
-          </select>
-          <button onClick={() => setEditShow(0)}>Submit</button>
-          </div> : <div></div>}
+         <div style={{marginBottom: "10px", marginTop: "10px"}} >
+         <label><h4 style={{marginRight: "5px"}}>Rating:  </h4></label>
+           <select   onChange={event => handleClick2(event, show)}>
+           <option  defaultValue={show.rating}>{show.rating}</option>
+           <option value="1">1</option>
+           <option value="2">2</option>
+           <option value="3">3</option>
+           <option value="4">4</option>
+           <option value="5">5</option>
+           <option value="6">6</option>
+           <option value="7">7</option>
+           <option value="8">8</option>
+           <option value="9">9</option>
+           <option value="10">10</option>
+           </select>
+           <button className="btn btn-primary" style={{marginLeft: "10px"}} onClick={() => setEditShow(0)}>Submit</button>
+           </div> : <div></div>}
           {reco == show.showId ?
-        <div>
-        <label>Recommend</label>
+            <div style={{marginBottom: "10px", marginTop: "10px"}} >
+        <label><h4 style={{marginRight: "5px"}}>Recommend: </h4></label>
           <select  onChange={event => handleReco(event, show)}>
           {/* <option  defaultValue={show.rating}>{show.rating}</option> */}
           <option value="">Select Friend</option>
@@ -186,20 +208,19 @@ export default function MyShow() {
           {newRec?
           <form>
           <div>
-        <label>Comments</label>
+        <label>Comments: </label>
           <input onChange={handleComments} name='comments'  type="text" placeholder="Comments"/>
         </div>
         </form> : <div></div>}
-          <button onClick={event => submitReco(event)}>Submit</button>
+          <button className="btn btn-primary" style={{marginLeft: "10px"}} onClick={event => submitReco(event)}>Submit</button>
           </div> : <div></div>}
-        </div></div></div>)}): <div></div>}
-        </div>
+        </div></div></div>)}): <div></div>}</div>
         <hr></hr>
     </div>
     {/* style={{height: "200px",
   width: "50%"}}  */}
     <div>
-      <div>WATCHING:</div>
+      <h2>Watching:</h2>
       <div className ="row">
       {ratings ? ratings.filter((rating) =>rating.status == "WATCHING").map((show)=> {
         return(
@@ -230,27 +251,27 @@ export default function MyShow() {
         <div className="progress-bar" role="progressbar" style={{width: "100%"}} aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
         </div> : <div></div>}
         <div className="text-center" style={{padding:"20px"}}>
-        <button className="btn btn-secondary" style={{width: "75%", marginBottom: "10px" }}  onClick={() => setEditProgress(show.showId)}>Update Progress</button>
-        <button className="btn btn-secondary" style={{width: "75%", marginBottom: "10px" }}  onClick={() => setEditShow(show.showId)}>Update Rating</button>
+        <button className="btn btn-secondary" style={{width: "75%", marginBottom: "10px" }}  onClick={(event) => handleProgress(event,show.showId)}>Update Progress</button>
+        <button className="btn btn-secondary" style={{width: "75%", marginBottom: "10px" }}  onClick={(event) => handleRatings(event, show.showId)}>Update Rating</button>
         <button className="btn btn-secondary" style={{width: "75%", marginBottom: "10px" }} onClick={event => handleClick3(event, show)}>Add To Watched</button>
-        <button className="btn btn-secondary" style={{width: "75%", marginBottom: "10px" }}  onClick={() => setReco(show.showId)}>Recommend Show</button>
+        <button className="btn btn-secondary" style={{width: "75%", marginBottom: "10px" }}  onClick={(event) => handleNewRec(event, show.showId)}>Recommend Show</button>
         {show.showName == user.favShowName ?<div>FAVORITE!</div>: <button className="btn btn-secondary" style={{width: "75%", marginBottom: "10px" }}  onClick={event => makeFave(event, show)}>Make Fav</button>}
         </div>
         {editProgress == show.showId ?
-        <div>
-        <label>Progress</label>
+        <div style={{marginBottom: "10px", marginTop: "10px"}}>
+        <label><h4 style={{marginRight: "10px"}}>Progress: </h4></label>
           <select   onChange={event => handleClick4(event, show)}>
-          <option  defaultValue={show.progress}>{show.progress}</option>
+          <option  defaultValue={show.progress}>Progress</option>
           <option value="1">25%</option>
           <option value="2">50%</option>
           <option value="3">75%</option>
           <option value="4">100%</option>
           </select>
-          <button onClick={() => setEditProgress(0)}>Submit</button>
+          <button className="btn btn-primary" style={{marginLeft: "10px"}} onClick={() => setEditProgress(0)}>Submit</button>
           </div> : <div></div>}
         {editShow == show.showId ?
-        <div>
-        <label>Rating</label>
+        <div style={{marginBottom: "10px", marginTop: "10px"}} >
+        <label><h4 style={{marginRight: "5px"}}>Rating:  </h4></label>
           <select   onChange={event => handleClick2(event, show)}>
           <option  defaultValue={show.rating}>{show.rating}</option>
           <option value="1">1</option>
@@ -264,11 +285,11 @@ export default function MyShow() {
           <option value="9">9</option>
           <option value="10">10</option>
           </select>
-          <button onClick={() => setEditShow(0)}>Submit</button>
+          <button className="btn btn-primary" style={{marginLeft: "10px"}} onClick={() => setEditShow(0)}>Submit</button>
           </div> : <div></div>}
           {reco == show.showId ?
-        <div>
-        <label>Recommend</label>
+        <div style={{marginBottom: "10px", marginTop: "10px"}} >
+        <label><h4 style={{marginRight: "5px"}}>Recommend: </h4></label>
           <select  onChange={event => handleReco(event, show)}>
           {/* <option  defaultValue={show.rating}>{show.rating}</option> */}
           <option value="">Select Friend</option>
@@ -277,18 +298,17 @@ export default function MyShow() {
           {newRec?
           <form>
           <div>
-        <label>Comments</label>
+        <label>Comments: </label>
           <input onChange={handleComments} name='comments'  type="text" placeholder="Comments"/>
         </div>
         </form> : <div></div>}
-          <button onClick={event => submitReco(event)}>Submit</button>
+          <button className="btn btn-primary" style={{marginLeft: "10px"}} onClick={event => submitReco(event)}>Submit</button>
           </div> : <div></div>}
         </div></div></div>)}): <div></div>}</div>
         <hr></hr>
-        <hr></hr>
     </div>
     <div>
-      <div>WATCHLIST:</div>
+      <h2>Watchlist:</h2>
       <div className ="row">
       {ratings ? ratings.filter((rating) =>rating.status == "WATCHLIST").map((show)=> {
         return(
@@ -296,7 +316,7 @@ export default function MyShow() {
           <div className="container text-center mt-2" >
       <div   className="card border border-5  border-dark" style={{width: "18rem", border: "solid black"}}>
         <h1><Link to={`/shows/${show.showId}`}>{show.showName}</Link></h1>
-        <div>Rating={show.rating}</div>
+
         <div className="text-center" style={{padding:"20px"}}>
         <button className="btn btn-secondary" style={{width: "75%", marginBottom: "10px"}} onClick={event => handleClick(event, show)}>Add To Watching</button>
         <button className="btn btn-secondary" style={{width: "75%", marginBottom: "10px"}} onClick={event => handleClick3(event, show)}>Add To Watched</button>
@@ -318,7 +338,7 @@ export default function MyShow() {
               </select>
               </div>
 
-  <div>Watched:</div>
+  <h2>Watched:</h2>
   <div className ="row">
   {ratings ? ratings.filter((rating) =>rating.status ==="WATCHED").map((show)=> {
     return(
@@ -333,31 +353,31 @@ export default function MyShow() {
         <div className="progress-bar " role="progressbar" style={{width: "100%"}} aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">100%</div>
         </div>: <div></div>}
         <div className="text-center" style={{padding:"20px"}}>
-        <button className="btn btn-secondary" style={{width: "75%", marginBottom: "10px" }} onClick={() => setEditShow(show.showId)}>Update Rating</button>
-        <button className="btn btn-success" style={{width: "75%", marginBottom: "10px"}} onClick={() => setReco(show.showId)}>Recommend Show</button>
+        <button className="btn btn-secondary" style={{width: "75%", marginBottom: "10px" }} onClick={(event) => handleRatings(event, show.showId)}>Update Rating</button>
+        <button className="btn btn-success" style={{width: "75%", marginBottom: "10px"}} onClick={(event) => handleNewRec(event, show.showId)}>Recommend Show</button>
         {show.showName == user.favShowName ?<div>FAVORITE!</div>: <button className="btn btn-danger" style={{width: "75%"}} onClick={event => makeFave(event, show)}>Make Fav</button>}
         </div>
         {editShow == show.showId ?
-        <div>
-        <label>Rating</label>
-          <select  onChange={event => handleClick2(event, show)}>
-          <option  defaultValue={show.rating}>{show.rating}</option>
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-          <option value="5">5</option>
-          <option value="6">6</option>
-          <option value="7">7</option>
-          <option value="8">8</option>
-          <option value="9">9</option>
-          <option value="10">10</option>
-          </select>
-          <button onClick={() => setEditShow(0)}>Submit</button>
-          </div> : <div></div>}
+         <div style={{marginBottom: "10px", marginTop: "10px"}} >
+         <label><h4 style={{marginRight: "5px"}}>Rating:  </h4></label>
+           <select   onChange={event => handleClick2(event, show)}>
+           <option  defaultValue={show.rating}>{show.rating}</option>
+           <option value="1">1</option>
+           <option value="2">2</option>
+           <option value="3">3</option>
+           <option value="4">4</option>
+           <option value="5">5</option>
+           <option value="6">6</option>
+           <option value="7">7</option>
+           <option value="8">8</option>
+           <option value="9">9</option>
+           <option value="10">10</option>
+           </select>
+           <button className="btn btn-primary" style={{marginLeft: "10px"}} onClick={() => setEditShow(0)}>Submit</button>
+           </div> : <div></div>}
           {reco == show.showId ?
-        <div>
-        <label>Recommend</label>
+        <div style={{marginBottom: "10px", marginTop: "10px"}} >
+        <label><h4 style={{marginRight: "5px"}}>Recommend: </h4></label>
           <select  onChange={event => handleReco(event, show)}>
           {/* <option  defaultValue={show.rating}>{show.rating}</option> */}
           <option value="">Select Friend</option>
@@ -366,15 +386,13 @@ export default function MyShow() {
           {newRec?
           <form>
           <div>
-        <label>Comments</label>
+        <label>Comments: </label>
           <input onChange={handleComments} name='comments'  type="text" placeholder="Comments"/>
         </div>
         </form> : <div></div>}
-          <button onClick={event => submitReco(event)}>Submit</button>
+          <button className="btn btn-primary" style={{marginLeft: "10px"}} onClick={event => submitReco(event)}>Submit</button>
           </div> : <div></div>}
-        </div></div></div>)}): <div></div>}
-      </div>
-        <hr></hr>
+        </div></div></div>)}): <div></div>}</div>
         <hr></hr>
     </div>: <div></div>}
     {statusView == "WATCHLIST"?
@@ -389,7 +407,7 @@ export default function MyShow() {
               </select>
               </div>
 
-  <div>Watchlist:</div>
+  <h2>Watchlist:</h2>
   <div className ="row">
   {ratings ? ratings.filter((rating) =>rating.status ==="WATCHLIST").map((show)=> {
     return(
@@ -397,7 +415,6 @@ export default function MyShow() {
       <div className="container text-center mt-2" >
   <div   className="card border border-5  border-dark" style={{width: "18rem", border: "solid black"}}>
     <h1><Link to={`/shows/${show.showId}`}>{show.showName}</Link></h1>
-    <div>Rating={show.rating}</div>
     <div className="text-center" style={{padding:"20px"}}>
     <button className="btn btn-secondary" style={{width: "75%", marginBottom: "10px"}} onClick={event => handleClick(event, show)}>Add To Watching</button>
     <button className="btn btn-secondary" style={{width: "75%", marginBottom: "10px"}} onClick={event => handleClick3(event, show)}>Add To Watched</button>
@@ -417,7 +434,7 @@ export default function MyShow() {
               </select>
               </div>
 
-  <div>Watching:</div>
+  <h2>Watching:</h2>
   <div className ="row">
   {ratings ? ratings.filter((rating) =>rating.status ==="WATCHING").map((show)=> {
     return(
@@ -449,45 +466,45 @@ export default function MyShow() {
         <div className="progress-bar" role="progressbar" style={{width: "100%"}} aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
         </div> : <div></div>}
         <div className="text-center" style={{padding:"20px"}}>
-        <button className="btn btn-secondary" style={{width: "75%", marginBottom: "10px" }}  onClick={() => setEditProgress(show.showId)}>Update Progress</button>
-        <button className="btn btn-secondary" style={{width: "75%", marginBottom: "10px" }}  onClick={() => setEditShow(show.showId)}>Update Rating</button>
+        <button className="btn btn-secondary" style={{width: "75%", marginBottom: "10px" }}  onClick={(event) => handleProgress(event, show.showId)}>Update Progress</button>
+        <button className="btn btn-secondary" style={{width: "75%", marginBottom: "10px" }}  onClick={(event) => handleRatings(event, show.showId)}>Update Rating</button>
         <button className="btn btn-secondary" style={{width: "75%", marginBottom: "10px" }} onClick={event => handleClick3(event, show)}>Add To Watched</button>
-        <button className="btn btn-secondary" style={{width: "75%", marginBottom: "10px" }}  onClick={() => setReco(show.showId)}>Recommend Show</button>
+        <button className="btn btn-secondary" style={{width: "75%", marginBottom: "10px" }}  onClick={(event) => handleNewRec(event, show.showId)}>Recommend Show</button>
         {show.showName == user.favShowName ?<div>FAVORITE!</div>: <button className="btn btn-secondary" style={{width: "75%", marginBottom: "10px" }}  onClick={event => makeFave(event, show)}>Make Fav</button>}
         </div>
         {editProgress == show.showId ?
-        <div>
-        <label>Progress</label>
-          <select   onChange={event => handleClick4(event, show)}>
-          <option  defaultValue={show.progress}>{show.progress}</option>
-          <option value="1">25%</option>
-          <option value="2">50%</option>
-          <option value="3">75%</option>
-          <option value="4">100%</option>
-          </select>
-          <button onClick={() => setEditProgress(0)}>Submit</button>
-          </div> : <div></div>}
+         <div style={{marginBottom: "10px", marginTop: "10px"}}>
+         <label><h4 style={{marginRight: "10px"}}>Progress: </h4></label>
+           <select   onChange={event => handleClick4(event, show)}>
+           <option  defaultValue={show.progress}>Progress</option>
+           <option value="1">25%</option>
+           <option value="2">50%</option>
+           <option value="3">75%</option>
+           <option value="4">100%</option>
+           </select>
+           <button className="btn btn-primary" style={{marginLeft: "10px"}} onClick={() => setEditProgress(0)}>Submit</button>
+           </div> : <div></div>}
         {editShow == show.showId ?
-        <div>
-        <label>Rating</label>
-          <select   onChange={event => handleClick2(event, show)}>
-          <option  defaultValue={show.rating}>{show.rating}</option>
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-          <option value="5">5</option>
-          <option value="6">6</option>
-          <option value="7">7</option>
-          <option value="8">8</option>
-          <option value="9">9</option>
-          <option value="10">10</option>
-          </select>
-          <button onClick={() => setEditShow(0)}>Submit</button>
-          </div> : <div></div>}
+         <div style={{marginBottom: "10px", marginTop: "10px"}} >
+         <label><h4 style={{marginRight: "5px"}}>Rating:  </h4></label>
+           <select   onChange={event => handleClick2(event, show)}>
+           <option  defaultValue={show.rating}>{show.rating}</option>
+           <option value="1">1</option>
+           <option value="2">2</option>
+           <option value="3">3</option>
+           <option value="4">4</option>
+           <option value="5">5</option>
+           <option value="6">6</option>
+           <option value="7">7</option>
+           <option value="8">8</option>
+           <option value="9">9</option>
+           <option value="10">10</option>
+           </select>
+           <button className="btn btn-primary" style={{marginLeft: "10px"}} onClick={() => setEditShow(0)}>Submit</button>
+           </div> : <div></div>}
           {reco == show.showId ?
-        <div>
-        <label>Recommend</label>
+        <div style={{marginBottom: "10px", marginTop: "10px"}} >
+        <label><h4 style={{marginRight: "5px"}}>Recommend: </h4></label>
           <select  onChange={event => handleReco(event, show)}>
           {/* <option  defaultValue={show.rating}>{show.rating}</option> */}
           <option value="">Select Friend</option>
@@ -496,19 +513,17 @@ export default function MyShow() {
           {newRec?
           <form>
           <div>
-        <label>Comments</label>
+        <label>Comments: </label>
           <input onChange={handleComments} name='comments'  type="text" placeholder="Comments"/>
         </div>
         </form> : <div></div>}
-          <button onClick={event => submitReco(event)}>Submit</button>
+          <button className="btn btn-primary" style={{marginLeft: "10px"}} onClick={event => submitReco(event)}>Submit</button>
           </div> : <div></div>}
-        </div></div></div>)}): <div></div>}
-      </div>
-        <hr></hr>
+        </div></div></div>)}): <div></div>}</div>
         <hr></hr>
     </div>: <div></div>}
     </div>
-    <h1><Link to="/show/add">Add Show</Link></h1>
+    <h1 className='text-center'><Link to="/show/add">Add Show</Link></h1>
     </div>
   )
 

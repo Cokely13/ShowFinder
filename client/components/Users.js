@@ -37,23 +37,29 @@ export default function Users() {
 
   }
 
-  console.log("HEY", users)
+  console.log("users", users)
 
   return (
     <div>
     <h1>Users: </h1>
     {users? users.filter((user) =>user.id !== id).map((user)=> {
       return(
+        friends.filter((friend) => friend.friendId == user.id).length ?  <div className="col" key={user.id}>
+        <div className="container text-center mt-2" >
+    <div   className="card border border-primary border-5" style={{width: "18rem"}}>
+    <img className="card-img-top rounded-circle border border-5  border-dark"  style={{width: "75%", marginLeft: "auto", marginRight: "auto", marginTop: "10px", marginBottom: "10px"}} src={user.imageUrl} alt="Card image"/>
+      <h3><Link to={`/users/${user.id}`} >{user.username}</Link></h3>
+      <h5>Favorite Show: {user.favShowName}</h5>
+      </div></div></div> :
         <div className="col" key={user.id}>
           <div className="container text-center mt-2" >
       <div   className="card border border-dark" style={{width: "18rem", border: "solid black"}}>
       <img className="card-img-top rounded-circle border border-5  border-dark"  style={{width: "75%", marginLeft: "auto", marginRight: "auto", marginTop: "10px", marginBottom: "10px"}} src={user.imageUrl} alt="Card image"/>
-        <div>UserName: <Link to={`/users/${user.id}`} >{user.username}</Link></div>
-        {/* <div>UserId: {user.id}</div> */}
-        {/* allUsers.filter((user) =>user.id == show.userId */}
-        {friends.filter((friend) => friend.friendId == user.id).length ? <div>FRIEND!!!</div>: <div className="text-center">
+        <h3><Link to={`/users/${user.id}`} >{user.username}</Link></h3>
+        <h5>Favorite Show: {user.favShowName}</h5>
+      <div className="text-center">
         <button className="btn btn-primary justify-content-center" style={{width: "75%", content: "center", marginTop: "10px", marginBottom: "10px"}} onClick={event => addFriend(event, user)}>Add Friend</button>
-        </div>}
+        </div>
         </div></div></div>
       )}) : <div>Hey</div>}
       </div>
