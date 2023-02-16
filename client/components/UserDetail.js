@@ -30,7 +30,7 @@ export default function UserDetail() {
     <div>
       <div>
     <div>{user.username}'s Profile</div>
-    <img style={{width: "18rem"}}  src={user.imageUrl}/>
+    <img className="rounded-circle border border-5  border-dark" style={{width: "18rem"}}  src={user.imageUrl}/>
 
     <div>Favorite Show: {user.favShowName}</div>
     <img style={{width: "18rem"}}  src={user.favShowImage}/>

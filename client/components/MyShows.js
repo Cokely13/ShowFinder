@@ -142,7 +142,7 @@ export default function MyShow() {
       <div className ="row">
       {ratings ? ratings.filter((rating) =>rating.status == "WATCHED").map((show)=> {
         return(
-          <div className="col" key={show.id} >
+          <div className="col " key={show.id} >
           <div className="container text-center mt-2" >
       <div  className="card border border-5 border-dark" style={{width: "18rem", border: "solid black"}}>
         <Link to={`/shows/${show.showId}`}>{show.showName}</Link>
@@ -152,9 +152,11 @@ export default function MyShow() {
         <div className="progress" style={{width: "18rem"}}>
         <div className="progress-bar" role="progressbar" style={{width: "100%"}} aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">100%</div>
         </div> : <div></div>}
-        <button onClick={() => setEditShow(show.showId)}>Update Rating</button>
-        <button onClick={() => setReco(show.showId)}>Recommend Show</button>
-        {show.showName == user.favShowName ?<div>FAVORITE!</div>: <button onClick={event => makeFave(event, show)}>Make Fav</button>}
+        <div className="text-center" style={{padding:"20px"}}>
+        <button className="btn btn-secondary justify-content-center" style={{width: "75%", padding:"20px"}} onClick={() => setEditShow(show.showId)}>Update Rating</button>
+        <button className="btn btn-success" style={{width: "75%", padding:"20px"}} onClick={() => setReco(show.showId)}>Recommend Show</button>
+        {show.showName == user.favShowName ?<div>FAVORITE!</div>: <button className="btn btn-danger"  onClick={event => makeFave(event, show)}>Make Fav</button>}
+        </div>
         {editShow == show.showId ?
         <div>
         <label>Rating</label>
