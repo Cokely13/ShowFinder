@@ -47,12 +47,12 @@ export default function Users() {
         <div className="col" key={user.id}>
           <div className="container text-center mt-2" >
       <div   className="card border border-dark" style={{width: "18rem", border: "solid black"}}>
-      <img className="card-img-top rounded-circle border border-5  border-dark"  src={user.imageUrl} alt="Card image"/>
+      <img className="card-img-top rounded-circle border border-5  border-dark"  style={{width: "75%", marginLeft: "auto", marginRight: "auto", marginTop: "10px", marginBottom: "10px"}} src={user.imageUrl} alt="Card image"/>
         <div>UserName: <Link to={`/users/${user.id}`} >{user.username}</Link></div>
         {/* <div>UserId: {user.id}</div> */}
         {/* allUsers.filter((user) =>user.id == show.userId */}
         {friends.filter((friend) => friend.friendId == user.id).length ? <div>FRIEND!!!</div>: <div className="text-center">
-        <button className="btn btn-primary justify-content-center" style={{width: "75%", content: "center"}} onClick={event => addFriend(event, user)}>Add Friend</button>
+        <button className="btn btn-primary justify-content-center" style={{width: "75%", content: "center", marginTop: "10px", marginBottom: "10px"}} onClick={event => addFriend(event, user)}>Add Friend</button>
         </div>}
         </div></div></div>
       )}) : <div>Hey</div>}
