@@ -64,12 +64,12 @@ export default function AddShow() {
     <form>
       <div >
         <div>
-        <label>Show Name: </label>
+        <label> <h2 htmlFor="showname" style={{marginRight: "10px"}}>Show Name: </h2></label>
           <input name='name' onChange={handleChange}  type="text" placeholder="Name"/>
         </div>
         {name?
         <div >
-          <label>Channel: </label>
+          <label> <h2 htmlFor="channel" style={{marginRight: "10px"}}>Channel: </h2></label>
           <div>
           <select  onChange={handleChange2} name="channel" className="form-control">
         <option disabled selected value="Channel">Select Channel</option>
@@ -82,12 +82,14 @@ export default function AddShow() {
         </div> </div> : <div></div>}
         {channel?
         <div>
-        <label>Image: </label>
+        <label> <h2 htmlFor="image" style={{marginRight: "10px"}}>Image: </h2></label>
           <input name='image' onChange={handleChange3}  type="text" placeholder="Copy Image Address"/>
         </div>: <div></div>}
       </div>
     </form>
-    <button onClick={handleClick}>Add Show</button>
+    <div className="text-center">
+    <button className="btn btn-primary text-center"  onClick={handleClick}>Add Show</button>
+    </div>
   </div>
   )
 }

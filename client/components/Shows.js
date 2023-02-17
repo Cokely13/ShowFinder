@@ -28,12 +28,16 @@ function Shows() {
     <div>
      <div>
      <div className="row">
+     <div className="text-center">
     <h1 className="col" >All Shows</h1>
-    <Link className="col" to={`/show/add`}>ADD SHOW</Link>
     </div>
-    <div className="row"><input style={{width: "100%",
+    </div>
+    <div className="row">
+      <div style={{width: "25%", marginRight: "75%", marginBottom: "10px"}}>
+    <input style={{width: "100%",
   padding: "12px 20px",
-  margin: "8px 0", border: "2px solid black", }} placeholder="Search Show Name" onChange={event => setQuery(event.target.value)} />
+  marginLeft: "10px", border: "2px solid red", }} placeholder="Search Show Name" onChange={event => setQuery(event.target.value)} />
+  </div>
     { shows.filter(show => {
     if (query === '') {
       return show;
@@ -59,9 +63,13 @@ function Shows() {
         </div>
         </div>
         </div>
+
       )
     })}
      </div>
+     </div>
+    <div className="text-center" style={{marginTop: "20px"}}>
+    <h2><Link className="col" to={`/show/add`}>ADD SHOW</Link> </h2>
     </div>
     </div>
   )

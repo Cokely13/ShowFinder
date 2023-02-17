@@ -100,18 +100,18 @@ export default function ShowDetail() {
 
   return (
     <div>
-    <h1>ShowDetail:</h1>
+    {/* <h1>ShowDetail:</h1> */}
     {editShow == show.id?
     <div >
     <form>
-      <div >
+      <div className ="row">
         <div>
-        <label>Show Name</label>
+        <label> <h2 htmlFor="username" style={{marginRight: "10px"}}>Show Name: </h2></label>
           <input name='name' onChange={handleChange}  type="text" placeholder={show.name}/>
         </div>
-        <div >
-          <label>Channel</label>
-          <select  onChange={handleChange2} name="channel" className="form-control">
+        <div>
+          <label><h2 htmlFor="username" style={{marginRight: "10px"}}>Channel:  </h2></label>
+          <select  onChange={handleChange2} name="channel" >
         <option selected value={show.channel}>{show.channel}</option>
           <option value="HBO">HBO</option>
           <option value="NETFLIX">NETFLIX</option>
@@ -119,15 +119,15 @@ export default function ShowDetail() {
           <option value="AMAZON">AMAZON</option>
           <option value="OTHER">OTHER</option>
           </select>
-        </div>
+          </div>
         <div>
-        <label>Image</label>
+        <label><h2 htmlFor="username" style={{marginRight: "10px"}}>Image: </h2></label>
           <input name='image' onChange={handleChange3}  type="text" placeholder={show.image}/>
         </div>
       </div>
     </form>
-    <button onClick={handleClick}>Edit Show</button>
-    <button onClick={event => dispatch(deleteShow(show.id))}>Delete Show</button>
+    <button className="btn btn-primary" style={{width: "15%", marginBottom: "10px", marginRight: "30px"}}  onClick={handleClick}>Update Show</button>
+    <button className="btn btn-danger" style={{width: "15%", marginBottom: "10px", marginRight: "30px"}} onClick={event => dispatch(deleteShow(show.id))}>Delete Show</button>
   </div>:
     <div className='text-center'>
     <h1>{show.name}</h1>
@@ -136,11 +136,11 @@ export default function ShowDetail() {
         <hr></hr>
         <div className="container text-center mt-2" >
           <h2>Stats:</h2>
-    <div  className="card border border-dark text-center" >
-    {ratings ? ratings.length ? <div> People Watched: {ratings.filter((rating) =>rating.status ==="WATCHED").length} </div> : <div></div> : <div></div>}
-    {ratings ? ratings.length ? <div> People Watching: {ratings.filter((rating) =>rating.status ==="WATCHING").length} </div> : <div></div> : <div></div>}
-    {ratings ? ratings.length ? <div> People Watchlist: {ratings.filter((rating) =>rating.status ==="WATCHLIST").length} </div> : <div></div> : <div></div>}
-    {ratings ? ratings.length ?  <div>AverageRating: {Math.floor((ratings.map(item => item.rating).reduce((prev, next) => prev + next))/(ratings.length))}</div>: <div>No Ratings Yet</div> : <div>No Ratings</div> }
+    <div  className="text-center" >
+    {ratings ? ratings.length ? <h3> People Watched: {ratings.filter((rating) =>rating.status ==="WATCHED").length} </h3> : <div></div> : <div></div>}
+    {ratings ? ratings.length ? <h3> People Watching: {ratings.filter((rating) =>rating.status ==="WATCHING").length} </h3> : <div></div> : <div></div>}
+    {ratings ? ratings.length ? <h3> People Watchlist: {ratings.filter((rating) =>rating.status ==="WATCHLIST").length} </h3> : <div></div> : <div></div>}
+    {ratings ? ratings.length ?  <h3>AverageRating: {Math.floor((ratings.map(item => item.rating).reduce((prev, next) => prev + next))/(ratings.length))}</h3>: <div>No Ratings Yet</div> : <div>No Ratings</div> }
     </div>
     </div>
         {editShow == show.id? <div></div>: <div>
@@ -150,8 +150,8 @@ export default function ShowDetail() {
       return(
         <div className="col" key={show.id} >
         <div className="container text-center mt-2" >
-        <div  className="card border border-dark" style={{width: "18rem", border: "solid black"}}>
-        <img className="rounded-circle border border-5  border-dark" style={{width: "18rem"}}  src={allUsers.filter((user) =>user.id == show.userId)[0].imageUrl}/>
+        <div className="card border border-dark" style={{width: "18rem", height: "18rem",  border: "solid black"}}>
+        <img className="rounded-circle border border-5  border-dark" style={{width: "75%", height: "18rem", marginLeft: "auto", marginRight: "auto", marginTop: "10px", marginBottom: "10px"}} src={allUsers.filter((user) =>user.id == show.userId)[0].imageUrl}/>
         <Link to={`/users/${show.userId}`}>{allUsers.filter((user) =>user.id == show.userId)[0].username}</Link>
         <div>Rating: {show.rating}</div>
         {/* <div>User Id:{show.userId}</div> */}
@@ -163,7 +163,7 @@ export default function ShowDetail() {
 
     }): <div></div> : <div>No Ratings</div> }
     </div>
-    {user.admin?<button onClick={handleUpdate}>Update Show</button>:<div></div> }
+    {user.admin?<h2 className='text-center'><button className='btn btn-danger'  onClick={handleUpdate}>Update Show</button></h2>:<div></div> }
     </div>}
     </div>
   )

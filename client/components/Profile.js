@@ -87,20 +87,21 @@ const handleClick = (e) => {
   setEditProfile("")
 }
 
+console.log("USER", user)
 
   return (
     <div>
       {editProfile == id? <div >
-    <form>
+    <form className="col">
       <div >
-        <div>
-        <label>User Name: </label>
+      <div className="col">
+        <label><h2 htmlFor="username" style={{marginRight: "10px"}}>User Name: </h2></label>
           <input name='username' onChange={handleChange}  type="text" placeholder={user.username}/>
-        </div>
-        <div >
-          <label>Avatar: </label>
-          <div>
-          <select  onChange={handleChange2} name="imageUrl" className="form-control">
+          </div>
+          <div className="col">
+          {/* <div className="col"> */}
+          <label><h2 style={{marginRight: "10px"}}>Avatar: </h2></label>
+          <select  onChange={handleChange2} name="imageUrl" >
         <option selected value={user.imageUrl}>Current Avatar</option>
           <option value="https://cdn2.iconfinder.com/data/icons/super-hero/154/ironman-head-comics-avatar-iron-man-512.png">Ironman</option>
           <option value="https://cdn-dynamics.azurewebsites.net/Content/Index/c83bcac3-ea7d-4d7b-9104-c716a6b3e9b7">Black Panther</option>
@@ -118,30 +119,32 @@ const handleClick = (e) => {
           <option value="https://tr.rbxcdn.com/dfe258d22c61cac01b86015d135c2314/420/420/Image/Png">Saul Goodman</option>
           <option value="https://i.pinimg.com/originals/d1/70/2f/d1702f4ba2dad0d4478d69583c570d74.jpg">Archer</option>
           </select>
-          <img className="rounded-circle"  style={{width: "18rem"}}  src={avatar}/>
-        </div>
-        </div>
-        <div>
-        <label>password: </label>
+          {/* </div> */}
+          </div>
+          <img className="rounded-circle border border-5  border-dark"  style={{width: "18rem"}}  src={avatar}/>
+          <div className="col">
+          <label><h2 htmlFor="password" style={{marginRight: "10px"}}>Password: </h2> </label>
           <input name='password' onChange={handleChange3}  type="text" placeholder={user.password}/>
-        </div>
+          </div>
       </div>
     </form>
-    <button onClick={handleClick}>Update Profile</button>
+    <h2 className='text-center'><button className='btn btn-primary' onClick={handleClick}>Update Profile</button></h2>
   </div>:
       <div>
-    <div>Profile</div>
+    <h1>Profile</h1>
+    <div className="text-center">
     <img className="rounded-circle border border-5  border-dark" style={{width: "18rem"}}  src={user.imageUrl}/>
-    <div><button onClick={handleUpdate}>Update Profile</button></div>
+    <div style={{marginTop: "10px"}}><button className='btn btn-primary'  onClick={handleUpdate}>Update Profile</button></div>
+    </div>
     {/* <form onSubmit={handleSubmit(onSubmit)}>
       <input {...register('picture')}  type="file" name="picture" />
       <button>Submit</button>
     </form> */}
-    <div> Fav Show: {user.favShowName}</div>
-    <img style={{width: "18rem"}}  src={user.favShowImage}/>
+    <h2> Fav Show: {user.favShowName}</h2>
+    <img className="card border border-5  border-dark" style={{width: "18rem", marginBottom: "10px"}}  src={user.favShowImage}/>
     <div>
 
-    <button onClick={handlePic}>Update Pic</button>
+    <button className='btn btn-primary' style={{marginLeft: "8%"}} onClick={handlePic}>Update Pic</button>
     </div>
     </div>}
     </div>

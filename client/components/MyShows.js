@@ -147,7 +147,6 @@ export default function MyShow() {
       <img className="rounded-circle border border-5  border-dark" style={{width: "18rem"}}  src={user.imageUrl}/>
       <h1>{user.username}</h1>
       </div>
-      <hr></hr>
       {!statusView?
       <div>
     <div>
@@ -160,16 +159,67 @@ export default function MyShow() {
           <option value="">ALL</option>
               </select>
               </div>
-      <h2>Watched:</h2>
+      <h2 style={{marginTop: "10px"}}>Watched:</h2>
       <div className ="row ">
       {ratings ? ratings.filter((rating) =>rating.status == "WATCHED").map((show)=> {
         return(
+          show.showName == user.favShowName? <div className="col " key={show.id} >
+          <div className="container text-center mt-2" >
+      <div  className="card border border-5 border-warning" style={{width: "18rem"}}>
+        <h1><Link to={`/shows/${show.showId}`}>{show.showName}</Link></h1>
+        <h5>Rating: {show.rating}</h5>
+        <h5>Progress:</h5>
+        {show.progress == 4 ?
+        <div className="progress"  style={{width: "75%", marginLeft: "auto", marginRight: "auto"}}>
+        <div className="progress-bar " role="progressbar" style={{width: "100%"}} aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">100%</div>
+        </div>: <div></div>}
+        <div className="text-center" style={{padding:"20px"}}>
+        <button className="btn btn-secondary" style={{width: "75%", marginBottom: "10px" }} onClick={(event) => handleRatings(event, show.showId)}>Update Rating</button>
+        <button className="btn btn-success" style={{width: "75%", marginBottom: "10px"}} onClick={(event) => handleNewRec(event, show.showId)}>Recommend Show</button>
+        {show.showName == user.favShowName ?<div>FAVORITE!</div>: <button className="btn btn-danger" style={{width: "75%"}} onClick={event => makeFave(event, show)}>Make Fav</button>}
+        </div>
+        {editShow == show.showId ?
+         <div style={{marginBottom: "10px", marginTop: "10px"}} >
+         <label><h4 style={{marginRight: "5px"}}>Rating:  </h4></label>
+           <select   onChange={event => handleClick2(event, show)}>
+           <option  defaultValue={show.rating}>{show.rating}</option>
+           <option value="1">1</option>
+           <option value="2">2</option>
+           <option value="3">3</option>
+           <option value="4">4</option>
+           <option value="5">5</option>
+           <option value="6">6</option>
+           <option value="7">7</option>
+           <option value="8">8</option>
+           <option value="9">9</option>
+           <option value="10">10</option>
+           </select>
+           <button className="btn btn-primary" style={{marginLeft: "10px"}} onClick={() => setEditShow(0)}>Submit</button>
+           </div> : <div></div>}
+          {reco == show.showId ?
+            <div style={{marginBottom: "10px", marginTop: "10px"}} >
+        <label><h4 style={{marginRight: "5px"}}>Recommend: </h4></label>
+          <select  onChange={event => handleReco(event, show)}>
+          {/* <option  defaultValue={show.rating}>{show.rating}</option> */}
+          <option value="">Select Friend</option>
+              {user.friends.map((event) => <option key={event.id} value={event.friendName}>{event.friendName}</option>)}
+          </select>
+          {newRec?
+          <form>
+          <div>
+        <label>Comments: </label>
+          <input onChange={handleComments} name='comments'  type="text" placeholder="Comments"/>
+        </div>
+        </form> : <div></div>}
+          <button className="btn btn-primary" style={{marginLeft: "10px"}} onClick={event => submitReco(event)}>Submit</button>
+          </div> : <div></div>}
+        </div></div></div>:
           <div className="col " key={show.id} >
           <div className="container text-center mt-2" >
-      <div  className="card border border-5 border-dark" style={{width: "18rem", border: "solid black"}}>
+      <div  className="card border border-2 border-dark" style={{width: "18rem"}}>
         <h1><Link to={`/shows/${show.showId}`}>{show.showName}</Link></h1>
-        <div>Rating={show.rating}</div>
-        <div>Progress:</div>
+        <h5>Rating: {show.rating}</h5>
+        <h5>Progress:</h5>
         {show.progress == 4 ?
         <div className="progress"  style={{width: "75%", marginLeft: "auto", marginRight: "auto"}}>
         <div className="progress-bar " role="progressbar" style={{width: "100%"}} aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">100%</div>
@@ -215,21 +265,101 @@ export default function MyShow() {
           <button className="btn btn-primary" style={{marginLeft: "10px"}} onClick={event => submitReco(event)}>Submit</button>
           </div> : <div></div>}
         </div></div></div>)}): <div></div>}</div>
-        <hr></hr>
     </div>
     {/* style={{height: "200px",
   width: "50%"}}  */}
     <div>
-      <h2>Watching:</h2>
+      <h2 style={{marginTop: "10px"}}>Watching:</h2>
       <div className ="row">
       {ratings ? ratings.filter((rating) =>rating.status == "WATCHING").map((show)=> {
         return(
+          show.showName == user.favShowName ?<div className="col" key={show.id}>
+          <div className="container text-center mt-2" >
+      <div   className="card border border-5  border-warning" style={{width: "18rem", }}>
+      <h1><Link to={`/shows/${show.showId}`}>{show.showName}</Link></h1>
+      <h5>Rating: {show.rating}</h5>
+      <h5>Progress:</h5>
+      {show.progress == 0 ?
+      <div className="progress" style={{width: "75%", marginLeft: "auto", marginRight: "auto"}}>
+      <div className="progress-bar" role="progressbar" style={{width: "0%"}} aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+      </div> : <div></div>}
+      {show.progress == 1 ?
+      <div className="progress" style={{width: "75%", marginLeft: "auto", marginRight: "auto"}}>
+      <div className="progress-bar" role="progressbar" style={{width: "25%"}} aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
+      </div> : <div></div>}
+      {show.progress == 2 ?
+      <div className="progress" style={{width: "75%", marginLeft: "auto", marginRight: "auto"}}>
+      <div className="progress-bar" role="progressbar" style={{width: "50%"}} aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">50%</div>
+      </div> : <div></div>}
+      {show.progress == 3 ?
+      <div className="progress" style={{width: "75%", marginLeft: "auto", marginRight: "auto"}}>
+      <div className="progress-bar" role="progressbar" style={{width: "75%"}} aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">75%</div>
+      </div> : <div></div>}
+      {show.progress == 4 ?
+      <div className="progress" style={{width: "18rem"}}>
+      <div className="progress-bar" role="progressbar" style={{width: "100%"}} aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+      </div> : <div></div>}
+      <div className="text-center" style={{padding:"20px"}}>
+      <button className="btn btn-secondary" style={{width: "75%", marginBottom: "10px" }}  onClick={(event) => handleProgress(event,show.showId)}>Update Progress</button>
+      <button className="btn btn-secondary" style={{width: "75%", marginBottom: "10px" }}  onClick={(event) => handleRatings(event, show.showId)}>Update Rating</button>
+      <button className="btn btn-secondary" style={{width: "75%", marginBottom: "10px" }} onClick={event => handleClick3(event, show)}>Add To Watched</button>
+      <button className="btn btn-secondary" style={{width: "75%", marginBottom: "10px" }}  onClick={(event) => handleNewRec(event, show.showId)}>Recommend Show</button>
+      {show.showName == user.favShowName ?<div>FAVORITE!</div>: <button className="btn btn-secondary" style={{width: "75%", marginBottom: "10px" }}  onClick={event => makeFave(event, show)}>Make Fav</button>}
+      </div>
+      {editProgress == show.showId ?
+      <div style={{marginBottom: "10px", marginTop: "10px"}}>
+      <label><h4 style={{marginRight: "10px"}}>Progress: </h4></label>
+        <select   onChange={event => handleClick4(event, show)}>
+        <option  defaultValue={show.progress}>Progress</option>
+        <option value="1">25%</option>
+        <option value="2">50%</option>
+        <option value="3">75%</option>
+        <option value="4">100%</option>
+        </select>
+        <button className="btn btn-primary" style={{marginLeft: "10px"}} onClick={() => setEditProgress(0)}>Submit</button>
+        </div> : <div></div>}
+      {editShow == show.showId ?
+      <div style={{marginBottom: "10px", marginTop: "10px"}} >
+      <label><h4 style={{marginRight: "5px"}}>Rating:  </h4></label>
+        <select   onChange={event => handleClick2(event, show)}>
+        <option  defaultValue={show.rating}>{show.rating}</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        <option value="10">10</option>
+        </select>
+        <button className="btn btn-primary" style={{marginLeft: "10px"}} onClick={() => setEditShow(0)}>Submit</button>
+        </div> : <div></div>}
+        {reco == show.showId ?
+      <div style={{marginBottom: "10px", marginTop: "10px"}} >
+      <label><h4 style={{marginRight: "5px"}}>Recommend: </h4></label>
+        <select  onChange={event => handleReco(event, show)}>
+        {/* <option  defaultValue={show.rating}>{show.rating}</option> */}
+        <option value="">Select Friend</option>
+            {user.friends.map((event) => <option key={event.id} value={event.friendName}>{event.friendName}</option>)}
+        </select>
+        {newRec?
+        <form>
+        <div>
+      <label>Comments: </label>
+        <input onChange={handleComments} name='comments'  type="text" placeholder="Comments"/>
+      </div>
+      </form> : <div></div>}
+        <button className="btn btn-primary" style={{marginLeft: "10px"}} onClick={event => submitReco(event)}>Submit</button>
+        </div> : <div></div>}
+      </div></div></div>:
           <div className="col" key={show.id}>
             <div className="container text-center mt-2" >
-        <div   className="card border border-5  border-dark" style={{width: "18rem", border: "solid black"}}>
+        <div   className="card border border-2  border-dark" style={{width: "18rem", }}>
         <h1><Link to={`/shows/${show.showId}`}>{show.showName}</Link></h1>
-        <div>Rating={show.rating}</div>
-        <div>Progress: {show.progress}</div>
+        <h5>Rating: {show.rating}</h5>
+        <h5>Progress:</h5>
         {show.progress == 0 ?
         <div className="progress" style={{width: "75%", marginLeft: "auto", marginRight: "auto"}}>
         <div className="progress-bar" role="progressbar" style={{width: "0%"}} aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
@@ -305,16 +435,15 @@ export default function MyShow() {
           <button className="btn btn-primary" style={{marginLeft: "10px"}} onClick={event => submitReco(event)}>Submit</button>
           </div> : <div></div>}
         </div></div></div>)}): <div></div>}</div>
-        <hr></hr>
     </div>
     <div>
-      <h2>Watchlist:</h2>
+      <h2 style={{marginTop: "10px"}}>Watchlist:</h2>
       <div className ="row">
       {ratings ? ratings.filter((rating) =>rating.status == "WATCHLIST").map((show)=> {
         return(
           <div className="col" key={show.id}>
           <div className="container text-center mt-2" >
-      <div   className="card border border-5  border-dark" style={{width: "18rem", border: "solid black"}}>
+      <div   className="card border border-2  border-dark" style={{width: "18rem"}}>
         <h1><Link to={`/shows/${show.showId}`}>{show.showName}</Link></h1>
 
         <div className="text-center" style={{padding:"20px"}}>
@@ -322,7 +451,6 @@ export default function MyShow() {
         <button className="btn btn-secondary" style={{width: "75%", marginBottom: "10px"}} onClick={event => handleClick3(event, show)}>Add To Watched</button>
         </div></div></div></div>)}): <div></div>}
         </div>
-        <hr></hr>
     </div>
     </div>: <div></div>}
     <div>
@@ -338,16 +466,67 @@ export default function MyShow() {
               </select>
               </div>
 
-  <h2>Watched:</h2>
+  <h2 style={{marginTop: "10px"}}>Watched:</h2>
   <div className ="row">
   {ratings ? ratings.filter((rating) =>rating.status ==="WATCHED").map((show)=> {
     return(
+      show.showName == user.favShowName? <div className="col " key={show.id} >
+      <div className="container text-center mt-2" >
+  <div  className="card border border-5 border-warning" style={{width: "18rem"}}>
+    <h1><Link to={`/shows/${show.showId}`}>{show.showName}</Link></h1>
+    <h5>Rating: {show.rating}</h5>
+    <h5>Progress:</h5>
+    {show.progress == 4 ?
+    <div className="progress"  style={{width: "75%", marginLeft: "auto", marginRight: "auto"}}>
+    <div className="progress-bar " role="progressbar" style={{width: "100%"}} aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">100%</div>
+    </div>: <div></div>}
+    <div className="text-center" style={{padding:"20px"}}>
+    <button className="btn btn-secondary" style={{width: "75%", marginBottom: "10px" }} onClick={(event) => handleRatings(event, show.showId)}>Update Rating</button>
+    <button className="btn btn-success" style={{width: "75%", marginBottom: "10px"}} onClick={(event) => handleNewRec(event, show.showId)}>Recommend Show</button>
+    {show.showName == user.favShowName ?<div>FAVORITE!</div>: <button className="btn btn-danger" style={{width: "75%"}} onClick={event => makeFave(event, show)}>Make Fav</button>}
+    </div>
+    {editShow == show.showId ?
+     <div style={{marginBottom: "10px", marginTop: "10px"}} >
+     <label><h4 style={{marginRight: "5px"}}>Rating:  </h4></label>
+       <select   onChange={event => handleClick2(event, show)}>
+       <option  defaultValue={show.rating}>{show.rating}</option>
+       <option value="1">1</option>
+       <option value="2">2</option>
+       <option value="3">3</option>
+       <option value="4">4</option>
+       <option value="5">5</option>
+       <option value="6">6</option>
+       <option value="7">7</option>
+       <option value="8">8</option>
+       <option value="9">9</option>
+       <option value="10">10</option>
+       </select>
+       <button className="btn btn-primary" style={{marginLeft: "10px"}} onClick={() => setEditShow(0)}>Submit</button>
+       </div> : <div></div>}
+      {reco == show.showId ?
+        <div style={{marginBottom: "10px", marginTop: "10px"}} >
+    <label><h4 style={{marginRight: "5px"}}>Recommend: </h4></label>
+      <select  onChange={event => handleReco(event, show)}>
+      {/* <option  defaultValue={show.rating}>{show.rating}</option> */}
+      <option value="">Select Friend</option>
+          {user.friends.map((event) => <option key={event.id} value={event.friendName}>{event.friendName}</option>)}
+      </select>
+      {newRec?
+      <form>
+      <div>
+    <label>Comments: </label>
+      <input onChange={handleComments} name='comments'  type="text" placeholder="Comments"/>
+    </div>
+    </form> : <div></div>}
+      <button className="btn btn-primary" style={{marginLeft: "10px"}} onClick={event => submitReco(event)}>Submit</button>
+      </div> : <div></div>}
+    </div></div></div>:
       <div className="col " key={show.id} >
           <div className="container text-center mt-2" >
-      <div  className="card border border-5 border-dark" style={{width: "18rem", border: "solid black"}}>
+      <div  className="card border border-2 border-dark" style={{width: "18rem"}}>
         <h1><Link to={`/shows/${show.showId}`}>{show.showName}</Link></h1>
-        <div>Rating={show.rating}</div>
-        <div>Progress:</div>
+        <h5>Rating: {show.rating}</h5>
+        <h5>Progress:</h5>
         {show.progress == 4 ?
         <div className="progress"  style={{width: "75%", marginLeft: "auto", marginRight: "auto"}}>
         <div className="progress-bar " role="progressbar" style={{width: "100%"}} aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">100%</div>
@@ -393,7 +572,6 @@ export default function MyShow() {
           <button className="btn btn-primary" style={{marginLeft: "10px"}} onClick={event => submitReco(event)}>Submit</button>
           </div> : <div></div>}
         </div></div></div>)}): <div></div>}</div>
-        <hr></hr>
     </div>: <div></div>}
     {statusView == "WATCHLIST"?
 <div>
@@ -413,14 +591,13 @@ export default function MyShow() {
     return(
       <div className="col" key={show.id}>
       <div className="container text-center mt-2" >
-  <div   className="card border border-5  border-dark" style={{width: "18rem", border: "solid black"}}>
+  <div   className="card border border-2  border-dark" style={{width: "18rem"}}>
     <h1><Link to={`/shows/${show.showId}`}>{show.showName}</Link></h1>
     <div className="text-center" style={{padding:"20px"}}>
     <button className="btn btn-secondary" style={{width: "75%", marginBottom: "10px"}} onClick={event => handleClick(event, show)}>Add To Watching</button>
     <button className="btn btn-secondary" style={{width: "75%", marginBottom: "10px"}} onClick={event => handleClick3(event, show)}>Add To Watched</button>
     </div></div></div></div>)}): <div></div>}
     </div>
-    <hr></hr>
 </div>: <div></div>}
     {statusView == "WATCHING"?
 <div>
@@ -438,13 +615,93 @@ export default function MyShow() {
   <div className ="row">
   {ratings ? ratings.filter((rating) =>rating.status ==="WATCHING").map((show)=> {
     return(
-
+      show.showName == user.favShowName ?<div className="col" key={show.id}>
+      <div className="container text-center mt-2" >
+  <div   className="card border border-5  border-warning" style={{width: "18rem", }}>
+  <h1><Link to={`/shows/${show.showId}`}>{show.showName}</Link></h1>
+  <h5>Rating: {show.rating}</h5>
+  <h5>Progress:</h5>
+  {show.progress == 0 ?
+  <div className="progress" style={{width: "75%", marginLeft: "auto", marginRight: "auto"}}>
+  <div className="progress-bar" role="progressbar" style={{width: "0%"}} aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+  </div> : <div></div>}
+  {show.progress == 1 ?
+  <div className="progress" style={{width: "75%", marginLeft: "auto", marginRight: "auto"}}>
+  <div className="progress-bar" role="progressbar" style={{width: "25%"}} aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
+  </div> : <div></div>}
+  {show.progress == 2 ?
+  <div className="progress" style={{width: "75%", marginLeft: "auto", marginRight: "auto"}}>
+  <div className="progress-bar" role="progressbar" style={{width: "50%"}} aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">50%</div>
+  </div> : <div></div>}
+  {show.progress == 3 ?
+  <div className="progress" style={{width: "75%", marginLeft: "auto", marginRight: "auto"}}>
+  <div className="progress-bar" role="progressbar" style={{width: "75%"}} aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">75%</div>
+  </div> : <div></div>}
+  {show.progress == 4 ?
+  <div className="progress" style={{width: "18rem"}}>
+  <div className="progress-bar" role="progressbar" style={{width: "100%"}} aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+  </div> : <div></div>}
+  <div className="text-center" style={{padding:"20px"}}>
+  <button className="btn btn-secondary" style={{width: "75%", marginBottom: "10px" }}  onClick={(event) => handleProgress(event,show.showId)}>Update Progress</button>
+  <button className="btn btn-secondary" style={{width: "75%", marginBottom: "10px" }}  onClick={(event) => handleRatings(event, show.showId)}>Update Rating</button>
+  <button className="btn btn-secondary" style={{width: "75%", marginBottom: "10px" }} onClick={event => handleClick3(event, show)}>Add To Watched</button>
+  <button className="btn btn-secondary" style={{width: "75%", marginBottom: "10px" }}  onClick={(event) => handleNewRec(event, show.showId)}>Recommend Show</button>
+  {show.showName == user.favShowName ?<div>FAVORITE!</div>: <button className="btn btn-secondary" style={{width: "75%", marginBottom: "10px" }}  onClick={event => makeFave(event, show)}>Make Fav</button>}
+  </div>
+  {editProgress == show.showId ?
+  <div style={{marginBottom: "10px", marginTop: "10px"}}>
+  <label><h4 style={{marginRight: "10px"}}>Progress: </h4></label>
+    <select   onChange={event => handleClick4(event, show)}>
+    <option  defaultValue={show.progress}>Progress</option>
+    <option value="1">25%</option>
+    <option value="2">50%</option>
+    <option value="3">75%</option>
+    <option value="4">100%</option>
+    </select>
+    <button className="btn btn-primary" style={{marginLeft: "10px"}} onClick={() => setEditProgress(0)}>Submit</button>
+    </div> : <div></div>}
+  {editShow == show.showId ?
+  <div style={{marginBottom: "10px", marginTop: "10px"}} >
+  <label><h4 style={{marginRight: "5px"}}>Rating:  </h4></label>
+    <select   onChange={event => handleClick2(event, show)}>
+    <option  defaultValue={show.rating}>{show.rating}</option>
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+    <option value="5">5</option>
+    <option value="6">6</option>
+    <option value="7">7</option>
+    <option value="8">8</option>
+    <option value="9">9</option>
+    <option value="10">10</option>
+    </select>
+    <button className="btn btn-primary" style={{marginLeft: "10px"}} onClick={() => setEditShow(0)}>Submit</button>
+    </div> : <div></div>}
+    {reco == show.showId ?
+  <div style={{marginBottom: "10px", marginTop: "10px"}} >
+  <label><h4 style={{marginRight: "5px"}}>Recommend: </h4></label>
+    <select  onChange={event => handleReco(event, show)}>
+    {/* <option  defaultValue={show.rating}>{show.rating}</option> */}
+    <option value="">Select Friend</option>
+        {user.friends.map((event) => <option key={event.id} value={event.friendName}>{event.friendName}</option>)}
+    </select>
+    {newRec?
+    <form>
+    <div>
+  <label>Comments: </label>
+    <input onChange={handleComments} name='comments'  type="text" placeholder="Comments"/>
+  </div>
+  </form> : <div></div>}
+    <button className="btn btn-primary" style={{marginLeft: "10px"}} onClick={event => submitReco(event)}>Submit</button>
+    </div> : <div></div>}
+  </div></div></div>:
       <div className="col" key={show.id}>
             <div className="container text-center mt-2" >
-        <div   className="card border border-5  border-dark" style={{width: "18rem", border: "solid black"}}>
+        <div   className="card border border-2  border-dark" style={{width: "18rem"}}>
         <h1><Link to={`/shows/${show.showId}`}>{show.showName}</Link></h1>
-        <div>Rating={show.rating}</div>
-        <div>Progress: {show.progress}</div>
+        <h5>Rating: {show.rating}</h5>
+        <h5>Progress:</h5>
         {show.progress == 0 ?
         <div className="progress" style={{width: "75%", marginLeft: "auto", marginRight: "auto"}}>
         <div className="progress-bar" role="progressbar" style={{width: "0%"}} aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
@@ -520,10 +777,9 @@ export default function MyShow() {
           <button className="btn btn-primary" style={{marginLeft: "10px"}} onClick={event => submitReco(event)}>Submit</button>
           </div> : <div></div>}
         </div></div></div>)}): <div></div>}</div>
-        <hr></hr>
     </div>: <div></div>}
     </div>
-    <h1 className='text-center'><Link to="/show/add">Add Show</Link></h1>
+    <h1 className='text-center' style={{marginTop: "15px"}}><Link to="/show/add">Add Show</Link></h1>
     </div>
   )
 
