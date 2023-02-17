@@ -2,10 +2,14 @@ import React from 'react'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 import {logout} from '../store'
+// import bingeProof from '../Images/bingeProof.png'
+// let Logo = require('../images/bingeProof.png')
 
 const Navbar = ({handleClick, isLoggedIn}) => (
   <div>
-    <h1>BingeProof</h1>
+    {/* <div className='test'></div> */}
+    {/* <img src={Logo}/> */}
+
     <nav>
       {isLoggedIn ? (
         <div>
