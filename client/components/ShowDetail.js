@@ -133,19 +133,17 @@ export default function ShowDetail() {
     <h1>{show.name}</h1>
         <img className='border border-5  border-dark' style={{width: "18rem"}}  src={show.image}/>
         </div>}
-        <hr></hr>
-        <div className="container text-center mt-2" >
-          <h2>Stats:</h2>
+        <div className="container text-center mt-2" style={{marginTop: "15px"}}  >
     <div  className="text-center" >
-    {ratings ? ratings.length ? <h3> People Watched: {ratings.filter((rating) =>rating.status ==="WATCHED").length} </h3> : <div></div> : <div></div>}
-    {ratings ? ratings.length ? <h3> People Watching: {ratings.filter((rating) =>rating.status ==="WATCHING").length} </h3> : <div></div> : <div></div>}
-    {ratings ? ratings.length ? <h3> People Watchlist: {ratings.filter((rating) =>rating.status ==="WATCHLIST").length} </h3> : <div></div> : <div></div>}
-    {ratings ? ratings.length ?  <h3>AverageRating: {Math.floor((ratings.map(item => item.rating).reduce((prev, next) => prev + next))/(ratings.length))}</h3>: <div>No Ratings Yet</div> : <div>No Ratings</div> }
+    {ratings ? ratings.length ? <h3> Watched: {ratings.filter((rating) =>rating.status ==="WATCHED").length} </h3> : <div></div> : <div></div>}
+    {ratings ? ratings.length ? <h3> Watching: {ratings.filter((rating) =>rating.status ==="WATCHING").length} </h3> : <div></div> : <div></div>}
+    {ratings ? ratings.length ? <h3> Watchlist: {ratings.filter((rating) =>rating.status ==="WATCHLIST").length} </h3> : <div></div> : <div></div>}
+    {ratings ? ratings.length ?  <h3>Average Rating: {Math.floor((ratings.map(item => item.rating).reduce((prev, next) => prev + next))/(ratings.length))}</h3>: <div>No Ratings Yet</div> : <div>No Ratings</div> }
     </div>
     </div>
         {editShow == show.id? <div></div>: <div>
         <div className="row text-center" style={{padding:"50px"}}>
-        <h2>Ratings:</h2>
+        <h1>Ratings:</h1>
     {ratings? ratings.length ? ratings.map((show) => {
       return(
         <div className="col" key={show.id} >

@@ -87,7 +87,6 @@ const handleClick = (e) => {
   setEditProfile("")
 }
 
-console.log("USER", user)
 
   return (
     <div>

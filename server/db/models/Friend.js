@@ -11,16 +11,13 @@ const Friend = db.define('friend', {
     },
     userId: {
       type: Sequelize.INTEGER,
-      unique: false
   },
     friendId: {
         type: Sequelize.INTEGER,
-        unique: true
     },
     friendName: {
         type: Sequelize.STRING,
         allowNull: false,
-        unique: true,
         validate: {
           notEmpty: true
         }

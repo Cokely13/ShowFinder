@@ -35,42 +35,40 @@ export default function Recommendations() {
   return (
     <div>
     <h1>Recommendations For Me:</h1>
-    <hr></hr>
     <div className ="row">
     {recommendations ? recommendations.filter((reco) =>reco.friendId == id).map((reco)=> {
       return(
         <div className="col" key={reco.id}>
           <div className="container text-center mt-2" >
       <div   className="card border border-dark" style={{width: "18rem", border: "solid black"}}>
-        <div>Show: <Link to={`/shows/${reco.showId}`} >{reco.showName}</Link></div>
-        <div>Recommended By: <Link to={`/users/${reco.userId}`}>{reco.userName}</Link></div>
-        <div>Comments: {reco.comments}</div>
-        <div>Like: {reco.like}</div>
-        <button onClick={() => setEditLike(reco.id)}>Update Like</button>
+        <h3><Link to={`/shows/${reco.showId}`} >{reco.showName}</Link></h3>
+        <h5>Recommended By: <Link to={`/users/${reco.userId}`}>{reco.userName}</Link></h5>
+        <h5>Comments: {reco.comments}</h5>
+        <h5>Like: {reco.like}</h5>
+        <div style={{marginBottom: "5px", marginTop: "5px"}}><button className="btn btn-primary" style={{width: "50%"}}  onClick={() => setEditLike(reco.id)}>Update Like</button></div>
         {editLike == reco.id?
          <div>
-           <select  onChange={event => handleChange(event)}>
-           <option value="NONE">Chose Like</option>
+           <select style={{width: "50%"}} onChange={event => handleChange(event)}>
+           <option value="NONE">Choose Like</option>
            <option value="THUMBS UP">THUMBS UP</option>
            <option value="THUMBS DOWN">THUMBS DOWN</option>
            <option value="NOT GOING TO WATCH">NOT GOING TO WATCH</option>
            </select>
-           <button onClick={event => handleClick(event, reco)}>Submit</button>
+           <button className="btn btn-primary" style={{ marginLeft:"10px", marginRight:"10px", marginBottom: "10px"}} onClick={event => handleClick(event, reco)}>Submit</button>
            </div> : <div></div>}
            </div> </div> </div>
       )}) : <div>No</div>}
       </div>
-       <h1>Recommendations By Me: </h1>
-       <hr></hr>
+       <h1 style={{marginTop: "15px"}}>Recommendations By Me: </h1>
        <div className ="row">
     {recommendations ? recommendations.filter((reco) =>reco.userId == id).map((reco)=> {
       return(
         <div className="col" key={reco.id}>
         <div className="container text-center mt-2" >
     <div   className="card border border-dark" style={{width: "18rem", border: "solid black"}}>
-        <div>Show:<Link to={`/shows/${reco.showId}`} > {reco.showName}</Link></div>
-        <div>Recommended To:<Link to={`/users/${reco.friendId}`}> {reco.friendName}</Link></div>
-        <div>Did they like it?: {reco.like}</div>
+        <h3><Link to={`/shows/${reco.showId}`} > {reco.showName}</Link></h3>
+        <h5>Recommended To: <Link to={`/users/${reco.friendId}`}> {reco.friendName}</Link></h5>
+        <h5>Did they like it: {reco.like}</h5>
         </div></div></div>
       )}) : <div>No</div>}
       </div>
