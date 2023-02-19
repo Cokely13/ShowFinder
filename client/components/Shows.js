@@ -29,7 +29,7 @@ function Shows() {
      <div>
      <div className="row">
      <div className="text-center">
-    <h1 className="col" >All Shows</h1>
+    <div className="col"><h1 className="border border-5  border-dark text-white-50 bg-dark" style={{marginBottom: "10px", marginLeft: "auto", marginRight: "auto", width: "15rem"}}>All Shows</h1></div>
     </div>
     </div>
     <div className="row">

@@ -130,7 +130,9 @@ const handleClick = (e) => {
     <h2 className='text-center'><button className='btn btn-primary' onClick={handleClick}>Update Profile</button></h2>
   </div>:
       <div>
-    <h1>Profile</h1>
+    <div className="text-center">
+    <div className="col"><h1 className="border border-5  border-dark text-white-50 bg-dark" style={{marginBottom: "10px", marginLeft: "auto", marginRight: "auto", width: "25rem"}}>Profile</h1></div>
+    </div>
     <div className="text-center">
     <img className="rounded-circle border border-5  border-dark" style={{width: "18rem"}}  src={user.imageUrl}/>
     <div style={{marginTop: "10px"}}><button className='btn btn-primary'  onClick={handleUpdate}>Update Profile</button></div>
@@ -139,11 +141,13 @@ const handleClick = (e) => {
       <input {...register('picture')}  type="file" name="picture" />
       <button>Submit</button>
     </form> */}
-    <h2> Fav Show: {user.favShowName}</h2>
-    <img className="card border border-5  border-dark" style={{width: "18rem", marginBottom: "10px"}}  src={user.favShowImage}/>
+    <h2 className="border border-5  border-dark text-white-50 bg-dark" style={{marginTop: "10px", width: "10rem"}}> Fav Show: {user.favShowName}</h2>
+    <div className="text-center">
     <div>
-
-    <button className='btn btn-primary' style={{marginLeft: "8%"}} onClick={handlePic}>Update Pic</button>
+    <div className="text-center"><img className="card border border-5  border-dark" style={{width: "18rem", marginBottom: "10px", marginLeft: "auto", marginRight: "auto"}}  src={user.favShowImage}/>
+    <button className='btn btn-primary' onClick={handlePic}>Update Pic</button>
+    </div>
+    </div>
     </div>
     </div>}
     </div>

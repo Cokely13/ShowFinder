@@ -34,7 +34,11 @@ export default function Recommendations() {
 
   return (
     <div>
-    <h1>Recommendations For Me:</h1>
+      <div className="text-center">
+    <div className="col"><h1 className="border border-5  border-dark text-white-50 bg-dark" style={{marginBottom: "10px", marginLeft: "auto", marginRight: "auto", width: "25rem"}}>Recommendations</h1></div>
+    </div>
+
+    <h1 className="border border-5  border-dark text-white-50 bg-dark" style={{marginTop: "10px", width: "10rem"}}>For Me:</h1>
     <div className ="row">
     {recommendations ? recommendations.filter((reco) =>reco.friendId == id).map((reco)=> {
       return(
@@ -59,7 +63,7 @@ export default function Recommendations() {
            </div> </div> </div>
       )}) : <div>No</div>}
       </div>
-       <h1 style={{marginTop: "15px"}}>Recommendations By Me: </h1>
+       <h1 className="border border-5  border-dark text-white-50 bg-dark" style={{marginTop: "10px", width: "10rem"}}>By Me: </h1>
        <div className ="row">
     {recommendations ? recommendations.filter((reco) =>reco.userId == id).map((reco)=> {
       return(

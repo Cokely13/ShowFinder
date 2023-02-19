@@ -29,13 +29,16 @@ export default function UserDetail() {
   return (
     <div>
       <div>
-    <h2>{user.username}'s Profile</h2>
-    <img className="rounded-circle border border-5  border-dark" style={{width: "18rem"}}  src={user.imageUrl}/>
-
-    <h2 style={{marginTop: "15px"}}>Favorite Show: {user.favShowName}</h2>
-    <img className="border border-5  border-dark" style={{width: "18rem"}}  src={user.favShowImage}/>
+      <div className="text-center">
+      <div className="col"><h1 className="border border-5  border-dark text-white-50 bg-dark" style={{marginBottom: "10px", marginLeft: "auto", marginRight: "auto", width: "25rem"}}>{user.username}'s Profile</h1></div>
     </div>
-      <h2 style={{marginTop: "15px", marginBottom: "15px"}}>{user.username}'s Shows:</h2>
+    <div className="text-center">
+    <img className="rounded-circle border border-5  border-dark" style={{width: "18rem"}}  src={user.imageUrl}/>
+    </div>
+    <h2 className="border border-5  border-dark text-white-50 bg-dark"  style={{marginTop: "15px", width: "15rem"}}>Favorite Show: {user.favShowName}</h2>
+    <img className="card border border-5  border-dark" style={{width: "18rem", marginBottom: "10px", marginLeft: "auto", marginRight: "auto"}}  src={user.favShowImage}/>
+    </div>
+      <h2 className="border border-5  border-dark text-white-50 bg-dark" style={{marginTop: "10px", width: "14rem", marginLeft: "auto", marginRight: "auto"}}>{user.username}'s Shows:</h2>
       {!statusView?
       <div>
     <div>
@@ -48,7 +51,7 @@ export default function UserDetail() {
           <option value="">ALL</option>
               </select>
               </div>
-      <h2 style={{marginTop: "15px"}}>Watched:</h2>
+      <h2 className="border border-5  border-dark text-white-50 bg-dark"  style={{marginTop: "15px", width: "15rem"}}>Watched:</h2>
       <div className ="row">
       {ratings ? ratings.filter((rating) =>rating.status == "WATCHED").map((show)=> {
         return(
@@ -60,7 +63,7 @@ export default function UserDetail() {
         </div></div></div>)}): <div></div>}
         </div>
     </div>
-      <h2 style={{marginTop: "15px"}}>Watching:</h2>
+      <h2 className="border border-5  border-dark text-white-50 bg-dark"  style={{marginTop: "15px", width: "15rem"}}>Watching:</h2>
       <div className ="row">
       {ratings ? ratings.filter((rating) =>rating.status == "WATCHING").map((show)=> {
         return(
@@ -88,7 +91,7 @@ export default function UserDetail() {
         </div></div></div>)}): <div></div>}
     </div>
     <div>
-      <h2 style={{marginTop: "15px"}}>Watchlist:</h2>
+      <h2 className="border border-5  border-dark text-white-50 bg-dark"  style={{marginTop: "15px", width: "15rem"}}>Watchlist:</h2>
       <div className ="row">
       {ratings ? ratings.filter((rating) =>rating.status == "WATCHLIST").map((show)=> {
         return(
@@ -112,7 +115,7 @@ export default function UserDetail() {
               </select>
               </div>
 
-  <h2 style={{marginTop: "15px"}}>Watched:</h2>
+  <h2 className="border border-5  border-dark text-white-50 bg-dark"  style={{marginTop: "15px", width: "15rem"}}>Watched:</h2>
   <div className ="row">
   {ratings ? ratings.filter((rating) =>rating.status ==="WATCHED").map((show)=> {
     return(
@@ -135,7 +138,7 @@ export default function UserDetail() {
               </select>
               </div>
 
-  <h2 style={{marginTop: "15px"}}>Watchlist:</h2>
+  <h2 className="border border-5  border-dark text-white-50 bg-dark"  style={{marginTop: "15px", width: "15rem"}}>Watchlist:</h2>
   <div className ="row">
   {ratings ? ratings.filter((rating) =>rating.status ==="WATCHLIST").map((show)=> {
     return(
@@ -157,7 +160,7 @@ export default function UserDetail() {
               </select>
               </div>
 
-  <h2 style={{marginTop: "15px"}}>Watching:</h2>
+  <h2 className="border border-5  border-dark text-white-50 bg-dark"  style={{marginTop: "15px", width: "15rem"}}>Watching:</h2>
   <div className ="row">
   {ratings ? ratings.filter((rating) =>rating.status ==="WATCHING").map((show)=> {
     return(

@@ -26,7 +26,9 @@ export default function Friends() {
 
   return (
     <div>
-    <h1>Friends: </h1>
+      <div>
+    <h1 className="border border-5  border-dark text-white-50 bg-dark" style={{width: "10rem"}}>Friends: </h1>
+    </div>
     {user.friends? user.friends.map((friend)=> {
       return(
         <div className="col" key={friend.id}>
