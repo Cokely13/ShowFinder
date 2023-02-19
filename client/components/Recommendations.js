@@ -40,7 +40,7 @@ export default function Recommendations() {
       return(
         <div className="col" key={reco.id}>
           <div className="container text-center mt-2" >
-      <div   className="card border border-dark" style={{width: "18rem", border: "solid black"}}>
+      <div   className="card border border-dark text-white-50 bg-dark" style={{width: "18rem", border: "solid black"}}>
         <h3><Link to={`/shows/${reco.showId}`} >{reco.showName}</Link></h3>
         <h5>Recommended By: <Link to={`/users/${reco.userId}`}>{reco.userName}</Link></h5>
         <h5>Comments: {reco.comments}</h5>
@@ -65,7 +65,7 @@ export default function Recommendations() {
       return(
         <div className="col" key={reco.id}>
         <div className="container text-center mt-2" >
-    <div   className="card border border-dark" style={{width: "18rem", border: "solid black"}}>
+    <div   className="card border border-dark text-white-50 bg-dark" style={{width: "18rem", border: "solid black"}}>
         <h3><Link to={`/shows/${reco.showId}`} > {reco.showName}</Link></h3>
         <h5>Recommended To: <Link to={`/users/${reco.friendId}`}> {reco.friendName}</Link></h5>
         <h5>Did they like it: {reco.like}</h5>

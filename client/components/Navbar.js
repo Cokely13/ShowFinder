@@ -7,24 +7,44 @@ import {logout} from '../store'
 
 const Navbar = ({handleClick, isLoggedIn}) => (
   <div>
-    {/* <div className='test'></div> */}
+    {/* <div classNameName='test'></div> */}
     {/* <img src={Logo}/> */}
 
-    <nav>
+    <nav className="navbar navbar-expand-lg navbar-dark  bg-dark"  >
       {isLoggedIn ? (
-        <div>
+        <div className="navbar-brand" >
+          <ul className="navbar-nav">
           {/* The navbar will show these links after you log in */}
-          <Link to="/home">Home</Link>
-          <Link to="/shows">Shows</Link>
-          <Link to="/myshows">MyShows</Link>
-          <Link to="/topshows">TopShows</Link>
-          <Link to="/profile">Profile</Link>
-          <Link to="/recommendations">Recommendations</Link>
-          <Link to="/users">Users</Link>
-          <Link to="/friends">Friends</Link>
-          <a href="#" onClick={handleClick}>
+          {/* <Link to="/home">Home</Link> */}
+          <li className="nav-item active">
+        <a className="nav-link" href="/home">Home</a>
+      </li>
+          <li className="nav-item">
+        <a className="nav-link" href="/shows">Shows</a>
+      </li>
+      <li className="nav-item">
+        <a className="nav-link" href="/myshows">MyShows</a>
+      </li>
+      <li className="nav-item">
+        <a className="nav-link" href="/topshows">TopShows</a>
+      </li>
+      <li className="nav-item">
+        <a className="nav-link" href="/users">Users</a>
+      </li>
+          <li className="nav-item dropdown">
+        <a className="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Personal Info
+        </a>
+        <div className="dropdown-menu bg-dark" aria-labelledby="navbarDropdownMenuLink">
+        <a className="dropdown-item text-white-50" href="/profile">Profile</a>
+        <a className="dropdown-item text-white-50" href="/friends">Friends</a>
+          <a className="dropdown-item text-white-50" href="/recommendations">Recommendations</a>
+          <a className="dropdown-item  text-white-50" href="#" onClick={handleClick}>
             Logout
           </a>
+        </div>
+      </li>
+      </ul>
         </div>
       ) : (
         <div>

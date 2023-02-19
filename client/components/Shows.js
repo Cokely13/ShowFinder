@@ -48,7 +48,7 @@ function Shows() {
       return(
         <div className="col" key={show.id}>
         <div className="container text-center mt-2">
-        <div  className="card border border-5  border-dark " style={{width: "18rem", border: "solid black"}}>
+        <div  className="card border border-5  border-dark text-white-50 bg-dark" style={{width: "18rem", border: "solid black"}}>
         <Link to={`/shows/${show.id}`}>
         {/* card-img-top border border-5  border-dark style={{maxWidth:"100%", height: "auto"}} */}
         <img className="card-img-top border border-5"  style={{maxWidth:"100%", height: "auto"}} src={show.image} alt="Card image"/>

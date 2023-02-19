@@ -50,9 +50,9 @@ export default function Users() {
     <h1>Users: </h1>
     {users? users.filter((user) =>user.id !== id).map((user)=> {
       return(
-        myFriends ? myFriends.filter((friend) => friend.friendId == user.id).length ?  <div className="col" key={user.id}>
+        myFriends ? myFriends.filter((friend) => friend.friendId == user.id).length ?  <div className="col " key={user.id}>
         <div className="container text-center mt-2" >
-    <div   className="card border border-primary border-5" style={{width: "18rem"}}>
+    <div   className="card border border-primary border-5 text-white-50 bg-dark" style={{width: "18rem"}}>
     <img className="card-img-top rounded-circle border border-5  border-dark"  style={{width: "75%", marginLeft: "auto", marginRight: "auto", marginTop: "10px", marginBottom: "10px"}} src={user.imageUrl} alt="Card image"/>
       <h3><Link to={`/users/${user.id}`} >{user.username}</Link></h3>
       <h5>Favorite Show: {user.favShowName}</h5>

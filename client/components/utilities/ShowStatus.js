@@ -53,19 +53,19 @@ export default function ShowStatus(props) {
     dispatch(createRating(newRating))
   }
   return (
-    <div>
+    <div style={{marginTop: "10px", marginBottom: "10px"}}>
 
       {thisRating ? <div>
     {/* <div className="mt-1">My Rating: {thisRating.rating}</div> */}
     <Link to={`/myshows`} className="mt-1">{thisRating.status}</Link>
     </div>:  <div> <Link to={`/myshows`} > <button className="btn btn-primary mt-2" onClick={handleSubmit}>Add To Watchlist</button></Link>
-    <button className="btn btn-primary mt-2" onClick={handleSubmit2}>Add To Watching</button> </div>}
+    <button className="btn btn-primary mt-2" style={{marginTop: "10px", marginBottom: "10px"}} onClick={handleSubmit2}>Add To Watching</button> </div>}
     {thisRating ?
     thisRating.status == "WATCHING" ?
-     <button className="btn btn-primary mt-4" onClick={handleClick}>Add To Watched</button>: <div></div> : <div></div> }
+     <button className="btn btn-primary mt-4" style={{marginTop: "50px", marginBottom: "50px"}} onClick={handleClick}>Add To Watched</button>: <div></div> : <div></div> }
       {thisRating ?
     thisRating.status == "WATCHLIST" ?
-        <button className="btn btn-primary mt-2" onClick={handleClick2}>Add To Watching</button>: <div></div> : <div></div> }
+        <button className="btn btn-primary mt-2" style={{marginTop: "50px", marginBottom: "50px"}} onClick={handleClick2}>Add To Watching</button>: <div></div> : <div></div> }
     </div>
   )
 }
