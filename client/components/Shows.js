@@ -33,10 +33,12 @@ function Shows() {
     </div>
     </div>
     <div className="row">
-      <div style={{width: "25%", marginRight: "75%", marginBottom: "10px"}}>
+      <div>
+      <div style={{width: "25%", marginLeft: "auto", marginRight: "auto",marginBottom: "10px"}}>
     <input style={{width: "100%",
   padding: "12px 20px",
-  marginLeft: "10px", border: "2px solid red", }} placeholder="Search Show Name" onChange={event => setQuery(event.target.value)} />
+  marginLeft: "10px", border: "4px solid grey", }} placeholder="Search Show Name" onChange={event => setQuery(event.target.value)} />
+  </div>
   </div>
     { shows.filter(show => {
     if (query === '') {

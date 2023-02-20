@@ -57,7 +57,7 @@ export default function Users() {
 
   return (
     <div>
-    <h1 className="border border-5  border-dark text-white-50 bg-dark" style={{width: "10rem"}}>Users: </h1>
+    <h1 className="border rounded border-5  border-dark text-white-50 bg-dark" style={{width: "10rem", marginLeft: "auto", marginRight: "auto"}}>Users: </h1>
     {users? users.filter((user) =>user.id !== id).map((user)=> {
       return(
         myFriends ? myFriends.filter((friend) => friend.friendId == user.id).length ?  <div className="col " key={user.id}>

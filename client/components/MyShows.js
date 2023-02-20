@@ -140,7 +140,6 @@ export default function MyShow() {
 
   }
 
-console.log("USER", user)
 
   return (
     <div>
@@ -160,7 +159,7 @@ console.log("USER", user)
           <option value="">ALL</option>
               </select>
               </div>
-      <h2 className="border border-5  border-dark text-white-50 bg-dark" style={{marginTop: "10px", width: "10rem"}}>Watched:</h2>
+      <h2 className="border rounded border-5  border-dark text-white-50 bg-dark" style={{marginTop: "10px", width: "10rem"}}>Watched:</h2>
       <div className ="row ">
       {ratings ? ratings.filter((rating) =>rating.status == "WATCHED").map((show)=> {
         return(
@@ -270,7 +269,7 @@ console.log("USER", user)
     {/* style={{height: "200px",
   width: "50%"}}  */}
     <div>
-      <h2 className="border border-5  border-dark text-white-50 bg-dark" style={{marginTop: "10px", width: "10rem"}}>Watching:</h2>
+      <h2 className="border rounded border-5  border-dark text-white-50 bg-dark" style={{marginTop: "10px", width: "10rem"}}>Watching:</h2>
       <div className ="row">
       {ratings ? ratings.filter((rating) =>rating.status == "WATCHING").map((show)=> {
         return(
@@ -438,7 +437,7 @@ console.log("USER", user)
         </div></div></div>)}): <div></div>}</div>
     </div>
     <div>
-      <h2 className="border border-5  border-dark text-white-50 bg-dark" style={{marginTop: "10px", width: "10rem"}}>Watchlist:</h2>
+      <h2 className="border rounded border-5  border-dark text-white-50 bg-dark" style={{marginTop: "10px", width: "10rem"}}>Watchlist:</h2>
       <div className ="row">
       {ratings ? ratings.filter((rating) =>rating.status == "WATCHLIST").map((show)=> {
         return(
@@ -467,7 +466,7 @@ console.log("USER", user)
               </select>
               </div>
 
-  <h2 className="border border-5  border-dark text-white-50 bg-dark" style={{marginTop: "10px", width: "10rem"}}>Watched:</h2>
+  <h2 className="border rounded border-5  border-dark text-white-50 bg-dark" style={{marginTop: "10px", width: "10rem"}}>Watched:</h2>
   <div className ="row">
   {ratings ? ratings.filter((rating) =>rating.status ==="WATCHED").map((show)=> {
     return(
@@ -586,7 +585,7 @@ console.log("USER", user)
               </select>
               </div>
 
-  <h2 className="border border-5  border-dark text-white-50 bg-dark" style={{marginTop: "10px", width: "10rem"}}>Watchlist:</h2>
+  <h2 className="border rounded border-5  border-dark text-white-50 bg-dark" style={{marginTop: "10px", width: "10rem"}}>Watchlist:</h2>
   <div className ="row">
   {ratings ? ratings.filter((rating) =>rating.status ==="WATCHLIST").map((show)=> {
     return(
@@ -612,7 +611,7 @@ console.log("USER", user)
               </select>
               </div>
 
-  <h2 className="border border-5  border-dark text-white-50 bg-dark" style={{marginTop: "10px", width: "10rem"}}>Watching:</h2>
+  <h2 className="border rounded border-5  border-dark text-white-50 bg-dark" style={{marginTop: "10px", width: "10rem"}}>Watching:</h2>
   <div className ="row">
   {ratings ? ratings.filter((rating) =>rating.status ==="WATCHING").map((show)=> {
     return(

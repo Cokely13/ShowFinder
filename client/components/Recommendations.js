@@ -35,16 +35,16 @@ export default function Recommendations() {
   return (
     <div>
       <div className="text-center">
-    <div className="col"><h1 className="border border-5  border-dark text-white-50 bg-dark" style={{marginBottom: "10px", marginLeft: "auto", marginRight: "auto", width: "25rem"}}>Recommendations</h1></div>
+    <div className="col"><h1 className="border rounded border-5  border-dark text-white-50 bg-dark" style={{marginBottom: "10px", marginLeft: "auto", marginRight: "auto", width: "25rem"}}>Recommendations</h1></div>
     </div>
 
-    <h1 className="border border-5  border-dark text-white-50 bg-dark" style={{marginTop: "10px", width: "10rem"}}>For Me:</h1>
+    <h1 className="border rounded border-5  border-dark text-white-50 bg-dark" style={{marginTop: "10px", width: "10rem"}}>For Me:</h1>
     <div className ="row">
     {recommendations ? recommendations.filter((reco) =>reco.friendId == id).map((reco)=> {
       return(
         <div className="col" key={reco.id}>
           <div className="container text-center mt-2" >
-      <div   className="card border border-dark text-white-50 bg-dark" style={{width: "18rem", border: "solid black"}}>
+      <div   className="card border  border-dark text-white-50 bg-dark" style={{width: "18rem", border: "solid black"}}>
         <h3><Link to={`/shows/${reco.showId}`} >{reco.showName}</Link></h3>
         <h5>Recommended By: <Link to={`/users/${reco.userId}`}>{reco.userName}</Link></h5>
         <h5>Comments: {reco.comments}</h5>
@@ -63,7 +63,7 @@ export default function Recommendations() {
            </div> </div> </div>
       )}) : <div>No</div>}
       </div>
-       <h1 className="border border-5  border-dark text-white-50 bg-dark" style={{marginTop: "10px", width: "10rem"}}>By Me: </h1>
+       <h1 className="border rounded border-5  border-dark text-white-50 bg-dark" style={{marginTop: "10px", width: "10rem"}}>By Me: </h1>
        <div className ="row">
     {recommendations ? recommendations.filter((reco) =>reco.userId == id).map((reco)=> {
       return(

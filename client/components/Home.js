@@ -14,6 +14,7 @@ export const Home = props => {
     <div className="p-3 mb-2 bg-white text-dark" >
       <h3 className="text-3xl font-bold underline">Welcome, {username}</h3>
       <NewestShows/>
+      <div className="test" style={{marginTop: "10px", width: "100%", height: "30rem"}}>Hey</div>
     </div>
   )
 }

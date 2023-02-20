@@ -34,3 +34,10 @@ body {
   background-image: url(BingeProof.png);
 }
 
+.test {
+  min-height: 100%;
+  background-image: url(BingeProof.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
