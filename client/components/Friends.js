@@ -27,13 +27,13 @@ export default function Friends() {
   return (
     <div>
       <div>
-    <h1 className="border border-5  border-dark text-white-50 bg-dark" style={{width: "10rem"}}>Friends: </h1>
+    <h1 className="border border-5 rounded  border-dark text-white-50 bg-dark" style={{width: "10rem", marginLeft: "auto", marginRight: "auto"}}>Friends: </h1>
     </div>
     {user.friends? user.friends.map((friend)=> {
       return(
         <div className="col" key={friend.id}>
           <div className="container text-center mt-2" >
-      <div   className="card border border-dark" style={{width: "18rem", border: "solid black"}}>
+      <div   className="card border border-dark" style={{width: "18rem", border: "solid black", marginLeft: "auto", marginRight: "auto", marginTop: '15px'}}>
         <div><Link to={`/users/${friend.friendId}`} >{friend.friendName}</Link></div>
         </div></div></div>
       )}) : <div>No</div>}

@@ -36,8 +36,8 @@ export default function NewestShows() {
 
   return (
     <div>
-    <h1>Newest Shows:</h1>
-    <div id="carouselExampleIndicators" style={{width: "18rem"}} className="carousel slide" data-ride="carousel">
+    <h1 className="border border-5 rounded  border-dark text-white-50 bg-dark text-center" style={{marginBottom: "10px", marginLeft: "auto", marginRight: "auto", width: "18rem"}}>Newest Shows</h1>
+    <div id="carouselExampleIndicators" style={{width: "40rem", marginLeft: "auto", marginRight: "auto", }} className="carousel slide" data-ride="carousel">
   <ol className="carousel-indicators">
     <li data-target="#carouselExampleIndicators" data-slide-to="0" className="active"></li>
     <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
@@ -45,14 +45,14 @@ export default function NewestShows() {
   </ol>
 <div className="carousel-inner">
     <div className="carousel-item active">
-      <img className="d-block w-100" src={newestimages[0]} alt="First slide"/>
+      <img className="d-block w-100 border border-5 rounded  border-dark" style={{height: "30rem",}} src={newestimages[0]} alt="First slide"/>
     </div>
 
-    <div className="carousel-item">
-    <img className="d-block w-100" src={newestimages[1]} alt="Second slide"/>
+    <div className="carousel-item border border-5 rounded  border-dark">
+    <img className="d-block w-100" style={{height: "30rem",}} src={newestimages[1]} alt="Second slide"/>
     </div>
-    <div className="carousel-item">
-    <img className="d-block w-100" src={newestimages[2]}alt="Third slide"/>
+    <div className="carousel-item border border-5 rounded  border-dark">
+    <img className="d-block w-100" style={{height: "30rem",}} src={newestimages[2]}alt="Third slide"/>
     </div>
     </div>
   <a className="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">

@@ -159,7 +159,7 @@ export default function MyShow() {
           <option value="">ALL</option>
               </select>
               </div>
-      <h2 className="border rounded border-5  border-dark text-white-50 bg-dark" style={{marginTop: "10px", width: "10rem"}}>Watched:</h2>
+      <h2 className="border rounded border-5  border-dark text-white-50 bg-dark text-center" style={{marginTop: "10px", width: "10rem", marginLeft: "auto", marginRight: "auto"}}>Watched</h2>
       <div className ="row ">
       {ratings ? ratings.filter((rating) =>rating.status == "WATCHED").map((show)=> {
         return(
@@ -269,7 +269,7 @@ export default function MyShow() {
     {/* style={{height: "200px",
   width: "50%"}}  */}
     <div>
-      <h2 className="border rounded border-5  border-dark text-white-50 bg-dark" style={{marginTop: "10px", width: "10rem"}}>Watching:</h2>
+      <h2 className="border rounded border-5  border-dark text-white-50 bg-dark text-center" style={{marginTop: "10px", width: "10rem",marginLeft: "auto", marginRight: "auto"}}>Watching</h2>
       <div className ="row">
       {ratings ? ratings.filter((rating) =>rating.status == "WATCHING").map((show)=> {
         return(
@@ -437,7 +437,7 @@ export default function MyShow() {
         </div></div></div>)}): <div></div>}</div>
     </div>
     <div>
-      <h2 className="border rounded border-5  border-dark text-white-50 bg-dark" style={{marginTop: "10px", width: "10rem"}}>Watchlist:</h2>
+      <h2 className="border rounded border-5  border-dark text-white-50 bg-dark text-center" style={{marginTop: "10px", width: "10rem", marginLeft: "auto", marginRight: "auto"}}>Watchlist</h2>
       <div className ="row">
       {ratings ? ratings.filter((rating) =>rating.status == "WATCHLIST").map((show)=> {
         return(
@@ -466,7 +466,7 @@ export default function MyShow() {
               </select>
               </div>
 
-  <h2 className="border rounded border-5  border-dark text-white-50 bg-dark" style={{marginTop: "10px", width: "10rem"}}>Watched:</h2>
+  <h2 className="border rounded border-5  border-dark text-white-50 bg-dark text-center" style={{marginTop: "10px", width: "10rem",marginLeft: "auto", marginRight: "auto"}}>Watched</h2>
   <div className ="row">
   {ratings ? ratings.filter((rating) =>rating.status ==="WATCHED").map((show)=> {
     return(
@@ -585,7 +585,7 @@ export default function MyShow() {
               </select>
               </div>
 
-  <h2 className="border rounded border-5  border-dark text-white-50 bg-dark" style={{marginTop: "10px", width: "10rem"}}>Watchlist:</h2>
+  <h2 className="border rounded border-5  border-dark text-white-50 bg-dark text-center" style={{marginTop: "10px", width: "10rem",marginLeft: "auto", marginRight: "auto"}}>Watchlist</h2>
   <div className ="row">
   {ratings ? ratings.filter((rating) =>rating.status ==="WATCHLIST").map((show)=> {
     return(
@@ -611,7 +611,7 @@ export default function MyShow() {
               </select>
               </div>
 
-  <h2 className="border rounded border-5  border-dark text-white-50 bg-dark" style={{marginTop: "10px", width: "10rem"}}>Watching:</h2>
+  <h2 className="border rounded border-5  border-dark text-white-50 bg-dark text-center" style={{marginTop: "10px", width: "10rem",marginLeft: "auto", marginRight: "auto"}}>Watching</h2>
   <div className ="row">
   {ratings ? ratings.filter((rating) =>rating.status ==="WATCHING").map((show)=> {
     return(

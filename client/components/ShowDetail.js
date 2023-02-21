@@ -131,7 +131,7 @@ export default function ShowDetail() {
   </div>:
     <div className='text-center'>
     <h1>{show.name}</h1>
-        <img className='border border-5  border-dark' style={{width: "18rem"}}  src={show.image}/>
+        <img className='border rounded border-5  border-dark' style={{width: "18rem"}}  src={show.image}/>
         </div>}
         <div className="container text-center mt-2" style={{marginTop: "15px"}}  >
     <div  className="text-center" >
@@ -142,13 +142,14 @@ export default function ShowDetail() {
     </div>
     </div>
         {editShow == show.id? <div></div>: <div>
-        <div className="row text-center" style={{padding:"50px"}}>
-        <h1>Ratings:</h1>
+        <div >
+        <h1 className="border rounded border-5  border-dark text-white-50 bg-dark text-center" style={{width: "10rem", marginLeft: "auto", marginRight: "auto"}} >Ratings</h1>
+        <div className="row" key={show.id} style={{marginLeft: "15px", marginRight: "15px"}}>
     {ratings? ratings.length ? ratings.map((show) => {
       return(
-        <div className="col" key={show.id} >
-        <div className="container text-center mt-2" >
-        <div className="card border border-dark" style={{width: "18rem", height: "18rem",  border: "solid black"}}>
+        <div className="col" >
+        <div className="container text-center mt-2">
+        <div className="card border rounded border-5  border-dark text-white-50 bg-dark"  style={{width: "18rem", height: "18rem"}}>
         <img className="rounded-circle border border-5  border-dark" style={{width: "75%", height: "18rem", marginLeft: "auto", marginRight: "auto", marginTop: "10px", marginBottom: "10px"}} src={allUsers.filter((user) =>user.id == show.userId)[0].imageUrl}/>
         <Link to={`/users/${show.userId}`}>{allUsers.filter((user) =>user.id == show.userId)[0].username}</Link>
         <div>Rating: {show.rating}</div>
@@ -157,9 +158,10 @@ export default function ShowDetail() {
         </div>
         </div>
         </div>
-      )
 
+      )
     }): <div></div> : <div>No Ratings</div> }
+     </div>
     </div>
     {user.admin?<h2 className='text-center'><button className='btn btn-danger'  onClick={handleUpdate}>Update Show</button></h2>:<div></div> }
     </div>}

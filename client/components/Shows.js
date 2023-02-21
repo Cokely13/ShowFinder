@@ -29,7 +29,7 @@ function Shows() {
      <div>
      <div className="row">
      <div className="text-center">
-    <div className="col"><h1 className="border border-5  border-dark text-white-50 bg-dark" style={{marginBottom: "10px", marginLeft: "auto", marginRight: "auto", width: "15rem"}}>All Shows</h1></div>
+    <div className="col"><h1 className="border border-5 rounded  border-dark text-white-50 bg-dark text-center" style={{marginBottom: "10px", marginLeft: "auto", marginRight: "auto", width: "15rem"}}>All Shows</h1></div>
     </div>
     </div>
     <div className="row">
@@ -53,7 +53,7 @@ function Shows() {
         <div  className="card border border-5  border-dark text-white-50 bg-dark" style={{width: "18rem", border: "solid black"}}>
         <Link to={`/shows/${show.id}`}>
         {/* card-img-top border border-5  border-dark style={{maxWidth:"100%", height: "auto"}} */}
-        <img className="card-img-top border border-5"  style={{maxWidth:"100%", height: "auto"}} src={show.image} alt="Card image"/>
+        <img className="card-img-top border border-5 rounded  border-dark" style={{height: "25rem",}}   src={show.image} alt="Card image"/>
         </Link>
         <h4 className="card-title">{show.name}</h4>
         {/* <div>ShowID:{show.id}</div> */}
