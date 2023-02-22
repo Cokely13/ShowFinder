@@ -104,7 +104,7 @@ export default function ShowDetail() {
     {editShow == show.id?
     <div >
     <form>
-      <div className ="row">
+      <div className ="row text-center">
         <div>
         <label> <h2 htmlFor="username" style={{marginRight: "10px"}}>Show Name: </h2></label>
           <input name='name' onChange={handleChange}  type="text" placeholder={show.name}/>
@@ -126,8 +126,10 @@ export default function ShowDetail() {
         </div>
       </div>
     </form>
+    <div className='text-center'>
     <button className="btn btn-primary" style={{width: "15%", marginBottom: "10px", marginRight: "30px"}}  onClick={handleClick}>Update Show</button>
     <button className="btn btn-danger" style={{width: "15%", marginBottom: "10px", marginRight: "30px"}} onClick={event => dispatch(deleteShow(show.id))}>Delete Show</button>
+    </div>
   </div>:
     <div className='text-center'>
     <h1>{show.name}</h1>
@@ -147,7 +149,7 @@ export default function ShowDetail() {
         <div className="row" key={show.id} style={{marginLeft: "15px", marginRight: "15px"}}>
     {ratings? ratings.length ? ratings.map((show) => {
       return(
-        <div className="col" >
+        <div className="col" key={show.id} >
         <div className="container text-center mt-2">
         <div className="card border rounded border-5  border-dark text-white-50 bg-dark"  style={{width: "18rem", height: "18rem"}}>
         <img className="rounded-circle border border-5  border-dark" style={{width: "75%", height: "18rem", marginLeft: "auto", marginRight: "auto", marginTop: "10px", marginBottom: "10px"}} src={allUsers.filter((user) =>user.id == show.userId)[0].imageUrl}/>

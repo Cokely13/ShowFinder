@@ -42,7 +42,7 @@ export default function UserDetail() {
       {!statusView?
       <div>
     <div>
-    <div>
+    <div style={{marginLeft: "35px"}}>
       <select onChange={handleChange} name="filterEvents" className='custom-select'>
               <option value="">Filter by Status</option>
               <option value="WATCHED">WATCHED</option>
@@ -57,7 +57,7 @@ export default function UserDetail() {
         return(
           <div className="col" key={show.id}>
           <div className="container text-center mt-2" >
-      <div   className="card border border-dark" style={{width: "18rem", border: "solid black"}}>
+      <div   className="card border rounded border-5  border-dark text-white-50 bg-dark text-center" style={{width: "18rem", border: "solid black"}}>
         <h1><Link to={`/shows/${show.showId}`}>{show.showName}</Link></h1>
         <h4 style={{marginBottom: "10px"}}>Rating: {show.rating}</h4>
         </div></div></div>)}): <div></div>}
@@ -69,7 +69,7 @@ export default function UserDetail() {
         return(
           <div className="col" key={show.id}>
           <div className="container text-center mt-2" >
-      <div   className="card border border-dark" style={{width: "18rem", border: "solid black"}}>
+      <div   className="card border rounded border-5  border-dark text-white-50 bg-dark text-center" style={{width: "18rem", border: "solid black"}}>
       <h1><Link to={`/shows/${show.showId}`}>{show.showName}</Link></h1>
       <h4 style={{marginBottom: "10px"}}>Rating: {show.rating}</h4>
         {show.progress == 0 ?
@@ -97,7 +97,7 @@ export default function UserDetail() {
         return(
           <div className="col" key={show.id}>
           <div className="container text-center mt-2" >
-      <div   className="card border border-dark" style={{width: "18rem", border: "solid black"}}>
+      <div   className="card border rounded border-5  border-dark text-white-50 bg-dark text-center" style={{width: "18rem", border: "solid black", marginBottom: "15px"}}>
           <h1><Link to={`/shows/${show.showId}`}>{show.showName}</Link></h1>
         </div></div></div>)}): <div></div>}
     </div></div>
@@ -105,7 +105,7 @@ export default function UserDetail() {
     <div>
     {statusView == "WATCHED"?
 <div>
-<div>
+<div style={{marginLeft: "35px"}}>
       <select onChange={handleChange} name="filterEvents" className='custom-select'>
               <option value="">Filter by Status</option>
               <option value="WATCHED">WATCHED</option>
@@ -121,14 +121,14 @@ export default function UserDetail() {
     return(
       <div className="col" key={show.id}>
       <div className="container text-center mt-2" >
-  <div   className="card border border-dark" style={{width: "18rem", border: "solid black"}}>
+  <div   className="card border rounded border-5  border-dark text-white-50 bg-dark text-center" style={{width: "18rem", border: "solid black", marginBottom: "15px"}}>
     <h1><Link to={`/shows/${show.showId}`}>{show.showName}</Link></h1>
     <h4 style={{marginBottom: "10px"}}>Rating: {show.rating}</h4>
       </div></div></div>)}): <div></div>}
     </div></div>: <div></div>}
     {statusView == "WATCHLIST"?
 <div>
-<div>
+<div style={{marginLeft: "35px"}}>
       <select onChange={handleChange} name="filterEvents" className='custom-select'>
               <option value="">Filter by Status</option>
               <option value="WATCHED">WATCHED</option>
@@ -144,13 +144,13 @@ export default function UserDetail() {
     return(
       <div className="col" key={show.id}>
       <div className="container text-center mt-2" >
-  <div   className="card border border-dark" style={{width: "18rem", border: "solid black"}}>
+  <div   className="card border rounded border-5  border-dark text-white-50 bg-dark text-center" style={{width: "18rem", border: "solid black", marginBottom: "15px"}}>
     <h1><Link to={`/shows/${show.showId}`}>{show.showName}</Link></h1>
       </div></div></div>)}): <div></div>}
     </div></div>: <div></div>}
     {statusView == "WATCHING"?
 <div>
-<div>
+<div style={{marginLeft: "35px"}}>
       <select onChange={handleChange} name="filterEvents" className='custom-select'>
               <option value="">Filter by Status</option>
               <option value="WATCHED">WATCHED</option>
@@ -166,7 +166,7 @@ export default function UserDetail() {
     return(
       <div className="col" key={show.id}>
       <div className="container text-center mt-2" >
-  <div   className="card border border-dark" style={{width: "18rem", border: "solid black"}}>
+  <div   className="card border rounded border-5  border-dark text-white-50 bg-dark text-center" style={{width: "18rem", border: "solid black", marginBottom: "15px"}}>
     <h1><Link to={`/shows/${show.showId}`}>{show.showName}</Link></h1>
     <h4 style={{marginBottom: "10px"}}>Rating: {show.rating}</h4>
     {show.progress == 0 ?

@@ -60,8 +60,8 @@ export default function Users() {
     <h1 className="border rounded border-5  border-dark text-white-50 bg-dark text-center" style={{width: "8rem", marginLeft: "auto", marginRight: "auto"}}>Users </h1>
     {users? users.filter((user) =>user.id !== id).map((user)=> {
       return(
-        myFriends ? myFriends.filter((friend) => friend.friendId == user.id).length ?  <div className="col " key={user.id}>
-        <div className="container text-center mt-2" >
+        myFriends ? myFriends.filter((friend) => friend.friendId == user.id).length ?  <div className="col" key={user.id}>
+        <div className="container text-center mt-2" key={user.id} >
     <div   className="card border border-primary border-5 text-white-50 bg-dark" style={{width: "18rem", marginLeft: "auto", marginRight: "auto"}}>
     <img className="card-img-top rounded-circle border border-5  border-dark"  style={{width: "75%", marginLeft: "auto", marginRight: "auto", marginTop: "10px", marginBottom: "10px"}} src={user.imageUrl} alt="Card image"/>
       <h3><Link to={`/users/${user.id}`} >{user.username}</Link></h3>
@@ -69,7 +69,7 @@ export default function Users() {
       </div></div></div> :
         <div className="col" key={user.id}>
           <div className="container text-center mt-2" >
-      <div   className="card border border-dark text-white-50 bg-dark" style={{width: "18rem", border: "solid black"}}>
+      <div   className="card border border-dark text-white-50 bg-dark" style={{width: "18rem", marginLeft: "auto", marginRight: "auto"}}>
       <img className="card-img-top rounded-circle border border-5   border-dark"  style={{width: "75%", marginLeft: "auto", marginRight: "auto", marginTop: "10px", marginBottom: "10px"}} src={user.imageUrl} alt="Card image"/>
         <h3><Link to={`/users/${user.id}`} >{user.username}</Link></h3>
         <h5>Favorite Show: {user.favShowName}</h5>

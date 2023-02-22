@@ -150,7 +150,7 @@ export default function MyShow() {
       {!statusView?
       <div>
     <div>
-    <div>
+    <div style={{marginLeft: "35px"}}>
       <select onChange={handleChange} name="filterEvents" className='custom-select'>
               <option value="">Filter by Status</option>
               <option value="WATCHED">WATCHED</option>
@@ -165,7 +165,7 @@ export default function MyShow() {
         return(
           show.showName == user.favShowName? <div className="col " key={show.id} >
           <div className="container text-center mt-2" >
-      <div  className="card border border-5 border-warning" style={{width: "18rem"}}>
+      <div  className="card border border-5 border-warning text-white-50 bg-dark text-center" style={{width: "18rem"}}>
         <h1><Link to={`/shows/${show.showId}`}>{show.showName}</Link></h1>
         <h5>Rating: {show.rating}</h5>
         <h5>Progress:</h5>
@@ -176,7 +176,7 @@ export default function MyShow() {
         <div className="text-center" style={{padding:"20px"}}>
         <button className="btn btn-primary" style={{width: "75%", marginBottom: "10px" }} onClick={(event) => handleRatings(event, show.showId)}>Update Rating</button>
         <button className="btn btn-primary" style={{width: "75%", marginBottom: "10px"}} onClick={(event) => handleNewRec(event, show.showId)}>Recommend Show</button>
-        {show.showName == user.favShowName ?<h2 className="card border border-5 border-warning">FAVORITE SHOW</h2>: <button className="btn btn-primary" style={{width: "75%"}} onClick={event => makeFave(event, show)}>Make Fav</button>}
+        {show.showName == user.favShowName ?<h2 className="card border border-5 border-warning text-black-50">FAVORITE SHOW</h2>: <button className="btn btn-primary" style={{width: "75%"}} onClick={event => makeFave(event, show)}>Make Fav</button>}
         </div>
         {editShow == show.showId ?
          <div style={{marginBottom: "10px", marginTop: "10px"}} >
@@ -216,7 +216,7 @@ export default function MyShow() {
         </div></div></div>:
           <div className="col " key={show.id} >
           <div className="container text-center mt-2" >
-      <div  className="card border border-2 border-dark" style={{width: "18rem"}}>
+      <div  className="card border border-5 border-dark text-white-50 bg-dark text-center" style={{width: "18rem"}}>
         <h1><Link to={`/shows/${show.showId}`}>{show.showName}</Link></h1>
         <h5>Rating: {show.rating}</h5>
         <h5>Progress:</h5>
@@ -275,7 +275,7 @@ export default function MyShow() {
         return(
           show.showName == user.favShowName ?<div className="col" key={show.id}>
           <div className="container text-center mt-2" >
-      <div   className="card border border-5  border-warning" style={{width: "18rem", }}>
+      <div   className="card border border-5 border-warning text-white-50 bg-dark text-center" style={{width: "18rem", }}>
       <h1><Link to={`/shows/${show.showId}`}>{show.showName}</Link></h1>
       <h5>Rating: {show.rating}</h5>
       <h5>Progress:</h5>
@@ -304,7 +304,7 @@ export default function MyShow() {
       <button className="btn btn-secondary" style={{width: "75%", marginBottom: "10px" }}  onClick={(event) => handleRatings(event, show.showId)}>Update Rating</button>
       <button className="btn btn-secondary" style={{width: "75%", marginBottom: "10px" }} onClick={event => handleClick3(event, show)}>Add To Watched</button>
       <button className="btn btn-secondary" style={{width: "75%", marginBottom: "10px" }}  onClick={(event) => handleNewRec(event, show.showId)}>Recommend Show</button>
-      {show.showName == user.favShowName ?<h2 className="card border border-5 border-warning">FAVORITE SHOW</h2>: <button className="btn btn-secondary" style={{width: "75%", marginBottom: "10px" }}  onClick={event => makeFave(event, show)}>Make Fav</button>}
+      {show.showName == user.favShowName ?<h2 className="card border border-5 border-warning text-black">FAVORITE SHOW</h2>: <button className="btn btn-secondary" style={{width: "75%", marginBottom: "10px" }}  onClick={event => makeFave(event, show)}>Make Fav</button>}
       </div>
       {editProgress == show.showId ?
       <div style={{marginBottom: "10px", marginTop: "10px"}}>
@@ -356,7 +356,7 @@ export default function MyShow() {
       </div></div></div>:
           <div className="col" key={show.id}>
             <div className="container text-center mt-2" >
-        <div   className="card border border-2  border-dark" style={{width: "18rem", }}>
+        <div   className="card border border-5 border-dark text-white-50 bg-dark text-center" style={{width: "18rem", }}>
         <h1><Link to={`/shows/${show.showId}`}>{show.showName}</Link></h1>
         <h5>Rating: {show.rating}</h5>
         <h5>Progress:</h5>
@@ -443,7 +443,7 @@ export default function MyShow() {
         return(
           <div className="col" key={show.id}>
           <div className="container text-center mt-2" >
-      <div   className="card border border-2  border-dark" style={{width: "18rem"}}>
+      <div   className="card border border-5 border-dark text-white-50 bg-dark text-center" style={{width: "18rem"}}>
         <h1><Link to={`/shows/${show.showId}`}>{show.showName}</Link></h1>
 
         <div className="text-center" style={{padding:"20px"}}>
@@ -456,7 +456,7 @@ export default function MyShow() {
     <div>
     {statusView == "WATCHED"?
 <div>
-<div>
+<div style={{marginLeft: "35px"}}>
       <select onChange={handleChange} name="filterEvents" className='custom-select'>
               <option value="">Filter by Status</option>
               <option value="WATCHED">WATCHED</option>
@@ -472,7 +472,7 @@ export default function MyShow() {
     return(
       show.showName == user.favShowName? <div className="col " key={show.id} >
       <div className="container text-center mt-2" >
-  <div  className="card border border-5 border-warning" style={{width: "18rem"}}>
+  <div  className="card border border-5 border-warning text-white-50 bg-dark text-center" style={{width: "18rem"}}>
     <h1><Link to={`/shows/${show.showId}`}>{show.showName}</Link></h1>
     <h5>Rating: {show.rating}</h5>
     <h5>Progress:</h5>
@@ -483,7 +483,7 @@ export default function MyShow() {
     <div className="text-center" style={{padding:"20px"}}>
     <button className="btn btn-primary" style={{width: "75%", marginBottom: "10px" }} onClick={(event) => handleRatings(event, show.showId)}>Update Rating</button>
     <button className="btn btn-primary" style={{width: "75%", marginBottom: "10px"}} onClick={(event) => handleNewRec(event, show.showId)}>Recommend Show</button>
-    {show.showName == user.favShowName ?<h2 className="card border border-5 border-warning">FAVORITE SHOW</h2>: <button className="btn btn-primary" style={{width: "75%"}} onClick={event => makeFave(event, show)}>Make Fav</button>}
+    {show.showName == user.favShowName ?<h2 className="card border border-5 border-warning text-black">FAVORITE SHOW</h2>: <button className="btn btn-primary" style={{width: "75%"}} onClick={event => makeFave(event, show)}>Make Fav</button>}
     </div>
     {editShow == show.showId ?
      <div style={{marginBottom: "10px", marginTop: "10px"}} >
@@ -523,7 +523,7 @@ export default function MyShow() {
     </div></div></div>:
       <div className="col " key={show.id} >
           <div className="container text-center mt-2" >
-      <div  className="card border border-2 border-dark" style={{width: "18rem"}}>
+      <div  className="card border border-5 border-dark text-white-50 bg-dark text-center" style={{width: "18rem"}}>
         <h1><Link to={`/shows/${show.showId}`}>{show.showName}</Link></h1>
         <h5>Rating: {show.rating}</h5>
         <h5>Progress:</h5>
@@ -575,7 +575,7 @@ export default function MyShow() {
     </div>: <div></div>}
     {statusView == "WATCHLIST"?
 <div>
-<div>
+<div style={{marginLeft: "35px"}}>
       <select onChange={handleChange} name="filterEvents" className='custom-select'>
               <option value="">Filter by Status</option>
               <option value="WATCHED">WATCHED</option>
@@ -591,7 +591,7 @@ export default function MyShow() {
     return(
       <div className="col" key={show.id}>
       <div className="container text-center mt-2" >
-  <div   className="card border border-2  border-dark" style={{width: "18rem"}}>
+  <div   className="card border border-5 border-dark text-white-50 bg-dark text-center" style={{width: "18rem"}}>
     <h1><Link to={`/shows/${show.showId}`}>{show.showName}</Link></h1>
     <div className="text-center" style={{padding:"20px"}}>
     <button className="btn btn-secondary" style={{width: "75%", marginBottom: "10px"}} onClick={event => handleClick(event, show)}>Add To Watching</button>
@@ -601,7 +601,7 @@ export default function MyShow() {
 </div>: <div></div>}
     {statusView == "WATCHING"?
 <div>
-<div>
+<div style={{marginLeft: "35px"}}>
       <select onChange={handleChange} name="filterEvents" className='custom-select'>
               <option value="">Filter by Status</option>
               <option value="WATCHED">WATCHED</option>
@@ -617,7 +617,7 @@ export default function MyShow() {
     return(
       show.showName == user.favShowName ?<div className="col" key={show.id}>
       <div className="container text-center mt-2" >
-  <div   className="card border border-5  border-warning" style={{width: "18rem", }}>
+  <div   className="card border border-5 border-warning text-white-50 bg-dark text-center" style={{width: "18rem", }}>
   <h1><Link to={`/shows/${show.showId}`}>{show.showName}</Link></h1>
   <h5>Rating: {show.rating}</h5>
   <h5>Progress:</h5>
@@ -646,7 +646,7 @@ export default function MyShow() {
   <button className="btn btn-secondary" style={{width: "75%", marginBottom: "10px" }}  onClick={(event) => handleRatings(event, show.showId)}>Update Rating</button>
   <button className="btn btn-secondary" style={{width: "75%", marginBottom: "10px" }} onClick={event => handleClick3(event, show)}>Add To Watched</button>
   <button className="btn btn-secondary" style={{width: "75%", marginBottom: "10px" }}  onClick={(event) => handleNewRec(event, show.showId)}>Recommend Show</button>
-  {show.showName == user.favShowName ?<h2 className="card border border-5 border-warning">FAVORITE SHOW</h2>: <button className="btn btn-secondary" style={{width: "75%", marginBottom: "10px" }}  onClick={event => makeFave(event, show)}>Make Fav</button>}
+  {show.showName == user.favShowName ?<h2 className="card border border-5 border-warning text-black">FAVORITE SHOW</h2>: <button className="btn btn-secondary" style={{width: "75%", marginBottom: "10px" }}  onClick={event => makeFave(event, show)}>Make Fav</button>}
   </div>
   {editProgress == show.showId ?
   <div style={{marginBottom: "10px", marginTop: "10px"}}>
@@ -698,7 +698,7 @@ export default function MyShow() {
   </div></div></div>:
       <div className="col" key={show.id}>
             <div className="container text-center mt-2" >
-        <div   className="card border border-2  border-dark" style={{width: "18rem"}}>
+        <div   className="card border border-5 border-dark text-white-50 bg-dark text-center" style={{width: "18rem"}}>
         <h1><Link to={`/shows/${show.showId}`}>{show.showName}</Link></h1>
         <h5>Rating: {show.rating}</h5>
         <h5>Progress:</h5>

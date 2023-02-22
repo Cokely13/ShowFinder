@@ -11,6 +11,7 @@ function Shows() {
   const dispatch = useDispatch()
   const [query, setQuery] = useState("")
   const shows = useSelector((state) => state.allShows )
+  const [statusView, setStatusView] = useState();
   const {id} = useSelector((state) => state.auth )
   useEffect(() => {
     dispatch(fetchShows())
@@ -21,6 +22,12 @@ function Shows() {
     dispatch(fetchRatings())
     // Safe to add dispatch to the dependencies array
   }, [])
+
+  const handleChange = (event) => {
+    event.preventDefault()
+    setStatusView(event.target.value)
+  }
+
   const myRatings = ratings.filter((rating) => rating.userId == id)
 
 
@@ -32,9 +39,37 @@ function Shows() {
     <div className="col"><h1 className="border border-5 rounded  border-dark text-white-50 bg-dark text-center" style={{marginBottom: "10px", marginLeft: "auto", marginRight: "auto", width: "15rem"}}>All Shows</h1></div>
     </div>
     </div>
+    <div style={{marginLeft: "35px"}}>
+      <select onChange={handleChange} name="filterEvents" className='custom-select'>
+              <option value="">Filter by Status</option>
+              <option value="LIST">LIST</option>
+          <option value="CARDS">CARDS</option>
+          <option value="">ALL</option>
+              </select>
+              </div>
+              {statusView == "LIST"? <div>
+              <div className="row">
+      <div style={{width: "20rem", marginLeft: "auto", marginRight: "auto",marginBottom: "10px"}}>
+    <input style={{width: "100%",
+  padding: "12px 20px",
+  marginLeft: "10px", border: "4px solid grey", }} placeholder="Search Show Name" onChange={event => setQuery(event.target.value)} />
+  </div>
+  </div>
+              { shows.filter(show => {
+    if (query === '') {
+      return show;
+    } else if (show.name.toLowerCase().includes(query.toLowerCase())) {
+      return show;
+    }
+  }).map((show) => {
+                  return(
+                    <h3 key={show.id} style={{marginTop: "10px", marginBottom:'10px', marginLeft: "25%",}}><Link to={`/shows/${show.id}`}>{show.name}</Link></h3>
+                  )
+                })}
+                 </div> :
     <div className="row">
       <div>
-      <div style={{width: "25%", marginLeft: "auto", marginRight: "auto",marginBottom: "10px"}}>
+      <div style={{width: "20rem", marginLeft: "auto", marginRight: "auto",marginBottom: "10px"}}>
     <input style={{width: "100%",
   padding: "12px 20px",
   marginLeft: "10px", border: "4px solid grey", }} placeholder="Search Show Name" onChange={event => setQuery(event.target.value)} />
@@ -68,7 +103,7 @@ function Shows() {
 
       )
     })}
-     </div>
+     </div>}
      </div>
     <div className="text-center" style={{marginTop: "20px"}}>
     <h2><Link className="col" to={`/show/add`}>ADD SHOW</Link> </h2>
