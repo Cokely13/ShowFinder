@@ -7,6 +7,7 @@ import { useParams } from 'react-router-dom'
 import { updateSingleShow } from '../store/singleShowStore'
 import { deleteShow } from '../store/allShowsStore'
 import { fetchSingleUser } from '../store/singleUserStore'
+import StarRating from './utilities/StarRating'
 import usersReducer, {fetchUsers} from '../store/allUsersStore'
 import UserName from './utilities/UserName'
 // import { fetchRatings } from '../store/allRatingsStore'
@@ -136,11 +137,12 @@ export default function ShowDetail() {
         <img className='border rounded border-5  border-dark' style={{width: "18rem"}}  src={show.image}/>
         </div>}
         <div className="container text-center mt-2" style={{marginTop: "15px"}}  >
-    <div  className="text-center" >
+    <div  className="text-center justify-content-center" >
     {ratings ? ratings.length ? <h3> Watched: {ratings.filter((rating) =>rating.status ==="WATCHED").length} </h3> : <div></div> : <div></div>}
     {ratings ? ratings.length ? <h3> Watching: {ratings.filter((rating) =>rating.status ==="WATCHING").length} </h3> : <div></div> : <div></div>}
     {ratings ? ratings.length ? <h3> Watchlist: {ratings.filter((rating) =>rating.status ==="WATCHLIST").length} </h3> : <div></div> : <div></div>}
     {ratings ? ratings.length ?  <h3>Average Rating: {Math.floor((ratings.map(item => item.rating).reduce((prev, next) => prev + next))/(ratings.length))}</h3>: <div>No Ratings Yet</div> : <div>No Ratings</div> }
+    {ratings ? ratings.length ?<div className="border rounded border-5 justify-content-center" style={{width: "25%", marginLeft: "auto", marginRight: "auto"}}><StarRating style={{width: "25%", marginLeft: "auto", marginRight: "auto"}} rating ={Math.floor((ratings.map(item => item.rating).reduce((prev, next) => prev + next))/(ratings.length))}/></div>: <div>No Ratings Yet</div> : <div>No Ratings</div> }
     </div>
     </div>
         {editShow == show.id? <div></div>: <div>

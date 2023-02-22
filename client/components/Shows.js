@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react'
 import { fetchShows } from '../store/allShowsStore'
 import { fetchRatings } from '../store/allRatingsStore'
 import ShowStatus from './utilities/ShowStatus'
+import StarRating from './utilities/StarRating'
 // import AverageRating from './utilities/AverageRating'
 
 function Shows() {
@@ -95,6 +96,7 @@ function Shows() {
         {(show.ratings.length)  ? <div className="mt-1">Average Rating: {Math.floor((show.ratings.map(item => item.rating).reduce((prev, next) => prev + next))/(show.ratings.length))}</div>: <div>No Ratings Yet</div>}
         {/* <AverageRating idShow={show.id}/> */}
         {show.ratings.length ? <div className="mt-1">Number of Ratings: {(show.ratings.length)}</div>: <div></div>}
+        {ratings ? ratings.length ?<div style={{marginLeft:"auto",marginRight:"auto", width: "80%"}}><StarRating rating ={Math.floor((ratings.map(item => item.rating).reduce((prev, next) => prev + next))/(ratings.length))}/></div>: <div>No Ratings Yet</div> : <div>No Ratings</div> }
         <ShowStatus show={show} id={id} allRatings={ratings}  test= {myRatings.filter((rating) =>rating.showId == show.id)}/>
         <p></p>
         </div>

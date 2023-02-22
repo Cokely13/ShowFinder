@@ -15,6 +15,7 @@ import AddShow from './components/AddShow';
 import TopShows from './components/TopShows';
 import Progress from './components/utilities/Progress';
 import {me} from './store'
+import StarRating from './components/utilities/StarRating';
 
 /**
  * COMPONENT
@@ -33,6 +34,7 @@ class Routes extends Component {
           <Switch>
             <Route path="/home" component={Home} />
             <Route exact path="/myshows" component={MyShows}/>
+            <Route exact path="/star" component={StarRating}/>
             <Route exact path="/shows" component={Shows}/>
             <Route exact path="/recommendations" component={Recommendations}/>
             <Route exact path="/shows/:showId" component={ShowDetail}/>
