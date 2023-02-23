@@ -46,10 +46,7 @@ export default function Users() {
       friendId: user.id,
       friendName: user.username
     }
-    setStateReload(stateReload + 1)
     dispatch(createFriend(newFriend))
-    useForceUpdate()
-
   }
 
   const myFriends = things.friends

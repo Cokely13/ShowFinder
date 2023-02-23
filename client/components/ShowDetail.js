@@ -18,6 +18,7 @@ export default function ShowDetail() {
   const { showId } = useParams();
   const [editShow, setEditShow] = useState()
   const [name, setName] = useState();
+  const [statusView, setStatusView] = useState();
   const [channel, setChannel] = useState();
   const [createdBy, setCreatedBy] = useState();
   // const [sd, setShowId] = useState();
@@ -88,16 +89,17 @@ export default function ShowDetail() {
       createdBy: show.createdBy,
       image: image
     }
-    // console.log("SHOW", newShow)
     dispatch(updateSingleShow(newShow))
     setEditShow("")
   }
 
-   console.log("all", allUsers)
+  const handleUpdate2 =(event) => {
+    event.preventDefault()
+    setStatusView("Rating")
+  }
 
 
-   const test = allUsers.filter((user) =>user.id == 1)
-   console.log("testing", test)
+
 
   return (
     <div>
@@ -141,20 +143,21 @@ export default function ShowDetail() {
     {ratings ? ratings.length ? <h3> Watched: {ratings.filter((rating) =>rating.status ==="WATCHED").length} </h3> : <div></div> : <div></div>}
     {ratings ? ratings.length ? <h3> Watching: {ratings.filter((rating) =>rating.status ==="WATCHING").length} </h3> : <div></div> : <div></div>}
     {ratings ? ratings.length ? <h3> Watchlist: {ratings.filter((rating) =>rating.status ==="WATCHLIST").length} </h3> : <div></div> : <div></div>}
-    {ratings ? ratings.length ?  <h3>Average Rating: {Math.floor((ratings.map(item => item.rating).reduce((prev, next) => prev + next))/(ratings.length))}</h3>: <div>No Ratings Yet</div> : <div>No Ratings</div> }
-    {ratings ? ratings.length ?<div className="border rounded border-5 justify-content-center" style={{width: "25%", marginLeft: "auto", marginRight: "auto"}}><StarRating style={{width: "25%", marginLeft: "auto", marginRight: "auto"}} rating ={Math.floor((ratings.map(item => item.rating).reduce((prev, next) => prev + next))/(ratings.length))}/></div>: <div>No Ratings Yet</div> : <div>No Ratings</div> }
+    {ratings ? ratings.length ?  <h3>Average Rating: {Math.floor((ratings.map(item => item.rating).reduce((prev, next) => prev + next))/(ratings.length))}</h3>: <h2>No Ratings Yet</h2> : <div>No Ratings</div> }
+    {ratings ? ratings.length ?<div style={{ width: "35%",marginLeft: "auto", marginRight: "auto", marginBottom: "15px"}} ><StarRating rating ={Math.floor((ratings.map(item => item.rating).reduce((prev, next) => prev + next))/(ratings.length))} size ={40} /></div>: <div></div> : <h2>No Ratings</h2> }
     </div>
     </div>
         {editShow == show.id? <div></div>: <div>
         <div >
-        <h1 className="border rounded border-5  border-dark text-white-50 bg-dark text-center" style={{width: "10rem", marginLeft: "auto", marginRight: "auto"}} >Ratings</h1>
+              {statusView == "Rating"?  <div>
+        {ratings ? ratings.length ? <h1 className="border rounded border-5  border-dark text-white-50 bg-dark text-center" style={{width: "10rem", marginLeft: "auto", marginRight: "auto"}} >Ratings</h1> : <div></div> : <h2>No Ratings</h2> }
         <div className="row" key={show.id} style={{marginLeft: "15px", marginRight: "15px"}}>
-    {ratings? ratings.length ? ratings.map((show) => {
+    {ratings.length? show.id? ratings.map((show) => {
       return(
         <div className="col" key={show.id} >
         <div className="container text-center mt-2">
         <div className="card border rounded border-5  border-dark text-white-50 bg-dark"  style={{width: "18rem", height: "18rem"}}>
-        <img className="rounded-circle border border-5  border-dark" style={{width: "75%", height: "18rem", marginLeft: "auto", marginRight: "auto", marginTop: "10px", marginBottom: "10px"}} src={allUsers.filter((user) =>user.id == show.userId)[0].imageUrl}/>
+       <img className="rounded-circle border border-5  border-dark" style={{width: "75%", height: "18rem", marginLeft: "auto", marginRight: "auto", marginTop: "10px", marginBottom: "10px"}} src={allUsers.filter((user) =>user.id == show.userId)[0].imageUrl}/>
         <Link to={`/users/${show.userId}`}>{allUsers.filter((user) =>user.id == show.userId)[0].username}</Link>
         <div>Rating: {show.rating}</div>
         {/* <div>User Id:{show.userId}</div> */}
@@ -164,10 +167,12 @@ export default function ShowDetail() {
         </div>
 
       )
-    }): <div></div> : <div>No Ratings</div> }
+    }): <div></div> : <h2></h2> }
      </div>
-    </div>
-    {user.admin?<h2 className='text-center'><button className='btn btn-danger'  onClick={handleUpdate}>Update Show</button></h2>:<div></div> }
+    </div> :  <div style={{width: "10rem", marginLeft: "auto", marginRight: "auto", marginBottom: "20px", marginTop: "20px"}} >
+        <button className='btn btn-danger'  onClick={handleUpdate2}>VIEW RATINGS</button>
+              </div>} </div>
+    {user.admin?<div style={{width: "10rem", marginLeft: "auto", marginRight: "auto", marginBottom: "20px", marginTop: "20px"}}><button style={{width: "10rem", marginLeft: "auto", marginRight: "auto", marginBottom: "20px", marginTop: "20px"}} className='btn btn-secondary'  onClick={handleUpdate}>UPDATE SHOW</button></div>:<div></div> }
     </div>}
     </div>
   )

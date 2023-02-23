@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react'
 import { fetchShows } from '../store/allShowsStore'
 import { fetchRatings } from '../store/allRatingsStore'
 import ShowStatus from './utilities/ShowStatus'
+import ReactStars from 'react-rating-stars-component'
 import StarRating from './utilities/StarRating'
 // import AverageRating from './utilities/AverageRating'
 
@@ -24,9 +25,19 @@ function Shows() {
     // Safe to add dispatch to the dependencies array
   }, [])
 
-  const handleChange = (event) => {
+  // const handleChange = (event) => {
+  //   event.preventDefault()
+  //   setStatusView(event.target.value)
+  // }
+
+  const handleUpdate =(event) => {
     event.preventDefault()
-    setStatusView(event.target.value)
+    setStatusView("LIST")
+  }
+
+  const handleUpdate2 =(event) => {
+    event.preventDefault()
+    setStatusView("")
   }
 
   const myRatings = ratings.filter((rating) => rating.userId == id)
@@ -40,14 +51,25 @@ function Shows() {
     <div className="col"><h1 className="border border-5 rounded  border-dark text-white-50 bg-dark text-center" style={{marginBottom: "10px", marginLeft: "auto", marginRight: "auto", width: "15rem"}}>All Shows</h1></div>
     </div>
     </div>
+    {statusView == "LIST"?
     <div style={{marginLeft: "35px"}}>
-      <select onChange={handleChange} name="filterEvents" className='custom-select'>
+      {/* <select onChange={handleChange} name="filterEvents" className='custom-select'>
               <option value="">Filter by Status</option>
               <option value="LIST">LIST</option>
           <option value="CARDS">CARDS</option>
           <option value="">ALL</option>
-              </select>
-              </div>
+              </select> */}
+              <button className='btn btn-danger'  onClick={handleUpdate2}>VIEW AS CARDS</button>
+              </div> :
+               <div style={{marginLeft: "35px"}}>
+               {/* <select onChange={handleChange} name="filterEvents" className='custom-select'>
+                       <option value="">Filter by Status</option>
+                       <option value="LIST">LIST</option>
+                   <option value="CARDS">CARDS</option>
+                   <option value="">ALL</option>
+                       </select> */}
+                       <button className='btn btn-danger'  onClick={handleUpdate}>VIEW AS LIST</button>
+                       </div>}
               {statusView == "LIST"? <div>
               <div className="row">
       <div style={{width: "20rem", marginLeft: "auto", marginRight: "auto",marginBottom: "10px"}}>
@@ -96,7 +118,15 @@ function Shows() {
         {(show.ratings.length)  ? <div className="mt-1">Average Rating: {Math.floor((show.ratings.map(item => item.rating).reduce((prev, next) => prev + next))/(show.ratings.length))}</div>: <div>No Ratings Yet</div>}
         {/* <AverageRating idShow={show.id}/> */}
         {show.ratings.length ? <div className="mt-1">Number of Ratings: {(show.ratings.length)}</div>: <div></div>}
-        {ratings ? ratings.length ?<div style={{marginLeft:"auto",marginRight:"auto", width: "80%"}}><StarRating rating ={Math.floor((ratings.map(item => item.rating).reduce((prev, next) => prev + next))/(ratings.length))}/></div>: <div>No Ratings Yet</div> : <div>No Ratings</div> }
+         {(show.ratings.length)  ?<div style={{marginLeft:"auto",marginRight:"auto", width: "80%"}}>
+        <ReactStars
+        size= {22}
+        count={10}
+        value={((show.ratings.map(item => item.rating).reduce((prev, next) => prev + next))/(show.ratings.length))}
+        isHalf={true}
+        edit={false}/>
+        </div> : <div>No Ratings Yet</div>}
+        {/* {ratings ? ratings.length ?<div style={{marginLeft:"auto",marginRight:"auto", width: "80%"}}><StarRating  size ={20} rating ={((show.ratings.map(item => item.rating).reduce((prev, next) => prev + next))/(show.ratings.length))} /></div>: <div>No Ratings Yet</div> : <div>No Ratings</div> } */}
         <ShowStatus show={show} id={id} allRatings={ratings}  test= {myRatings.filter((rating) =>rating.showId == show.id)}/>
         <p></p>
         </div>

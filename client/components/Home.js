@@ -13,8 +13,8 @@ export const Home = props => {
   return (
     <div className="p-3 mb-2 bg-white text-dark" >
       <h3 className="text-3xl font-bold underline">Welcome, {username}</h3>
+      <div className="test rounded" style={{marginTop: "10px", marginBottom: "10px", width: "50%", height: "15rem", marginRight: "auto", marginLeft: "auto"}}></div>
       <NewestShows/>
-      <div className="test rounded" style={{marginTop: "10px", width: "100%", height: "30rem"}}>Hey</div>
     </div>
   )
 }

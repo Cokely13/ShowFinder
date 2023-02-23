@@ -31,11 +31,11 @@ const Navbar = ({handleClick, isLoggedIn}) => (
       <li className="nav-item">
         <a className="nav-link" href="/users">Users</a>
       </li>
-          <li className="nav-item dropdown">
+          <li className="nav-item dropdown" >
         <a className="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Personal Info
         </a>
-        <div className="dropdown-menu bg-dark" aria-labelledby="navbarDropdownMenuLink">
+        <div className="dropdown-menu bg-dark"  aria-labelledby="navbarDropdownMenuLink">
         <a className="dropdown-item text-white-50" href="/profile">Profile</a>
         <a className="dropdown-item text-white-50" href="/friends">Friends</a>
           <a className="dropdown-item text-white-50" href="/recommendations">Recommendations</a>
