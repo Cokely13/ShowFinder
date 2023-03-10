@@ -33,9 +33,27 @@ router.get('/:id', async (req, res, next) => {
     //   // },
     //   // group: ['Show.id'],
     // });
+    // const student = await db.Show.findOne({
+    //   attributes: [Sequelize.fn("AVG", Sequelize.col("marks"))],
+    //   raw: true
+    // });
 
 
-    const show= await Show.findByPk((req.params.id), {include: Rating})
+    const show= await Show.findByPk((req.params.id), {include: Rating}
+    );
+
+    // const show= await Show.findOne({
+    //   where: {id: req.params.id},
+    //   include : [{
+    //     model: Rating,
+    //     attributes: [Sequelize.fn('avg', Sequelize.col('stars')),'rating'],
+    //     raw: true
+    //   }],
+    //   attributes: {
+    //     exclude: ['password']
+    //   },
+    //   group: ['seller_rating.id', 'show.id'],
+    // })
     //     where: {id : req.params.id},
     //     include: Rating
     //   , attributes: {

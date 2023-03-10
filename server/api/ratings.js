@@ -1,4 +1,5 @@
 const router = require('express').Router()
+const Sequelize = require('sequelize')
 const { models: { Rating}} = require('../db')
 
 
@@ -14,7 +15,14 @@ router.get('/', async (req, res, next) => {
 router.get('/:id', async (req, res, next) => {
   try {
     // const eventId = req.params.id
-    const show= await Rating.findByPk(req.params.id);
+    // const show= await Rating.findByPk(req.params.id);
+    const show = await Rating.findOne({
+      where:{
+        showId: req.params.id
+      },
+      attributes: [Sequelize.fn("AVG", Sequelize.col("rating"))],
+      raw: true
+    });
     res.json(show);
   } catch (err) {
     next(err);
