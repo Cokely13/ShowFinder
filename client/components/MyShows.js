@@ -44,6 +44,8 @@ export default function MyShow() {
   // const myshows = shows.filter((show) => show.rating.userId ==id)
   const ratings = user.ratings
 
+  console.log("user", user)
+
   const handleClick2 = (event, show) => {
     event.preventDefault()
     show.rating= event.target.value
@@ -166,6 +168,7 @@ export default function MyShow() {
           show.showName == user.favShowName? <div className="col " key={show.id} >
           <div className="container text-center mt-2" >
       <div  className="card border border-5 border-warning text-white-50 bg-dark text-center" style={{width: "18rem"}}>
+      <img className="card-img-top border border-5 rounded  border-dark"  src={show.image} alt="Card image"/>
         <h1><Link to={`/shows/${show.showId}`}>{show.showName}</Link></h1>
         <h5>Rating: {show.rating}</h5>
         <h5>Progress:</h5>
@@ -217,6 +220,7 @@ export default function MyShow() {
           <div className="col " key={show.id} >
           <div className="container text-center mt-2" >
       <div  className="card border border-5 border-dark text-white-50 bg-dark text-center" style={{width: "18rem"}}>
+      <img className="card-img-top border border-5 rounded  border-dark"  src={show.image} alt="Card image"/>
         <h1><Link to={`/shows/${show.showId}`}>{show.showName}</Link></h1>
         <h5>Rating: {show.rating}</h5>
         <h5>Progress:</h5>
@@ -276,6 +280,7 @@ export default function MyShow() {
           show.showName == user.favShowName ?<div className="col" key={show.id}>
           <div className="container text-center mt-2" >
       <div   className="card border border-5 border-warning text-white-50 bg-dark text-center" style={{width: "18rem", }}>
+      <img className="card-img-top border border-5 rounded  border-dark"  src={show.image} alt="Card image"/>
       <h1><Link to={`/shows/${show.showId}`}>{show.showName}</Link></h1>
       <h5>Rating: {show.rating}</h5>
       <h5>Progress:</h5>
@@ -357,6 +362,7 @@ export default function MyShow() {
           <div className="col" key={show.id}>
             <div className="container text-center mt-2" >
         <div   className="card border border-5 border-dark text-white-50 bg-dark text-center" style={{width: "18rem", }}>
+        <img className="card-img-top border border-5 rounded  border-dark"  src={show.image} alt="Card image"/>
         <h1><Link to={`/shows/${show.showId}`}>{show.showName}</Link></h1>
         <h5>Rating: {show.rating}</h5>
         <h5>Progress:</h5>
@@ -444,6 +450,7 @@ export default function MyShow() {
           <div className="col" key={show.id}>
           <div className="container text-center mt-2" >
       <div   className="card border border-5 border-dark text-white-50 bg-dark text-center" style={{width: "18rem"}}>
+      <img className="card-img-top border border-5 rounded  border-dark"  src={show.image} alt="Card image"/>
         <h1><Link to={`/shows/${show.showId}`}>{show.showName}</Link></h1>
 
         <div className="text-center" style={{padding:"20px"}}>
@@ -473,6 +480,7 @@ export default function MyShow() {
       show.showName == user.favShowName? <div className="col " key={show.id} >
       <div className="container text-center mt-2" >
   <div  className="card border border-5 border-warning text-white-50 bg-dark text-center" style={{width: "18rem"}}>
+  <img className="card-img-top border border-5 rounded  border-dark"  src={show.image} alt="Card image"/>
     <h1><Link to={`/shows/${show.showId}`}>{show.showName}</Link></h1>
     <h5>Rating: {show.rating}</h5>
     <h5>Progress:</h5>
@@ -524,6 +532,7 @@ export default function MyShow() {
       <div className="col " key={show.id} >
           <div className="container text-center mt-2" >
       <div  className="card border border-5 border-dark text-white-50 bg-dark text-center" style={{width: "18rem"}}>
+      <img className="card-img-top border border-5 rounded  border-dark"  src={show.image} alt="Card image"/>
         <h1><Link to={`/shows/${show.showId}`}>{show.showName}</Link></h1>
         <h5>Rating: {show.rating}</h5>
         <h5>Progress:</h5>
@@ -592,6 +601,7 @@ export default function MyShow() {
       <div className="col" key={show.id}>
       <div className="container text-center mt-2" >
   <div   className="card border border-5 border-dark text-white-50 bg-dark text-center" style={{width: "18rem"}}>
+  <img className="card-img-top border border-5 rounded  border-dark"  src={show.image} alt="Card image"/>
     <h1><Link to={`/shows/${show.showId}`}>{show.showName}</Link></h1>
     <div className="text-center" style={{padding:"20px"}}>
     <button className="btn btn-secondary" style={{width: "75%", marginBottom: "10px"}} onClick={event => handleClick(event, show)}>Add To Watching</button>
@@ -618,6 +628,7 @@ export default function MyShow() {
       show.showName == user.favShowName ?<div className="col" key={show.id}>
       <div className="container text-center mt-2" >
   <div   className="card border border-5 border-warning text-white-50 bg-dark text-center" style={{width: "18rem", }}>
+  <img className="card-img-top border border-5 rounded  border-dark"  src={show.image} alt="Card image"/>
   <h1><Link to={`/shows/${show.showId}`}>{show.showName}</Link></h1>
   <h5>Rating: {show.rating}</h5>
   <h5>Progress:</h5>
@@ -699,6 +710,7 @@ export default function MyShow() {
       <div className="col" key={show.id}>
             <div className="container text-center mt-2" >
         <div   className="card border border-5 border-dark text-white-50 bg-dark text-center" style={{width: "18rem"}}>
+        <img className="card-img-top border border-5 rounded  border-dark"  src={show.image} alt="Card image"/>
         <h1><Link to={`/shows/${show.showId}`}>{show.showName}</Link></h1>
         <h5>Rating: {show.rating}</h5>
         <h5>Progress:</h5>

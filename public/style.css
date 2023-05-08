@@ -41,3 +41,32 @@ body {
   background-repeat: no-repeat;
   background-position: center center;
 }
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.pagination ul {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.pagination li {
+  margin-right: 10px;
+}
+
+.pagination button {
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-size: 1.2em;
+  color: #0077cc;
+}
+
+.pagination .active button {
+  font-weight: bold;
+}
