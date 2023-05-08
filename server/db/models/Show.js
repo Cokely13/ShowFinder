@@ -2,16 +2,10 @@ const Sequelize = require('sequelize')
 const db = require('../db')
 
 const Show = db.define('show', {
-//   id: {
-//     type: Sequelize.INTEGER,
-//     autoIncrement: true,
-//     primaryKey: true,
-//     unique: true,
-// },
   name: {
     type: Sequelize.STRING,
     allowNull: false,
-    unique: true,
+    // unique: true,
   },
   channel: {
     type: Sequelize.STRING,
@@ -24,6 +18,12 @@ const Show = db.define('show', {
   createdBy: {
     type:Sequelize.INTEGER,
     defaultValue: "0"
+  },
+  premiered: {
+    type: Sequelize.DATE,
+  },
+  status: {
+    type: Sequelize.STRING,
   }
 
 })
