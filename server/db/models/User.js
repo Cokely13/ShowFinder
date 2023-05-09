@@ -30,6 +30,9 @@ const User = db.define('user', {
   type: Sequelize.TEXT,
     defaultValue: 'https://styleandshenanigans.com/wp-content/uploads/2017/02/My-Ten-Favourite-TV-Series-1-1-600x454.png',
   },
+  // image: {
+  //   type: Sequelize.TEXT,
+  // }
 
 })
 

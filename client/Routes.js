@@ -14,6 +14,7 @@ import Friends from './components/Friends';
 import AddShow from './components/AddShow';
 import TopShows from './components/TopShows';
 import Progress from './components/utilities/Progress';
+import ProfilePictureForm from './components/ProfilePictureForm';
 import {me} from './store'
 import StarRating from './components/utilities/StarRating';
 
@@ -33,6 +34,7 @@ class Routes extends Component {
         {isLoggedIn ? (
           <Switch>
             <Route path="/home" component={Home} />
+            <Route exact path="/test" component={ProfilePictureForm}/>
             <Route exact path="/myshows" component={MyShows}/>
             <Route exact path="/star" component={StarRating}/>
             <Route exact path="/shows" component={Shows}/>

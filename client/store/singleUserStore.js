@@ -13,6 +13,7 @@ export const _setSingleUser= (userdata) => {
   };
 };
 
+
 const _updateSingleUser = (userdata) => {
   return {
     type: UPDATE_SINGLE_USER,
@@ -28,18 +29,31 @@ export const fetchSingleUser = (id) => {
   };
 };
 
-export const updateSingleUser = (user, history) => {
+// export const updateSingleUser = (user, history) => {
+//   return async (dispatch) => {
+//     try {
+
+//         await axios.put(`/api/users/${user.id}`, user);
+//         const { data: userData } = await axios.get(`/api/users/${user.id}`);
+
+//         dispatch(_updateSingleUser(userData));
+//         history.push(`/profile`)
+//       }
+//      catch (error) {
+//       console.log("EVENT11111", error)
+//     }
+//   };
+// };
+
+export const updateSingleUser = (user) => {
   return async (dispatch) => {
     try {
-
-        await axios.put(`/api/users/${user.id}`, user);
-        const { data: userData } = await axios.get(`/api/users/${user.id}`);
-
-        dispatch(_updateSingleUser(userData));
-        history.push(`/profile`)
-      }
-     catch (error) {
-      console.log("EVENT11111", error)
+      await axios.put(`/api/users/${user.id}`, user);
+      const { data: userData } = await axios.get(`/api/users/${user.id}`);
+      dispatch(_updateSingleUser(userData));
+      dispatch(fetchSingleUser(user.id)); // retrieve updated user information
+    } catch (error) {
+      console.error(error);
     }
   };
 };
