@@ -12,12 +12,7 @@
 //   const {id} = useSelector((state) => state.auth )
 
 
-//   const config = {
-//     bucketName: 'bingeproof',
-//     region: 'US East (N. Virginia) us-east-1',
-//     accessKeyId: 'AKIAXIAXBGEQVIBPLXOE',
-//     secretAccessKey: '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'
-//   }
+
 
 
 
@@ -108,12 +103,7 @@ const ProfilePictureUpload = () => {
     const [selectedFile, setSelectedFile] = useState(null);
 
     // the configuration information is fetched from the .env file
-    const config = {
-        bucketName: "bingeproof",
-        region: 'us-east-1',
-        accessKeyId: "AKIAXIAXBGEQVIBPLXOE",
-        secretAccessKey: "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",
-    }
+
 
     const handleFileInput = (e) => {
         setSelectedFile(e.target.files[0]);
