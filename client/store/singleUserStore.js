@@ -45,13 +45,15 @@ export const fetchSingleUser = (id) => {
 //   };
 // };
 
-export const updateSingleUser = (user) => {
+export const updateSingleUser = (id, formData) => {
   return async (dispatch) => {
     try {
-      await axios.put(`/api/users/${user.id}`, user);
-      const { data: userData } = await axios.get(`/api/users/${user.id}`);
+      // append userId to the user object
+
+      await axios.put(`/api/users/${id}`, formData);
+      const { data: userData } = await axios.get(`/api/users/${id}`);
       dispatch(_updateSingleUser(userData));
-      dispatch(fetchSingleUser(user.id)); // retrieve updated user information
+      dispatch(fetchSingleUser(id)); // retrieve updated user information
     } catch (error) {
       console.error(error);
     }

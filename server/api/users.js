@@ -62,7 +62,7 @@ router.post('/', upload.single('image'), async (req, res, next) => {
 //   }
 // });
 
-router.put('/:id', upload.single('image'), async (req, res, next) => {
+router.put('/:id', upload.single('file'), async (req, res, next) => {
   try {
     const user = await User.findByPk(req.params.id);
 

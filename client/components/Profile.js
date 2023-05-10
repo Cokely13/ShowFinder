@@ -5,6 +5,7 @@ import {useForm} from'react-hook-form'
 import { fetchSingleUser, updateSingleUser } from '../store/singleUserStore'
 import { fetchRatings } from '../store/allRatingsStore'
 import { fetchShows } from '../store/allShowsStore'
+import  AC from '../../public/AC.jpeg'
 
 export default function Profile() {
   const {register, handleSubmit } = useForm()
@@ -157,7 +158,8 @@ const handleClick = (e) => {
     <div className="col"><h1 className="border rounded border-5  border-dark text-white-50 bg-dark" style={{marginBottom: "10px", marginLeft: "auto", marginRight: "auto", width: "25rem"}}>Profile</h1></div>
     </div>
     <div className="text-center">
-    <img className="rounded-circle border border-5  border-dark" style={{width: "18rem"}}  src={user.imageUrl}/>
+    {(user.username === 'Ryan') ? <div className="ac rounded" style={{marginTop: "10px", marginBottom: "10px", width: "50%", height: "15rem", marginRight: "auto", marginLeft: "auto"}}></div> :
+    <div>hey </div> }
     <div style={{marginTop: "10px"}}><button className='btn btn-primary'  onClick={handleUpdate}>Update Profile</button></div>
     </div>
     {/* <form onSubmit={handleSubmit(onSubmit)}>
