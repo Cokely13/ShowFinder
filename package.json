@@ -6,8 +6,8 @@
   "scripts": {
     "build": "webpack",
     "build:dev": "npm run build -- --watch --mode=development",
-    "seed": "node -r esm script/seed.js",
-    "start": "node -r esm server.js",
+    "seed": "node script/seed.js",
+    "start": "node server",
     "start:dev": "npm run build:dev & npm run start-server",
     "start:dev:logger": "LOGGING=true npm run start:dev",
     "start:dev:seed": "SEED=true npm run start:dev",
@@ -28,7 +28,6 @@
     "buffer": "^6.0.3",
     "compression": "^1.7.3",
     "cross-fetch": "^3.1.5",
-    "esm": "^3.2.25",
     "express": "^4.16.4",
     "font-awesome": "^4.7.0",
     "history": "^4.9.0",
