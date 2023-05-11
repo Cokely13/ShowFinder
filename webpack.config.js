@@ -40,6 +40,19 @@ module.exports = {
           esModule: false,
         },
       },
+      {
+        test: /\.(png|jpe?g|gif)$/i,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[name].[ext]',
+              outputPath: 'images/',
+              esModule: false,
+            }
+      },
+    ],
+    },
     ]
   }
 }
