@@ -80,7 +80,6 @@ export default function MyShow() {
   const handleReco= (event, show) => {
     event.preventDefault()
     const recoFriend = users.filter((user)=>user.username == event.target.value)
-    console.log("showwww", show )
     const recommend = {
       showId: show.showId,
       showName: show.showName,

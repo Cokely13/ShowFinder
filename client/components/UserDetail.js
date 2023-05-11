@@ -66,6 +66,7 @@ export default function UserDetail() {
           <div className="col" key={show.id}>
           <div className="container text-center mt-2" >
       <div   className="card border rounded border-5  border-dark text-white-50 bg-dark text-center" style={{width: "18rem", border: "solid black"}}>
+      <img className="card-img-top border border-5 rounded  border-dark"  src={show.image} alt="Card image"/>
         <h1><Link to={`/shows/${show.showId}`}>{show.showName}</Link></h1>
         <h4 style={{marginBottom: "10px"}}>Rating: {show.rating}</h4>
         </div></div></div>)}): <div></div>}
@@ -79,6 +80,7 @@ export default function UserDetail() {
           <div className="col" key={show.id}>
           <div className="container text-center mt-2" >
       <div   className="card border rounded border-5  border-dark text-white-50 bg-dark text-center" style={{width: "18rem", border: "solid black"}}>
+      <img className="card-img-top border border-5 rounded  border-dark"  src={show.image} alt="Card image"/>
       <h1><Link to={`/shows/${show.showId}`}>{show.showName}</Link></h1>
       <h4 style={{marginBottom: "10px"}}>Rating: {show.rating}</h4>
         {show.progress == 0 ?
@@ -108,6 +110,7 @@ export default function UserDetail() {
           <div className="col" key={show.id}>
           <div className="container text-center mt-2" >
       <div   className="card border rounded border-5  border-dark text-white-50 bg-dark text-center" style={{width: "18rem", border: "solid black", marginBottom: "15px"}}>
+      <img className="card-img-top border border-5 rounded  border-dark"  src={show.image} alt="Card image"/>
           <h1><Link to={`/shows/${show.showId}`}>{show.showName}</Link></h1>
         </div></div></div>)}): <div></div>}
     </div></div>
@@ -132,6 +135,7 @@ export default function UserDetail() {
       <div className="col" key={show.id}>
       <div className="container text-center mt-2" >
   <div   className="card border rounded border-5  border-dark text-white-50 bg-dark text-center" style={{width: "18rem", border: "solid black", marginBottom: "15px"}}>
+  <img className="card-img-top border border-5 rounded  border-dark"  src={show.image} alt="Card image"/>
     <h1><Link to={`/shows/${show.showId}`}>{show.showName}</Link></h1>
     <h4 style={{marginBottom: "10px"}}>Rating: {show.rating}</h4>
       </div></div></div>)}): <div></div>}
@@ -155,6 +159,7 @@ export default function UserDetail() {
       <div className="col" key={show.id}>
       <div className="container text-center mt-2" >
   <div   className="card border rounded border-5  border-dark text-white-50 bg-dark text-center" style={{width: "18rem", border: "solid black", marginBottom: "15px"}}>
+  <img className="card-img-top border border-5 rounded  border-dark"  src={show.image} alt="Card image"/>
     <h1><Link to={`/shows/${show.showId}`}>{show.showName}</Link></h1>
       </div></div></div>)}): <div></div>}
     </div></div>: <div></div>}
@@ -177,6 +182,7 @@ export default function UserDetail() {
       <div className="col" key={show.id}>
       <div className="container text-center mt-2" >
   <div   className="card border rounded border-5  border-dark text-white-50 bg-dark text-center" style={{width: "18rem", border: "solid black", marginBottom: "15px"}}>
+  <img className="card-img-top border border-5 rounded  border-dark"  src={show.image} alt="Card image"/>
     <h1><Link to={`/shows/${show.showId}`}>{show.showName}</Link></h1>
     <h4 style={{marginBottom: "10px"}}>Rating: {show.rating}</h4>
     {show.progress == 0 ?

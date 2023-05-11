@@ -28,11 +28,11 @@ body {
   background-position: center center;
 }
 
-#header-background {
+/* #header-background {
   max-width: 500px;
   max-height: 500px;
   background-image: url(BingeProof.png);
-}
+} */
 
 .ac {
   min-height: 100%;
@@ -40,6 +40,8 @@ body {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
+  border: 10px solid black;
+  border-radius: 50%;
 }
 
 .val {
@@ -48,6 +50,8 @@ body {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
+  border: 10px solid black;
+  border-radius: 50%;
 }
 
 .jeff {
@@ -56,6 +60,8 @@ body {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
+  border: 10px solid black;
+  border-radius: 50%;
 }
 
 .ryan {
@@ -64,6 +70,8 @@ body {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
+  border: 10px solid black;
+  border-radius: 50%;
 }
 
 .test {
