@@ -140,7 +140,7 @@
 // module.exports = seed
 
 const { db, models: { User, Show } } = require('../server/db');
-const Axios = require('Axios');
+const axios = require('axios').default;
 
 const baseURL = 'http://api.tvmaze.com';
 const API_KEY = '9BNGjUxBbrFaisuV-xKIATvtUuKaZYG9';
@@ -161,7 +161,7 @@ async function seed() {
 
   // Creating TV Shows
   for (let page = 0; page < TOTAL_SHOWS / PAGE_SIZE; page++) {
-    const response = await Axios.get(`${baseURL}/shows`, {
+    const response = await axios.get(`${baseURL}/shows`, {
       params: {
         page,
         limit: PAGE_SIZE,
