@@ -29,6 +29,10 @@ const Rating = db.define('rating', {
       defaultValue: "NONE",
       allowNull: false,
     },
+    image: {
+        type: Sequelize.TEXT,
+        defaultValue: 'https://img.freepik.com/premium-vector/tv-show-neon-sign_191108-157.jpg?w=2000',
+      },
     progress: {
         type: Sequelize.INTEGER,
         defaultValue: 0,

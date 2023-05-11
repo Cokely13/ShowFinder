@@ -25,6 +25,10 @@ const Recommendation = db.define('recommendation', {
         type: Sequelize.STRING,
         allowNull: false
     },
+    showImage: {
+        type: Sequelize.TEXT,
+        defaultValue: 'https://img.freepik.com/premium-vector/tv-show-neon-sign_191108-157.jpg?w=2000',
+      },
     friendId: {
         type: Sequelize.INTEGER,
         unique: false

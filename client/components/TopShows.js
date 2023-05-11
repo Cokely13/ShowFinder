@@ -35,7 +35,7 @@ export default function TopShows() {
   return (
     <div>
     <h1 className="col border border-5 rounded  border-dark text-white-50 bg-dark text-center" style={{marginBottom: "10px", marginLeft: "auto", marginRight: "auto", width: "30rem"}}>Most Watched Shows</h1>
-    <div id="carouselExampleIndicators" style={{width: "60rem", marginLeft: "auto", marginRight: "auto", }} className="carousel slide" data-ride="carousel">
+    <div id="carouselExampleIndicators" style={{ width: "40rem", marginLeft: "auto", marginRight: "auto", }} className="carousel slide" data-ride="carousel">
   <ol className="carousel-indicators">
     <li data-target="#carouselExampleIndicators" data-slide-to="0" className="active"></li>
     <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
@@ -43,14 +43,14 @@ export default function TopShows() {
   </ol>
 <div className="carousel-inner">
     <div className="carousel-item active">
-      <img className="d-block w-100 border border-5 rounded  border-dark" style={{height: "50rem",}}  src={mostimages[0]} alt="First slide"/>
+      <img className="d-block w-100 border border-5 rounded  border-dark"  src={mostimages[0]} alt="First slide"/>
     </div>
 
     <div className="carousel-item">
-    <img className="d-block w-100 border border-5 rounded  border-dark" style={{height: "50rem",}}  src={mostimages[1]} alt="Second slide"/>
+    <img className="d-block w-100 border border-5 rounded  border-dark"   src={mostimages[1]} alt="Second slide"/>
     </div>
     <div className="carousel-item">
-    <img className="d-block w-100 border border-5 rounded  border-dark" style={{height: "50rem",}}  src={mostimages[2]}alt="Third slide"/>
+    <img className="d-block w-100 border border-5 rounded  border-dark"  src={mostimages[2]}alt="Third slide"/>
     </div>
     </div>
   <a className="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">

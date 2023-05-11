@@ -44,6 +44,7 @@ export default function Recommendations() {
         <div className="col" key={reco.id}>
           <div className="container text-center mt-2" >
       <div   className="card border  border-dark text-white-50 bg-dark" style={{width: "18rem", border: "solid black"}}>
+      <img className="card-img-top border border-5 rounded  border-dark"  src={reco.showImage} alt="Card image"/>
         <h3><Link to={`/shows/${reco.showId}`} >{reco.showName}</Link></h3>
         <h5>Recommended By: <Link to={`/users/${reco.userId}`}>{reco.userName}</Link></h5>
         <h5>Comments: {reco.comments}</h5>
@@ -75,6 +76,7 @@ export default function Recommendations() {
         <div className="col" key={reco.id}>
         <div className="container text-center mt-2" >
     <div   className="card border border-dark text-white-50 bg-dark" style={{width: "18rem", border: "solid black"}}>
+    <img className="card-img-top border border-5 rounded  border-dark"  src={reco.showImage} alt="Card image"/>
         <h3><Link to={`/shows/${reco.showId}`} > {reco.showName}</Link></h3>
         <h5>Recommended To: <Link to={`/users/${reco.friendId}`}> {reco.friendName}</Link></h5>
         <h5>Response: {reco.like}</h5>

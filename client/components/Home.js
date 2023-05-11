@@ -2,7 +2,7 @@ import React from 'react'
 import {connect} from 'react-redux'
 import TopShows from './TopShows'
 import NewestShows from './NewestShows'
-// import "../index.css"
+
 
 /**
  * COMPONENT

@@ -37,7 +37,8 @@ export default function ShowStatus(props) {
       showId: props.show.id,
       showName: props.show.name,
       status: "WATCHLIST",
-      userId: props.id
+      userId: props.id,
+      image: props.show.image
     }
     dispatch(createRating(newRating))
 
@@ -48,7 +49,8 @@ export default function ShowStatus(props) {
       showId: props.show.id,
       showName: props.show.name,
       status: "WATCHING",
-      userId: props.id
+      userId: props.id,
+      image: props.show.image
     }
     dispatch(createRating(newRating))
   }

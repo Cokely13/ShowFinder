@@ -28,10 +28,50 @@ body {
   background-position: center center;
 }
 
-#header-background {
+/* #header-background {
   max-width: 500px;
   max-height: 500px;
   background-image: url(BingeProof.png);
+} */
+
+.ac {
+  min-height: 100%;
+  background-image: url(ACProf.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  border: 10px solid black;
+  border-radius: 50%;
+}
+
+.val {
+  min-height: 100%;
+  background-image: url(ValProf.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  border: 10px solid black;
+  border-radius: 50%;
+}
+
+.jeff {
+  min-height: 50%;
+  background-image: url(JeffProf.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  border: 10px solid black;
+  border-radius: 50%;
+}
+
+.ryan {
+  min-height: 100%;
+  background-image: url(Ryan.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  border: 10px solid black;
+  border-radius: 50%;
 }
 
 .test {
@@ -40,4 +80,33 @@ body {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.pagination ul {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.pagination li {
+  margin-right: 10px;
+}
+
+.pagination button {
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-size: 1.2em;
+  color: #0077cc;
+}
+
+.pagination .active button {
+  font-weight: bold;
 }
