@@ -138,6 +138,10 @@ export default function MyShow() {
   const makeFave = (event, show) =>{
     event.preventDefault()
     user.favShowName= show.showName
+    user.favShowImage= show.image
+
+    console.log("show", show)
+    console.log("user", user)
     dispatch(updateSingleUser(user))
 
   }

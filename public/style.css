@@ -36,7 +36,31 @@ body {
 
 .ac {
   min-height: 100%;
-  background-image: url(AC.jpeg);
+  background-image: url(ACProf.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+.val {
+  min-height: 100%;
+  background-image: url(ValProf.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+.jeff {
+  min-height: 50%;
+  background-image: url(JeffProf.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+.ryan {
+  min-height: 100%;
+  background-image: url(Ryan.jpg);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;

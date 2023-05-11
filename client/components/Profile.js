@@ -158,8 +158,14 @@ const handleClick = (e) => {
     <div className="col"><h1 className="border rounded border-5  border-dark text-white-50 bg-dark" style={{marginBottom: "10px", marginLeft: "auto", marginRight: "auto", width: "25rem"}}>Profile</h1></div>
     </div>
     <div className="text-center">
-    {(user.username === 'Ryan') ? <div className="ac rounded" style={{marginTop: "10px", marginBottom: "10px", width: "50%", height: "15rem", marginRight: "auto", marginLeft: "auto"}}></div> :
-    <div>hey </div> }
+    {(user.username === 'Ac') ? <div className="ac rounded" style={{marginTop: "10px", marginBottom: "10px", width: "8rem", height: "8rem", marginRight: "auto", marginLeft: "auto"}}></div> :
+    <div></div> }
+    {(user.username === 'Val') ? <div className="val rounded" style={{marginTop: "10px", marginBottom: "10px", width: "8rem", height: "8rem", marginRight: "auto", marginLeft: "auto"}}></div> :
+    <div></div> }
+    {(user.username === 'Jeff') ? <div className="jeff rounded" style={{marginTop: "10px", marginBottom: "10px", width: "8rem", height: "8rem", marginRight: "auto", marginLeft: "auto"}}></div> :
+    <div></div> }
+    {(user.username === 'Ryan') ? <div className="ryan rounded" style={{marginTop: "10px", marginBottom: "10px", width: "8rem", height: "8rem", marginRight: "auto", marginLeft: "auto"}}></div> :
+    <div></div> }
     <div style={{marginTop: "10px"}}><button className='btn btn-primary'  onClick={handleUpdate}>Update Profile</button></div>
     </div>
     {/* <form onSubmit={handleSubmit(onSubmit)}>
