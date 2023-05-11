@@ -80,9 +80,11 @@ export default function MyShow() {
   const handleReco= (event, show) => {
     event.preventDefault()
     const recoFriend = users.filter((user)=>user.username == event.target.value)
+    console.log("showwww", show )
     const recommend = {
       showId: show.showId,
       showName: show.showName,
+      showImage: show.image,
       userId: id,
       userName: user.username,
       friendName: event.target.value,
@@ -150,7 +152,15 @@ export default function MyShow() {
   return (
     <div>
       <div className="container text-center mt-2">
-      <img className="rounded-circle border border-5  border-dark" style={{width: "18rem"}}  src={user.imageUrl}/>
+      {/* <img className="rounded-circle border border-5  border-dark" style={{width: "18rem"}}  src={user.imageUrl}/> */}
+      {(user.username === 'Ac') ? <div className="ac rounded" style={{marginTop: "10px", marginBottom: "10px", width: "8rem", height: "8rem", marginRight: "auto", marginLeft: "auto"}}></div> :
+    <div></div> }
+    {(user.username === 'Val') ? <div className="val rounded" style={{marginTop: "10px", marginBottom: "10px", width: "8rem", height: "8rem", marginRight: "auto", marginLeft: "auto"}}></div> :
+    <div></div> }
+    {(user.username === 'Jeff') ? <div className="jeff rounded" style={{marginTop: "10px", marginBottom: "10px", width: "8rem", height: "8rem", marginRight: "auto", marginLeft: "auto"}}></div> :
+    <div></div> }
+    {(user.username === 'Ryan') ? <div className="ryan rounded" style={{marginTop: "10px", marginBottom: "10px", width: "8rem", height: "8rem", marginRight: "auto", marginLeft: "auto"}}></div> :
+    <div></div> }
       <h1>{user.username}</h1>
       </div>
       {!statusView?
@@ -165,7 +175,7 @@ export default function MyShow() {
           <option value="">ALL</option>
               </select>
               </div>
-      <h2 className="border rounded border-5  border-dark text-white-50 bg-dark text-center" style={{marginTop: "10px", width: "10rem", marginLeft: "auto", marginRight: "auto"}}>Watched</h2>
+      {ratings ? ratings.filter((rating) =>rating.status == "WATCHED").length ? <h2 className="border rounded border-5  border-dark text-white-50 bg-dark text-center" style={{marginTop: "10px", width: "10rem", marginLeft: "auto", marginRight: "auto"}}>Watched</h2>:<div></div> : <div></div>}
       <div className ="row ">
       {ratings ? ratings.filter((rating) =>rating.status == "WATCHED").map((show)=> {
         return(
@@ -183,7 +193,7 @@ export default function MyShow() {
         <div className="text-center" style={{padding:"20px"}}>
         <button className="btn btn-primary" style={{width: "75%", marginBottom: "10px" }} onClick={(event) => handleRatings(event, show.showId)}>Update Rating</button>
         <button className="btn btn-primary" style={{width: "75%", marginBottom: "10px"}} onClick={(event) => handleNewRec(event, show.showId)}>Recommend Show</button>
-        {show.showName == user.favShowName ?<h2 className="card border border-5 border-warning text-black-50">FAVORITE SHOW</h2>: <button className="btn btn-primary" style={{width: "75%"}} onClick={event => makeFave(event, show)}>Make Fav</button>}
+        {show.showName == user.favShowName ?<div></div>: <button className="btn btn-primary" style={{width: "75%"}} onClick={event => makeFave(event, show)}>Make Fav</button>}
         </div>
         {editShow == show.showId ?
          <div style={{marginBottom: "10px", marginTop: "10px"}} >
@@ -235,7 +245,7 @@ export default function MyShow() {
         <div className="text-center" style={{padding:"20px"}}>
         <button className="btn btn-secondary" style={{width: "75%", marginBottom: "10px" }} onClick={(event) => handleRatings(event, show.showId)}>Update Rating</button>
         <button className="btn btn-secondary" style={{width: "75%", marginBottom: "10px"}} onClick={(event) => handleNewRec(event, show.showId)}>Recommend Show</button>
-        {show.showName == user.favShowName ?<h2 className="card border border-5 border-warning">FAVORITE SHOW</h2>: <button className="btn btn-secondary" style={{width: "75%"}} onClick={event => makeFave(event, show)}>Make Fav</button>}
+        {show.showName == user.favShowName ?<div></div>: <button className="btn btn-secondary" style={{width: "75%"}} onClick={event => makeFave(event, show)}>Make Fav</button>}
         </div>
         {editShow == show.showId ?
          <div style={{marginBottom: "10px", marginTop: "10px"}} >
@@ -277,7 +287,7 @@ export default function MyShow() {
     {/* style={{height: "200px",
   width: "50%"}}  */}
     <div>
-      <h2 className="border rounded border-5  border-dark text-white-50 bg-dark text-center" style={{marginTop: "10px", width: "10rem",marginLeft: "auto", marginRight: "auto"}}>Watching</h2>
+    {ratings ? ratings.filter((rating) =>rating.status == "WATCHING").length ? <h2 className="border rounded border-5  border-dark text-white-50 bg-dark text-center" style={{marginTop: "10px", width: "10rem", marginLeft: "auto", marginRight: "auto"}}>Watching</h2>:<div></div> : <div></div>}
       <div className ="row">
       {ratings ? ratings.filter((rating) =>rating.status == "WATCHING").map((show)=> {
         return(
@@ -313,7 +323,7 @@ export default function MyShow() {
       <button className="btn btn-secondary" style={{width: "75%", marginBottom: "10px" }}  onClick={(event) => handleRatings(event, show.showId)}>Update Rating</button>
       <button className="btn btn-secondary" style={{width: "75%", marginBottom: "10px" }} onClick={event => handleClick3(event, show)}>Add To Watched</button>
       <button className="btn btn-secondary" style={{width: "75%", marginBottom: "10px" }}  onClick={(event) => handleNewRec(event, show.showId)}>Recommend Show</button>
-      {show.showName == user.favShowName ?<h2 className="card border border-5 border-warning text-black">FAVORITE SHOW</h2>: <button className="btn btn-secondary" style={{width: "75%", marginBottom: "10px" }}  onClick={event => makeFave(event, show)}>Make Fav</button>}
+      {show.showName == user.favShowName ?<div></div>: <button className="btn btn-secondary" style={{width: "75%", marginBottom: "10px" }}  onClick={event => makeFave(event, show)}>Make Fav</button>}
       </div>
       {editProgress == show.showId ?
       <div style={{marginBottom: "10px", marginTop: "10px"}}>
@@ -447,7 +457,7 @@ export default function MyShow() {
         </div></div></div>)}): <div></div>}</div>
     </div>
     <div>
-      <h2 className="border rounded border-5  border-dark text-white-50 bg-dark text-center" style={{marginTop: "10px", width: "10rem", marginLeft: "auto", marginRight: "auto"}}>Watchlist</h2>
+    {ratings ? ratings.filter((rating) =>rating.status == "WATCHLIST").length ? <h2 className="border rounded border-5  border-dark text-white-50 bg-dark text-center" style={{marginTop: "10px", width: "10rem", marginLeft: "auto", marginRight: "auto"}}>Watchlist</h2>:<div></div> : <div></div>}
       <div className ="row">
       {ratings ? ratings.filter((rating) =>rating.status == "WATCHLIST").map((show)=> {
         return(
@@ -495,7 +505,7 @@ export default function MyShow() {
     <div className="text-center" style={{padding:"20px"}}>
     <button className="btn btn-primary" style={{width: "75%", marginBottom: "10px" }} onClick={(event) => handleRatings(event, show.showId)}>Update Rating</button>
     <button className="btn btn-primary" style={{width: "75%", marginBottom: "10px"}} onClick={(event) => handleNewRec(event, show.showId)}>Recommend Show</button>
-    {show.showName == user.favShowName ?<h2 className="card border border-5 border-warning text-black">FAVORITE SHOW</h2>: <button className="btn btn-primary" style={{width: "75%"}} onClick={event => makeFave(event, show)}>Make Fav</button>}
+    {show.showName == user.favShowName ?<div></div>: <button className="btn btn-primary" style={{width: "75%"}} onClick={event => makeFave(event, show)}>Make Fav</button>}
     </div>
     {editShow == show.showId ?
      <div style={{marginBottom: "10px", marginTop: "10px"}} >
@@ -661,7 +671,7 @@ export default function MyShow() {
   <button className="btn btn-secondary" style={{width: "75%", marginBottom: "10px" }}  onClick={(event) => handleRatings(event, show.showId)}>Update Rating</button>
   <button className="btn btn-secondary" style={{width: "75%", marginBottom: "10px" }} onClick={event => handleClick3(event, show)}>Add To Watched</button>
   <button className="btn btn-secondary" style={{width: "75%", marginBottom: "10px" }}  onClick={(event) => handleNewRec(event, show.showId)}>Recommend Show</button>
-  {show.showName == user.favShowName ?<h2 className="card border border-5 border-warning text-black">FAVORITE SHOW</h2>: <button className="btn btn-secondary" style={{width: "75%", marginBottom: "10px" }}  onClick={event => makeFave(event, show)}>Make Fav</button>}
+  {show.showName == user.favShowName ?<div></div>: <button className="btn btn-secondary" style={{width: "75%", marginBottom: "10px" }}  onClick={event => makeFave(event, show)}>Make Fav</button>}
   </div>
   {editProgress == show.showId ?
   <div style={{marginBottom: "10px", marginTop: "10px"}}>

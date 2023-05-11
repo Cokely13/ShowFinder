@@ -176,7 +176,7 @@ const handleClick = (e) => {
     <div className="text-center">
     <div>
     <div className="text-center"><img className="card border border-5  border-dark" style={{width: "18rem", marginBottom: "10px", marginTop: '15px', marginLeft: "auto", marginRight: "auto"}}  src={user.favShowImage}/>
-    <button className='btn btn-primary' onClick={handlePic}>Update Pic</button>
+    {/* <button className='btn btn-primary' onClick={handlePic}>Update Pic</button> */}
     </div>
     </div>
     </div>

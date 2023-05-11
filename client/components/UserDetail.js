@@ -33,7 +33,15 @@ export default function UserDetail() {
       <div className="col"><h1 className="border rounded border-5  border-dark text-white-50 bg-dark text-center" style={{marginBottom: "10px", marginLeft: "auto", marginRight: "auto", width: "25rem"}}>{user.username}'s Profile</h1></div>
     </div>
     <div className="text-center">
-    <img className="rounded-circle border border-5  border-dark" style={{width: "18rem"}}  src={user.imageUrl}/>
+    {/* <img className="rounded-circle border border-5  border-dark" style={{width: "18rem"}}  src={user.imageUrl}/> */}
+    {(user.username === 'Ac') ? <div className="ac rounded" style={{marginTop: "10px", marginBottom: "10px", width: "8rem", height: "8rem", marginRight: "auto", marginLeft: "auto"}}></div> :
+    <div></div> }
+    {(user.username === 'Val') ? <div className="val rounded" style={{marginTop: "10px", marginBottom: "10px", width: "8rem", height: "8rem", marginRight: "auto", marginLeft: "auto"}}></div> :
+    <div></div> }
+    {(user.username === 'Jeff') ? <div className="jeff rounded" style={{marginTop: "10px", marginBottom: "10px", width: "8rem", height: "8rem", marginRight: "auto", marginLeft: "auto"}}></div> :
+    <div></div> }
+    {(user.username === 'Ryan') ? <div className="ryan rounded" style={{marginTop: "10px", marginBottom: "10px", width: "8rem", height: "8rem", marginRight: "auto", marginLeft: "auto"}}></div> :
+    <div></div> }
     </div>
     <h2 className="border rounded border-5  border-dark text-white-50 bg-dark text-center"  style={{marginTop: "15px", width: "15rem", marginLeft: "auto", marginRight: "auto", }}>Favorite Show {user.favShowName}</h2>
     <img className="card border border-5  border-dark" style={{width: "18rem", marginBottom: "10px", marginLeft: "auto", marginRight: "auto"}}  src={user.favShowImage}/>
@@ -51,7 +59,7 @@ export default function UserDetail() {
           <option value="">ALL</option>
               </select>
               </div>
-      <h2 className="border rounded border-5  border-dark text-white-50 bg-dark text-center"  style={{marginTop: "15px", width: "15rem",marginLeft: "auto", marginRight: "auto" }}>Watched</h2>
+              {ratings ? ratings.filter((rating) =>rating.status == "WATCHED").length ? <h2 className="border rounded border-5  border-dark text-white-50 bg-dark text-center" style={{marginTop: "10px", width: "10rem", marginLeft: "auto", marginRight: "auto"}}>Watched</h2>:<div></div> : <div></div>}
       <div className ="row">
       {ratings ? ratings.filter((rating) =>rating.status == "WATCHED").map((show)=> {
         return(
@@ -63,7 +71,8 @@ export default function UserDetail() {
         </div></div></div>)}): <div></div>}
         </div>
     </div>
-      <h2 className="border rounded border-5  border-dark text-white-50 bg-dark text-center"  style={{marginTop: "15px", width: "15rem",marginLeft: "auto", marginRight: "auto"}}>Watching</h2>
+    {ratings ? ratings.filter((rating) =>rating.status == "WATCHING").length ? <h2 className="border rounded border-5  border-dark text-white-50 bg-dark text-center" style={{marginTop: "10px", width: "10rem", marginLeft: "auto", marginRight: "auto"}}>Watching</h2>:<div></div> : <div></div>}
+      {/* <h2 className="border rounded border-5  border-dark text-white-50 bg-dark text-center"  style={{marginTop: "15px", width: "15rem",marginLeft: "auto", marginRight: "auto"}}>Watching</h2> */}
       <div className ="row">
       {ratings ? ratings.filter((rating) =>rating.status == "WATCHING").map((show)=> {
         return(
@@ -91,7 +100,8 @@ export default function UserDetail() {
         </div></div></div>)}): <div></div>}
     </div>
     <div>
-      <h2 className="border rounded border-5  border-dark text-white-50 bg-dark text-center"  style={{marginTop: "15px", width: "15rem",marginLeft: "auto", marginRight: "auto"}}>Watchlist</h2>
+    {ratings ? ratings.filter((rating) =>rating.status == "WATCHLIST").length ? <h2 className="border rounded border-5  border-dark text-white-50 bg-dark text-center" style={{marginTop: "10px", width: "10rem", marginLeft: "auto", marginRight: "auto"}}>Watchlist</h2>:<div></div> : <div></div>}
+      {/* <h2 className="border rounded border-5  border-dark text-white-50 bg-dark text-center"  style={{marginTop: "15px", width: "15rem",marginLeft: "auto", marginRight: "auto"}}>Watchlist</h2> */}
       <div className ="row">
       {ratings ? ratings.filter((rating) =>rating.status == "WATCHLIST").map((show)=> {
         return(
