@@ -2,6 +2,7 @@ import React from 'react'
 
 import Navbar from './components/Navbar'
 import Routes from './Routes'
+import Banner from './components/Banner'
 // import myImage from './celebration.png'
 // import Celebration from './Images/celebration.png'
 
@@ -12,6 +13,7 @@ const App = () => {
   return (
     <div>
       <Navbar />
+      <Banner />
       <Routes />
     </div>
   )
